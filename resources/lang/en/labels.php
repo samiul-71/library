@@ -111,6 +111,7 @@ return [
         'auth' => [
             'login_box_title'    => 'Login',
             'login_button'       => 'Login',
+            'reset_button'       => 'Reset',
             'login_with'         => 'Login with :social_media',
             'register_box_title' => 'Register',
             'register_button'    => 'Register',

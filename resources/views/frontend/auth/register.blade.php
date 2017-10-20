@@ -33,6 +33,13 @@
                     </div><!--form-group-->
 
                     <div class="form-group">
+                        {{ Form::label('mobile', trans('validation.attributes.frontend.mobile'), ['class' => 'col-md-4 control-label']) }}
+                        <div class="col-md-6">
+                            {{ Form::text('mobile', null, ['class' => 'form-control', 'maxlength' => '15', 'required' => 'required', 'placeholder' => trans('validation.attributes.frontend.mobile')]) }}
+                        </div><!--col-md-6-->
+                    </div><!--form-group-->
+
+                    <div class="form-group">
                         {{ Form::label('email', trans('validation.attributes.frontend.email'), ['class' => 'col-md-4 control-label']) }}
                         <div class="col-md-6">
                             {{ Form::email('email', null, ['class' => 'form-control', 'maxlength' => '191', 'required' => 'required', 'placeholder' => trans('validation.attributes.frontend.email')]) }}
@@ -65,6 +72,7 @@
                     <div class="form-group">
                         <div class="col-md-6 col-md-offset-4">
                             {{ Form::submit(trans('labels.frontend.auth.register_button'), ['class' => 'btn btn-primary']) }}
+                            {{ Form::reset(trans('labels.frontend.auth.reset_button'), ['class' => 'btn btn-danger', 'style' => 'margin-right:15px']) }}
                         </div><!--col-md-6-->
                     </div><!--form-group-->
 

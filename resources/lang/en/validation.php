@@ -165,6 +165,7 @@ return [
             'first_name'                => 'First Name',
             'last_name'                 => 'Last Name',
             'name'                      => 'Full Name',
+            'mobile'                    => 'Mobile Number',
             'password'                  => 'Password',
             'password_confirmation'     => 'Password Confirmation',
             'phone' => 'Phone',

@@ -38,13 +38,14 @@
                     <div class="form-group">
                         {{ Form::label('message', trans('validation.attributes.frontend.message'), ['class' => 'col-md-4 control-label']) }}
                         <div class="col-md-6">
-                            {{ Form::textarea('message', null, ['class' => 'form-control', 'required' => 'required', 'placeholder' => trans('validation.attributes.frontend.message')]) }}
+                            {{ Form::textarea('message', null, ['class' => 'form-control', 'rows' => 4, 'required' => 'required', 'placeholder' => trans('validation.attributes.frontend.message')]) }}
                         </div><!--col-md-6-->
                     </div><!--form-group-->
 
                     <div class="form-group">
                         <div class="col-md-6 col-md-offset-4">
                             {{ Form::submit(trans('labels.frontend.contact.button'), ['class' => 'btn btn-primary pull-right']) }}
+                            {{ Form::reset(trans('labels.frontend.auth.reset_button'), ['class' => 'btn btn-danger', 'style' => 'margin-right:15px']) }}
                         </div><!--col-md-6-->
                     </div><!--form-group-->
 

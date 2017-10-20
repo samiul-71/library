@@ -9,8 +9,8 @@
         <title>@yield('title', app_name())</title>
 
         <!-- Meta -->
-        <meta name="description" content="@yield('meta_description', 'Laravel 5 Boilerplate')">
-        <meta name="author" content="@yield('meta_author', 'Anthony Rappa')">
+        <meta name="description" content="@yield('meta_description', 'Medicine Library')">
+        <meta name="author" content="@yield('meta_author', 'Shahlal Hossain')">
         @yield('meta')
 
         <!-- Styles -->
@@ -28,9 +28,7 @@
 
         <!-- Scripts -->
         <script>
-            window.Laravel = <?php echo json_encode([
-                'csrfToken' => csrf_token(),
-            ]); ?>
+            window.Laravel = "<?php echo json_encode(['csrfToken' => csrf_token()]); ?>"
         </script>
     </head>
     <body id="app-layout">
