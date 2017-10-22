@@ -15,20 +15,21 @@
         </div><!--user-panel-->
 
         <!-- search form (Optional) -->
-        {{ Form::open(['route' => 'admin.search.index', 'method' => 'get', 'class' => 'sidebar-form']) }}
-        <div class="input-group">
-            {{ Form::text('q', Request::get('q'), ['class' => 'form-control', 'required' => 'required', 'placeholder' => trans('strings.backend.general.search_placeholder')]) }}
-
-            <span class="input-group-btn">
-                    <button type='submit' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
-                  </span><!--input-group-btn-->
-        </div><!--input-group-->
-    {{ Form::close() }}
-    <!-- /.search form -->
+        {{--{{ Form::open(['route' => 'admin.search.index', 'method' => 'get', 'class' => 'sidebar-form']) }}--}}
+        {{--<div class="input-group">--}}
+            {{--{{ Form::text('q', Request::get('q'), ['class' => 'form-control', 'required' => 'required', 'placeholder' => trans('strings.backend.general.search_placeholder')]) }}--}}
+            {{--<span class="input-group-btn">--}}
+                {{--<button type='submit' id='search-btn' class="btn btn-flat">--}}
+                    {{--<i class="fa fa-search"></i>--}}
+                {{--</button>--}}
+            {{--</span><!--input-group-btn-->--}}
+        {{--</div><!--input-group-->--}}
+        {{--{{ Form::close() }}--}}
+        <!-- /.search form -->
 
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu">
-            <li class="header">{{ trans('menus.backend.sidebar.general') }}</li>
+            {{--<li class="header">{{ trans('menus.backend.sidebar.general') }}</li>--}}
 
             <li class="{{ active_class(Active::checkUriPattern('admin/dashboard')) }}">
                 <a href="{{ route('admin.dashboard') }}">
@@ -37,7 +38,14 @@
                 </a>
             </li>
 
-            <li class="header">{{ trans('menus.backend.sidebar.system') }}</li>
+            <li class="{{ active_class(Active::checkUriPattern('admin/medicine-type')) }}">
+                <a href="{{ route('admin.medicine-type.index') }}">
+                    <i class="fa fa-plus-square"></i>
+                    <span>{{ trans('menus.backend.sidebar.medicine-type') }}</span>
+                </a>
+            </li>
+
+            {{--<li class="header">{{ trans('menus.backend.sidebar.system') }}</li>--}}
 
             @role(1)
             <li class="{{ active_class(Active::checkUriPattern('admin/access/*')) }} treeview">

@@ -44,9 +44,10 @@ return [
         ],
 
         'sidebar' => [
-            'dashboard' => 'Dashboard',
-            'general'   => 'General',
-            'system'    => 'System',
+            'dashboard'             => 'Dashboard',
+            'general'               => 'General',
+            'system'                => 'System',
+            'medicine-type'         => 'Medicine Type',
         ],
     ],
 

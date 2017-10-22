@@ -10,6 +10,11 @@ return [
     'users_table' => 'users',
 
     /*
+     * Medicine Type table used to store medicine types
+     */
+    'medicine_type_table' => 'medicine_types',
+
+    /*
      * Role model used by Access to create correct relations. Update the role if it is in a different namespace.
     */
     'role' => Role::class,

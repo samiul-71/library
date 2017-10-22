@@ -21,8 +21,19 @@ return [
         'actions' => 'Actions',
         'active'  => 'Active',
         'buttons' => [
-            'save'   => 'Save',
-            'update' => 'Update',
+            'list'      => 'List',
+            'index'     => 'List',
+            'create'    => 'Create',
+            'edit'      => 'Edit',
+            'show'      => 'Show',
+            'details'   => 'Details',
+            'save'      => 'Save',
+            'update'    => 'Update',
+            'trash'     => 'Trash',
+
+            'medicine-type'  => [
+                'create'    => 'Add/Create New Medicine Type'
+            ],
         ],
         'hide'              => 'Hide',
         'inactive'          => 'Inactive',
