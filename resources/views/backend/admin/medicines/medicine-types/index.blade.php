@@ -27,10 +27,10 @@
                     <h3 class="box-title">{!! ucfirst($module_title) !!} {!! ucfirst($module_action) !!}</h3>
 
                     <div class="box-tools pull-right">
-                        <a href="{!! route('admin.medicine-type.create') !!}" class="btn btn-success">
+                        <a href="{!! route('admin.medicine-type.create') !!}" class="btn btn-xs btn-success">
                             <i class="fa fa-plus"></i> {!! trans('labels.general.buttons.medicine-type.create') !!}
                         </a>
-                        <a href="{!! route("admin.medicine-type.trash") !!}" class="btn btn-danger">
+                        <a href="{!! route("admin.medicine-type.trash") !!}" class="btn btn-xs btn-danger">
                             <i class="fa fa-trash"></i> {!! trans('labels.general.buttons.trash') !!}
                         </a>
                     </div>
