@@ -13,10 +13,19 @@
     <div class="box box-primary">
         <div class="box-header with-border">
             <strong>{{ ucfirst($module_action) }}</strong>
+            <div class="box-tools pull-right">
+                <a href="{!! route('admin.medicine-type.create') !!}" class="btn btn-xs btn-success">
+                    <i class="fa fa-plus"></i> {!! 'Create New' !!}
+                </a>
+                <a href="{!! route('admin.medicine-type.index') !!}" class="btn btn-xs btn-info">
+                    <i class="fa fa-list"></i> {!! 'Back to List' !!}
+                </a>
+                <a href="{!! route("admin.medicine-type.trash") !!}" class="btn btn-xs btn-danger">
+                    <i class="fa fa-trash"></i> {!! 'Trash List' !!}
+                </a>
+            </div>
         </div><!-- /.box-header -->
         <div class="box-body">
-
-            {{--{!! Form::open(['route' => ["admin.medicine-type.store"], 'class' => 'form', 'role' => 'form']) !!}--}}
 
             {!! Form::model($medicine_type, ['method' => 'PUT', 'route' => ["admin.medicine-type.update", $medicine_type->id], 'class' => 'form', 'role' => 'form']) !!}
 

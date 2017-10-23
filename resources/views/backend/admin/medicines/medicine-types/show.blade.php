@@ -24,7 +24,6 @@
                     <i class="fa fa-trash"></i> {!! 'Trash List' !!}
                 </a>
             </div>
-
         </div>
         <div class="box-body">
 
