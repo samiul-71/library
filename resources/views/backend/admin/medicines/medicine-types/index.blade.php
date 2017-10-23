@@ -100,10 +100,10 @@
 
 @stop
 
-@section('after-scripts-end')
+@section('after-scripts')
     <script>
         $(document).ready(function() {
-            $('#medicine-type-table').DataTable();
+//            $('#medicine-type-table').DataTable();
         });
     </script>
 @stop

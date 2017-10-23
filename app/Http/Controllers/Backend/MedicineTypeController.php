@@ -143,9 +143,25 @@ class MedicineTypeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(MedicineTypeRequest $request, $id)
     {
-        //
+        $medicineTypeNameExist = $this->checkMedicineTypeNameForUpdate($request->input('name'), $id);
+        $medicineTypeCodeExist = $this->checkMedicineTypeCodeForUpdate($request->input('code'), $id);
+
+        if($medicineTypeNameExist) {
+            return redirect()->back()->with('flash_danger', 'Your Given Medicine Type Name Already Exists. Please Insert a Different Medicine Type Name.')->withInput($request->all);
+        }
+        if($medicineTypeCodeExist) {
+            return redirect()->back()->with('flash_danger', 'Your Given Medicine Type Code Already Exists. Please Insert a Different Medicine Type Code.')->withInput($request->all);
+        }
+
+        $medicineType = MedicineType::findOrFail($id);
+        $medicineTypeData = $request->except('_token');
+        $medicineType->fill($medicineTypeData)->save();
+
+        $message = 'Your Selected Medicine Type has been Updated Successfully';
+
+        return redirect()->route("admin.medicine-type.index")->with('flash_success', '<i class="fa fa-check"></i> ' . $message);
     }
 
     /**
@@ -156,7 +172,11 @@ class MedicineTypeController extends Controller
      */
     public function destroy($id)
     {
-        dd('Call Destroy Method of the Medicine Type');
+//        dd('Call Destroy Method of the Medicine Type');
+        $record = MedicineType::find($id);
+        $record->destroy($id);
+
+        return;
     }
 
     /**
@@ -164,7 +184,7 @@ class MedicineTypeController extends Controller
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function trash($organizationID, $employeeID)
+    public function trash()
     {
         $data['module_name']    = $this->module_name;
         $data['module_title']   = $this->module_title;
@@ -173,15 +193,12 @@ class MedicineTypeController extends Controller
         $data['module_model']   = $this->module_model;
         $data['module_action']  = "Trash list";
 
-        $data['title'] = ucfirst($data['module_name']) . ' ' . ucfirst($data['module_action']);
+        $data['page_heading']   = ucfirst($data['module_name']);
+        $data['title']          = ucfirst($data['module_name']) . ' ' . ucfirst($data['module_action']);
 
-        $data['employee']       = EmployeeProfile::where('id', $employeeID)->where('organization_id', $organizationID)->first();
-        $data['user']           = $data['employee']->user;
-        $data['organization']   = Organization::findOrFail($organizationID);
+        $data['medicine_types'] = MedicineType::onlyTrashed()->orderBy('id', 'asc')->get();
 
-        $data['attachReports'] = AttachReport::onlyTrashed()->where('user_id', $data['user']->id)->orderBy('id', 'desc')->get();
-
-        return view("backend.admin.attach-report.trash", $data);
+        return view("backend.admin.medicines.medicine-types.trash", $data);
     }
 
     /**
@@ -190,10 +207,9 @@ class MedicineTypeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function restore($organizationID, $employeeID, $id)
+    public function restore($id)
     {
-        $module_model = $this->module_model;
-        $record = $module_model::withTrashed()->find($id);
+        $record = MedicineType::withTrashed()->find($id);
         $record->restore();
 
         return;
@@ -205,10 +221,9 @@ class MedicineTypeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function permanentlyDelete($organizationID, $employeeID, $id)
+    public function permanentlyDelete($id)
     {
-        $module_model = $this->module_model;
-        $record = $module_model::withTrashed()->find($id);
+        $record = MedicineType::withTrashed()->find($id);
         $record->forceDelete($id);
 
         return;
@@ -225,4 +240,17 @@ class MedicineTypeController extends Controller
         $result = MedicineType::where('code', $medicineTypeCode)->first();
         return $result;
     }
+
+    public function checkMedicineTypeNameForUpdate($medicineTypeName, $id){
+
+        $result = MedicineType::where('name', $medicineTypeName)->where('id', '!=', $id)->first();
+        return $result;
+    }
+
+    public function checkMedicineTypeCodeForUpdate($medicineTypeCode, $id){
+
+        $result = MedicineType::where('code', $medicineTypeCode)->where('id', '!=', $id)->first();
+        return $result;
+    }
+
 }

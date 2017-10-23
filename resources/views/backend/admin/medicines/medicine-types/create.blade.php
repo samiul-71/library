@@ -26,7 +26,7 @@
     </div><!--box box-success-->
 @endsection
 
-@section('after-scripts-end')
+@section('after-scripts')
     <script>
 
         $('.form').validator();

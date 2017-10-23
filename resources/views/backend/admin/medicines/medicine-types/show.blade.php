@@ -9,6 +9,12 @@
     </h1>
 @endsection
 
+@section('after-styles')
+    <style>
+
+    </style>
+@endsection
+
 @section('content')
     <div class="box box-primary">
         <div class="box-header with-border">
@@ -94,44 +100,45 @@
     </div><!--box box-success-->
 @endsection
 
-@section('after-scripts-end')
+@section('after-scripts')
     <script>
-
-        // Delete a Record
-        $('#record-destroy').on("click", function(ev){
-            ev.preventDefault();
-            var URL = $(this).attr('href');
-            var redirectURL = "{{ route('admin.medicine-type.index') }}";
-            warnBeforeRedirect(URL, redirectURL);
-        });
-
-        // Warn before Delete Record and Redirect
-        function warnBeforeRedirect(URL, redirectURL) {
-            swal({
-                title: "Are you sure?",
-                text: "By clicking to confirm, You will delete the record.",
-                type: "info",
-                showCancelButton: true,
-                confirmButtonColor: "#DD6B55",
-                confirmButtonText: "Yes, delete it!",
-                closeOnConfirm: false,
-                closeOnCancel: false,
-                showLoaderOnConfirm: true
-            }, function(isConfirm) {
-                if (isConfirm) {
-                    $.ajax({
-                        type: "DELETE",
-                        url: URL,
-                        success: function(){
-                            swal("Submitted!", "Selected record has been deleted successfully.", "success");
-                            window.location.href = redirectURL;
-                        }
-                    })
-                } else {
-                    swal("Cancelled", "Action Cancelled.", "error");
-                }
+        $(document).ready(function() {
+            // Delete a Record
+            $('.record-destroy').on("click", function(ev){
+                ev.preventDefault();
+                var URL = $(this).attr('href');
+                var redirectURL = "{{ route('admin.medicine-type.index') }}";
+                warnBeforeRedirect(URL, redirectURL);
             });
-        }
+
+            // Warn before Delete Record and Redirect
+            function warnBeforeRedirect(URL, redirectURL) {
+                swal({
+                    title: "Are you sure?",
+                    text: "By clicking to confirm, You will delete the record.",
+                    type: "info",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "Yes, delete it!",
+                    closeOnConfirm: false,
+                    closeOnCancel: false,
+                    showLoaderOnConfirm: true
+                }, function(isConfirm) {
+                    if (isConfirm) {
+                        $.ajax({
+                            type: "DELETE",
+                            url: URL,
+                            success: function(){
+                                swal("Submitted!", "Selected record has been deleted successfully.", "success");
+                                window.location.href = redirectURL;
+                            }
+                        })
+                    } else {
+                        swal("Cancelled", "Action Cancelled.", "error");
+                    }
+                });
+            }
+        });
     </script>
 
 @endsection

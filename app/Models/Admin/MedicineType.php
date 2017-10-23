@@ -3,9 +3,12 @@
 namespace App\Models\Admin;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class MedicineType extends Model
 {
+    use SoftDeletes;
+
     protected $table = 'medicine_types';
 
     protected $dates = ['deleted_at'];
