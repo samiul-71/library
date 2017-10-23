@@ -18,3 +18,20 @@ Route::resource('medicine-type', 'MedicineTypeController', ['names' => [
     'update'    => 'medicine-type.update',
     'destroy'   => 'medicine-type.destroy'
 ]]);
+
+/**
+ * Routes for accessing indications info.
+ */
+Route::get('indications/trash', 'IndicationsController@trash')->name('indications.trash');
+Route::patch('indications/{id}/restore', 'IndicationsController@restore')->name('indications.restore');
+Route::delete('indications/{id}/permanently-delete', 'IndicationsController@permanentlyDelete')->name('indications.permanently-delete');
+
+Route::resource('indications', 'IndicationsController', ['names' => [
+    'index'     => 'indications.index',
+    'create'    => 'indications.create',
+    'store'     => 'indications.store',
+    'show'      => 'indications.show',
+    'edit'      => 'indications.edit',
+    'update'    => 'indications.update',
+    'destroy'   => 'indications.destroy'
+]]);
