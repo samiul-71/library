@@ -19,6 +19,23 @@ Route::resource('medicine-type', 'MedicineTypeController', ['names' => [
     'destroy'   => 'medicine-type.destroy'
 ]]);
 
+
+/**
+ * Routes for accessing indications info.
+ */
+Route::get('indications/trash', 'IndicationsController@trash')->name('indications.trash');
+Route::patch('indications/{id}/restore', 'IndicationsController@restore')->name('indications.restore');
+Route::delete('indications/{id}/permanently-delete', 'IndicationsController@permanentlyDelete')->name('indications.permanently-delete');
+
+Route::resource('indications', 'IndicationsController', ['names' => [
+    'index'     => 'indications.index',
+    'create'    => 'indications.create',
+    'store'     => 'indications.store',
+    'show'      => 'indications.show',
+    'edit'      => 'indications.edit',
+    'update'    => 'indications.update',
+    'destroy'   => 'indications.destroy'
+
 Route::get('generic-name/trash', 'GenericNameController@trash')->name('medicine-type.trash');
 Route::patch('generic-name/{id}/restore', 'GenericNameController@restore')->name('generic-name.restore');
 Route::delete('generic-name/{id}/permanently-delete', 'GenericNameController@permanentlyDelete')->name('generic-name.permanently-delete');
@@ -31,4 +48,5 @@ Route::resource('generic-name', 'GenericNameController', ['names' => [
     'edit'      => 'generic-name.edit',
     'update'    => 'generic-name.update',
     'destroy'   => 'generic-name.destroy'
+
 ]]);

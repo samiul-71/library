@@ -34,6 +34,10 @@ return [
             'medicine-type'  => [
                 'create'    => 'Add/Create New Medicine Type'
             ],
+
+            'indications'  => [
+                'create'    => 'Add/Create New Indication'
+            ],
         ],
         'hide'              => 'Hide',
         'inactive'          => 'Inactive',
