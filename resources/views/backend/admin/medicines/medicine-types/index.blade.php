@@ -11,7 +11,7 @@
     </h1>
 @endsection
 
-@section('after-styles-end')
+@section('after-styles')
     <style>
 
     </style>

@@ -7,7 +7,6 @@
                 <div class="col-sm-6">
                     {!! Form::text('name', old('name'), ['id'=>'name', 'class' => 'form-control name', 'placeholder' => 'Medicine Type Name', 'required' => 'required', 'data-error' => 'Name Must be Alphabetical']) !!}
                 </div>
-                <div class="help-block with-errors"></div>
                 <div class="col-sm-3">
                     {!! Form::text('code', old('code'), ['id'=>'code', 'class' => 'form-control code', 'placeholder' => 'Medicine Type Code']) !!}
                 </div>
