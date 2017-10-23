@@ -52,6 +52,13 @@
                 </a>
             </li>
 
+            <li class="{{ active_class(Active::checkUriPattern('admin/generic-name')) }}">
+                <a href="{{ route('admin.generic-name.index') }}">
+                    <i class="fa fa-h-square"></i>
+                    <span>{{ trans('menus.backend.sidebar.generic-name') }}</span>
+                </a>
+            </li>
+
             {{--<li class="header">{{ trans('menus.backend.sidebar.system') }}</li>--}}
 
             @role(1)

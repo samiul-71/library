@@ -35,6 +35,10 @@ return [
                 'create'    => 'Add/Create New Medicine Type'
             ],
 
+            'generic-name'  => [
+                'create'    => 'Add/Create New Medicine Generic Name'
+            ],
+
             'indications'  => [
                 'create'    => 'Add/Create New Indications'
             ],

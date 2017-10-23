@@ -37,7 +37,7 @@ Route::resource('indications', 'IndicationsController', ['names' => [
     'destroy'   => 'indications.destroy'
 ]]);
 
-Route::get('generic-name/trash', 'GenericNameController@trash')->name('medicine-type.trash');
+Route::get('generic-name/trash', 'GenericNameController@trash')->name('generic-name.trash');
 Route::patch('generic-name/{id}/restore', 'GenericNameController@restore')->name('generic-name.restore');
 Route::delete('generic-name/{id}/permanently-delete', 'GenericNameController@permanentlyDelete')->name('generic-name.permanently-delete');
 

@@ -106,7 +106,7 @@ class GenericNameController extends Controller
         $data['page_heading']   = ucfirst($data['module_name']);
         $data['title']          = ucfirst($data['module_name']) . ' ' . ucfirst($data['module_action']);
 
-        $data['medicine_type']  = GenericName::findOrFail($id);
+        $data['generic_name']  = GenericName::findOrFail($id);
 
         return view("backend.admin.medicines.generic-names.show", $data);
     }
@@ -130,7 +130,7 @@ class GenericNameController extends Controller
         $data['page_heading']   = ucfirst($data['module_name']);
         $data['title']          = ucfirst($data['module_name']) . ' ' . ucfirst($data['module_action']);
 
-        $data['medicine_type']  = GenericName::findOrFail($id);
+        $data['generic_name']  = GenericName::findOrFail($id);
 
         return view("backend.admin.medicines.generic-names.edit", $data);
     }
@@ -160,7 +160,7 @@ class GenericNameController extends Controller
 
         $message = 'Your Selected Medicine Generic Name has been Updated Successfully';
 
-        return redirect()->route("admin.medicine-type.index")->with('flash_success', '<i class="fa fa-check"></i> ' . $message);
+        return redirect()->route("admin.generic-name.index")->with('flash_success', '<i class="fa fa-check"></i> ' . $message);
 
     }
 
@@ -196,7 +196,7 @@ class GenericNameController extends Controller
         $data['page_heading']   = ucfirst($data['module_name']);
         $data['title']          = ucfirst($data['module_name']) . ' ' . ucfirst($data['module_action']);
 
-        $data['medicine_types'] = GenericName::onlyTrashed()->orderBy('id', 'asc')->get();
+        $data['medicine_generic_names'] = GenericName::onlyTrashed()->orderBy('id', 'asc')->get();
 
         return view("backend.admin.medicines.generic-names.trash", $data);
     }

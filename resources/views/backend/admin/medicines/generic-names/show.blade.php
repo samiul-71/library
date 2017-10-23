@@ -20,13 +20,13 @@
         <div class="box-header with-border">
             <h3 class="box-title">{!! ucfirst($module_title) !!} {!! ucfirst($module_action) !!}</h3>
             <div class="box-tools pull-right">
-                <a href="{!! route('admin.medicine-type.create') !!}" class="btn btn-xs btn-success">
+                <a href="{!! route('admin.generic-name.create') !!}" class="btn btn-xs btn-success">
                     <i class="fa fa-plus"></i> {!! 'Create New' !!}
                 </a>
-                <a href="{!! route('admin.medicine-type.index') !!}" class="btn btn-xs btn-info">
+                <a href="{!! route('admin.generic-name.index') !!}" class="btn btn-xs btn-info">
                     <i class="fa fa-list"></i> {!! 'Back to List' !!}
                 </a>
-                <a href="{!! route("admin.medicine-type.trash") !!}" class="btn btn-xs btn-danger">
+                <a href="{!! route("admin.generic-name.trash") !!}" class="btn btn-xs btn-danger">
                     <i class="fa fa-trash"></i> {!! 'Trash List' !!}
                 </a>
             </div>
@@ -40,29 +40,29 @@
                             <tbody>
                             <tr>
                                 <td class="pull-right">
-                                    <strong>Medicine Type Name</strong>
+                                    <strong>Medicine Generic Name</strong>
                                 </td>
                                 <td> : </td>
                                 <td>
-                                    {{ ucwords($medicine_type->name) }}
+                                    {{ ucwords($generic_name->name) }}
                                 </td>
                             </tr>
                             <tr>
                                 <td class="pull-right">
-                                    <strong>Medicine Type Code</strong>
+                                    <strong>Generic Name Code</strong>
                                 </td>
                                 <td> : </td>
                                 <td>
-                                    {{ $medicine_type->code }}
+                                    {{ $generic_name->code }}
                                 </td>
                             </tr>
                             <tr>
                                 <td class="pull-right">
-                                    <strong>Medicine Type Description</strong>
+                                    <strong>Generic Name Description</strong>
                                 </td>
                                 <td> : </td>
                                 <td>
-                                    {{ $medicine_type->description }}
+                                    {{ $generic_name->description }}
                                 </td>
                             </tr>
                             <tr>
@@ -71,7 +71,7 @@
                                 </td>
                                 <td> : </td>
                                 <td>
-                                    @if($medicine_type->status && $medicine_type->status == 1)
+                                    @if($generic_name->status && $generic_name->status == 1)
                                         <span class="label label-primary">{!! 'Publish' !!}</span>
                                     @else
                                         <span class="label label-warning">{!! 'Not Publish' !!}</span>
@@ -87,10 +87,10 @@
 
             <div class="row text-center">
                 <div class="col-sm-12 text-center">
-                    <a href="{!! route('admin.medicine-type.edit', $medicine_type->id) !!}" class="btn btn-xs btn-primary">
+                    <a href="{!! route('admin.generic-name.edit', $generic_name->id) !!}" class="btn btn-xs btn-primary">
                         <i class="fa fa-pencil"></i> {!! 'Edit/Update' !!}
                     </a>
-                    <a href="{!! route('admin.medicine-type.destroy', $medicine_type->id) !!}" class="btn btn-xs btn-danger record-destroy" id="record-destroy" title="Move to Trash" data-toggle="tooltip" data-placement="top">
+                    <a href="{!! route('admin.generic-name.destroy', $generic_name->id) !!}" class="btn btn-xs btn-danger record-destroy" id="record-destroy" title="Move to Trash" data-toggle="tooltip" data-placement="top">
                         <i class="fa fa-trash"></i> {!! 'Move to Trash' !!}
                     </a>
                 </div>
@@ -107,7 +107,7 @@
             $('.record-destroy').on("click", function(ev){
                 ev.preventDefault();
                 var URL = $(this).attr('href');
-                var redirectURL = "{{ route('admin.medicine-type.index') }}";
+                var redirectURL = "{{ route('admin.generic-name.index') }}";
                 warnBeforeRedirect(URL, redirectURL);
             });
 
