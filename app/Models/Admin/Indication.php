@@ -3,9 +3,12 @@
 namespace App\Models\Admin;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Indication extends Model
 {
+    use SoftDeletes;
+
     protected $table = 'indications';
 
     protected $dates = ['deleted_at'];

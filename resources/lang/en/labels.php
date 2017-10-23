@@ -36,7 +36,7 @@ return [
             ],
 
             'indications'  => [
-                'create'    => 'Add/Create New Indication'
+                'create'    => 'Add/Create New Indications'
             ],
         ],
         'hide'              => 'Hide',
