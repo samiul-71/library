@@ -96,7 +96,20 @@ class MedicineTypeController extends Controller
      */
     public function show($id)
     {
-        //
+//        dd('Details of the Medicine Type');
+        $data['module_name']    = $this->module_name;
+        $data['module_title']   = $this->module_title;
+        $data['module_path']    = $this->module_path;
+        $data['module_icon']    = $this->module_icon;
+        $data['module_model']   = $this->module_model;
+        $data['module_action']  = "details";
+
+        $data['page_heading']   = ucfirst($data['module_name']);
+        $data['title']          = ucfirst($data['module_name']) . ' ' . ucfirst($data['module_action']);
+
+        $data['medicine_type']  = MedicineType::findOrFail($id);
+
+        return view("backend.admin.medicines.medicine-types.show", $data);
     }
 
     /**
@@ -107,7 +120,20 @@ class MedicineTypeController extends Controller
      */
     public function edit($id)
     {
-        //
+//        dd('Call Edit Page of the Medicine Type');
+        $data['module_name']    = $this->module_name;
+        $data['module_title']   = $this->module_title;
+        $data['module_path']    = $this->module_path;
+        $data['module_icon']    = $this->module_icon;
+        $data['module_model']   = $this->module_model;
+        $data['module_action']  = "edit/update";
+
+        $data['page_heading']   = ucfirst($data['module_name']);
+        $data['title']          = ucfirst($data['module_name']) . ' ' . ucfirst($data['module_action']);
+
+        $data['medicine_type']  = MedicineType::findOrFail($id);
+
+        return view("backend.admin.medicines.medicine-types.edit", $data);
     }
 
     /**
@@ -130,7 +156,7 @@ class MedicineTypeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        dd('Call Destroy Method of the Medicine Type');
     }
 
     /**

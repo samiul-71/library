@@ -24,23 +24,24 @@
 
         <div class="form-group row">
             <div class="form-group col-sm-12">
-                <label for="inputTypeName" class="col-sm-2 col-form-label">Medicine Type Name</label>
+                {!! Form::label('name', 'Name', ['class' => 'col-sm-2 col-form-label']) !!}
                 <div class="col-sm-6">
-                    <input type="text" name="name" class="form-control" id="inputTypeName" placeholder="Medicine Type Name" required>
+                    {!! Form::text('name', old('name'), ['id'=>'name', 'class' => 'form-control name', 'placeholder' => 'Medicine Type Name', 'required' => 'required', 'data-error' => 'Name Must be Alphabetical']) !!}
                 </div>
+                <div class="help-block with-errors"></div>
                 <div class="col-sm-3">
-                    <input type="text" name="code" class="form-control" id="inputTypeCode" placeholder="Medicine Type Code">
+                    {!! Form::text('code', old('code'), ['id'=>'code', 'class' => 'form-control code', 'placeholder' => 'Medicine Type Code']) !!}
                 </div>
             </div>
             <div class="form-group col-sm-12">
-                <label for="inputDescription" class="col-sm-2 col-form-label">Description</label>
+                {!! Form::label('description', 'Description', ['class' => 'col-sm-2 col-form-label']) !!}
                 <div class="col-sm-6">
-                    <textarea name="description" class="form-control" id="inputDescription" placeholder="Description" rows="2"></textarea>
+                    {!! Form::textarea('description', old('description'), ['id'=>'description', 'class' => 'form-control description', 'placeholder' => 'Medicine Type Description', 'rows' => 2]) !!}
                 </div>
                 <div class="col-sm-4">
-                    <label for="inputStatus" class="col-form-label"></label><br>
-                    <input type="radio" class="form-radio-input" id="inputStatus" name="status" value="1" checked> Active
-                    <input type="radio" class="form-radio-input" id="inputStatus" name="status" value="0"> Not Active
+                    {!! Form::label('', '', ['class' => 'col-form-label']) !!}<br>
+                    {{ Form::radio('status', 1, true) }} Active
+                    {{ Form::radio('status', 0) }} Not Active
                 </div>
             </div>
         </div>
