@@ -65,9 +65,9 @@
                                     </td>
                                     <td>
                                         @if($medicine_type->status && $medicine_type->status == 1)
-                                            {!! 'Published' !!}
+                                            {!! 'Publish' !!}
                                         @else
-                                            {!! 'Not Published' !!}
+                                            {!! 'Not Publish' !!}
                                         @endif
                                     </td>
                                     <td style="width: 120px;">
