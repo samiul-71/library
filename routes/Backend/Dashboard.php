@@ -35,6 +35,8 @@ Route::resource('indications', 'IndicationsController', ['names' => [
     'edit'      => 'indications.edit',
     'update'    => 'indications.update',
     'destroy'   => 'indications.destroy'
+]]);
+
 
 ]]);
 
@@ -50,5 +52,4 @@ Route::resource('generic-name', 'GenericNameController', ['names' => [
     'edit'      => 'generic-name.edit',
     'update'    => 'generic-name.update',
     'destroy'   => 'generic-name.destroy'
-
 ]]);
