@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Requests\Admin\MedicineTypeRequest;
 use App\Models\Admin\MedicineType;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class MedicineTypeController extends Controller

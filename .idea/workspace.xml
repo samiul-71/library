@@ -2,18 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="62e68541-bcc1-4d8b-b79d-08e7e602b322" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.env" afterPath="$PROJECT_DIR$/.env" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Backend/GenericNameController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Backend/GenericNameController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Backend/MedicineTypeController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Backend/MedicineTypeController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Models/Admin/MedicineType.php" afterPath="$PROJECT_DIR$/app/Models/Admin/MedicineType.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/lang/en/strings.php" afterPath="$PROJECT_DIR$/resources/lang/en/strings.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/backend/admin/medicines/medicine-types/create.blade.php" afterPath="$PROJECT_DIR$/resources/views/backend/admin/medicines/medicine-types/create.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/backend/admin/medicines/medicine-types/edit.blade.php" afterPath="$PROJECT_DIR$/resources/views/backend/admin/medicines/medicine-types/edit.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/backend/admin/medicines/medicine-types/form.blade.php" afterPath="$PROJECT_DIR$/resources/views/backend/admin/medicines/medicine-types/form.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/backend/admin/medicines/medicine-types/index.blade.php" afterPath="$PROJECT_DIR$/resources/views/backend/admin/medicines/medicine-types/index.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/backend/admin/medicines/medicine-types/show.blade.php" afterPath="$PROJECT_DIR$/resources/views/backend/admin/medicines/medicine-types/show.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/backend/admin/medicines/medicine-types/trash.blade.php" afterPath="$PROJECT_DIR$/resources/views/backend/admin/medicines/medicine-types/trash.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/backend/layouts/app.blade.php" afterPath="$PROJECT_DIR$/resources/views/backend/layouts/app.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Models/Admin/GenericName.php" afterPath="$PROJECT_DIR$/app/Models/Admin/GenericName.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/Backend/Dashboard.php" afterPath="$PROJECT_DIR$/routes/Backend/Dashboard.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -28,44 +20,42 @@
       <file leaf-file-name="MedicineTypeController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Backend/MedicineTypeController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="179">
-              <caret line="146" column="5" lean-forward="false" selection-start-line="146" selection-start-column="5" selection-end-line="146" selection-end-column="5" />
+            <state relative-caret-position="468">
+              <caret line="252" column="5" lean-forward="true" selection-start-line="180" selection-start-column="4" selection-end-line="252" selection-end-column="5" />
               <folding>
-                <element signature="e#253#543#0#PHP" expanded="false" />
-                <element signature="e#549#650#0#PHP" expanded="false" />
-                <element signature="e#655#1351#0#PHP" expanded="false" />
-                <element signature="e#1357#1466#0#PHP" expanded="false" />
-                <element signature="e#6381#6515#0#PHP" expanded="false" />
-                <element signature="e#6520#6709#0#PHP" expanded="false" />
-                <element signature="e#6715#6853#0#PHP" expanded="false" />
-                <element signature="e#6858#7554#0#PHP" expanded="false" />
-                <element signature="e#7560#7693#0#PHP" expanded="false" />
-                <element signature="e#7698#7841#0#PHP" expanded="false" />
-                <element signature="e#7847#7981#0#PHP" expanded="false" />
-                <element signature="e#7986#8146#0#PHP" expanded="false" />
-                <element signature="e#8152#8315#0#PHP" expanded="false" />
-                <marker date="1508751319542" expanded="true" signature="52:56" ph="..." />
+                <element signature="e#48#96#0#PHP" expanded="true" />
+                <element signature="e#520#621#0#PHP" expanded="false" />
+                <element signature="e#1328#1437#0#PHP" expanded="false" />
+                <element signature="e#6352#6486#0#PHP" expanded="false" />
+                <element signature="e#6686#6824#0#PHP" expanded="false" />
+                <element signature="e#7531#7664#0#PHP" expanded="false" />
+                <element signature="e#7669#7812#0#PHP" expanded="false" />
+                <element signature="e#7818#7952#0#PHP" expanded="false" />
+                <element signature="e#7957#8117#0#PHP" expanded="false" />
+                <element signature="e#8123#8286#0#PHP" expanded="false" />
+                <marker date="1508752143526" expanded="true" signature="52:56" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/backend/layouts/app.blade.php">
+      <file leaf-file-name="GenericNameController.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Backend/GenericNameController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="233">
-              <caret line="63" column="54" lean-forward="true" selection-start-line="63" selection-start-column="54" selection-end-line="63" selection-end-column="54" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="messages.blade.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/views/includes/partials/messages.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-779">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="2753">
+              <caret line="208" column="7" lean-forward="true" selection-start-line="208" selection-start-column="7" selection-end-line="208" selection-end-column="7" />
+              <folding>
+                <element signature="e#48#95#0#PHP" expanded="true" />
+                <element signature="e#6879#7017#0#PHP" expanded="false" />
+                <element signature="e#7722#7855#0#PHP" expanded="false" />
+                <element signature="e#7860#8002#0#PHP" expanded="false" />
+                <element signature="e#8008#8142#0#PHP" expanded="false" />
+                <element signature="e#8147#8306#0#PHP" expanded="false" />
+                <element signature="e#8312#8483#0#PHP" expanded="false" />
+                <element signature="e#8489#8672#0#PHP" expanded="false" />
+                <element signature="e#8678#8887#0#PHP" expanded="false" />
+                <element signature="e#8893#9114#0#PHP" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -90,8 +80,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/Models/Access/User/Traits/Attribute/UserAttribute.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Backend/Access/User/UserTableController.php" />
         <option value="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" />
         <option value="$PROJECT_DIR$/resources/views/backend/access/index.blade.php" />
         <option value="$PROJECT_DIR$/database/seeds/Access/UserTableSeeder.php" />
@@ -114,13 +102,11 @@
         <option value="$PROJECT_DIR$/resources/views/frontend/includes/nav.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/frontend/index.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/backend/dashboard.blade.php" />
-        <option value="$PROJECT_DIR$/routes/Backend/Dashboard.php" />
         <option value="$PROJECT_DIR$/resources/views/backend/includes/sidebar.blade.php" />
         <option value="$PROJECT_DIR$/resources/lang/en/menus.php" />
         <option value="$PROJECT_DIR$/database/migrations/2017_10_20_181943_create_medicine_types_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2017_10_20_183039_create_generic_names_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2017_10_20_183201_create_indications_table.php" />
-        <option value="$PROJECT_DIR$/app/Models/Admin/GenericName.php" />
         <option value="$PROJECT_DIR$/app/Models/Admin/Indication.php" />
         <option value="$PROJECT_DIR$/readme.md" />
         <option value="$PROJECT_DIR$/config/access.php" />
@@ -140,7 +126,11 @@
         <option value="$PROJECT_DIR$/resources/lang/en/strings.php" />
         <option value="$PROJECT_DIR$/resources/views/backend/admin/medicines/medicine-types/trash.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/backend/admin/medicines/medicine-types/form.blade.php" />
+        <option value="$PROJECT_DIR$/app/Models/Admin/GenericName.php" />
+        <option value="$PROJECT_DIR$/routes/Backend/Dashboard.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Backend/MedicineTypeController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Requests/Admin/GenericNameRequest.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Backend/GenericNameController.php" />
       </list>
     </option>
   </component>
@@ -186,56 +176,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="medicine-library" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="medicine-library" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="medicine-library" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="routes" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="medicine-library" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="medicine-library" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="routes" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Frontend" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="medicine-library" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="medicine-library" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="routes" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Backend" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -308,8 +248,38 @@
               <option name="myItemId" value="medicines" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
+          </PATH>
+          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="medicine-types" />
+              <option name="myItemId" value="medicine-library" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="medicine-library" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="backend" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="admin" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="medicines" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="generic-names" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -327,208 +297,17 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="medicine-library" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="medicine-library" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="database" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="medicine-library" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="medicine-library" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="database" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="seeds" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="medicine-library" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="medicine-library" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="database" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="seeds" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Medicines" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="medicine-library" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="medicine-library" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="database" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="migrations" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="medicine-library" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="medicine-library" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="medicine-library" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="medicine-library" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Models" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="medicine-library" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="medicine-library" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Models" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Admin" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="medicine-library" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="medicine-library" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Http" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="medicine-library" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="medicine-library" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Http" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Controllers" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="medicine-library" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="medicine-library" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Http" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Controllers" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Backend" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="SearchEverywhereHistoryKey" value="messages&#9;FILE&#9;file:///var/www/html/laravel/medicine-library/resources/views/includes/partials/messages.blade.php&#10;app.blade&#9;FILE&#9;file:///var/www/html/laravel/medicine-library/resources/views/backend/layouts/app.blade.php&#10;87b29674b02b045735ebe22b3d54bf7416d9893f.php&#9;FILE&#9;file:///var/www/html/laravel/medicine-library/storage/framework/views/87b29674b02b045735ebe22b3d54bf7416d9893f.php&#10;stri&#9;FILE&#9;file:///var/www/html/laravel/medicine-library/resources/lang/en/strings.php&#10;app.bla&#9;FILE&#9;file:///var/www/html/laravel/medicine-library/resources/views/backend/layouts/app.blade.php&#10;labels&#9;FILE&#9;file:///var/www/html/laravel/medicine-library/resources/lang/en/labels.php&#10;access&#9;FILE&#9;file:///var/www/html/laravel/medicine-library/config/access.php&#10;menus&#9;FILE&#9;file:///var/www/html/laravel/medicine-library/resources/lang/en/menus.php&#10;DashboardController&#9;null&#9;null&#10;ContactController&#9;null&#9;null&#10;validation&#9;FILE&#9;file:///var/www/html/laravel/medicine-library/resources/lang/en/validation.php&#10;logged-in-as&#9;FILE&#9;file:///var/www/html/laravel/medicine-library/resources/views/includes/partials/logged-in-as.blade.php&#10;strings&#9;FILE&#9;file:///var/www/html/laravel/medicine-library/resources/lang/en/strings.php&#10;sidebar&#9;FILE&#9;file:///var/www/html/laravel/medicine-library/resources/views/backend/includes/sidebar.blade.php&#10;footer&#9;FILE&#9;file:///var/www/html/laravel/medicine-library/resources/views/backend/includes/footer.blade.php&#10;header&#9;FILE&#9;file:///var/www/html/laravel/medicine-library/resources/views/backend/includes/header.blade.php&#10;UserController&#9;null&#9;null&#10;UserRepository.php&#9;FILE&#9;file:///var/www/html/laravel/medicine-library/app/Repositories/Backend/Access/User/UserRepository.php&#10;header.blade.php&#9;FILE&#9;file:///var/www/html/laravel/medicine-library/resources/views/backend/includes/header.blade.php&#10;confi&#9;null&#9;null&#10;UserTableController&#9;null&#9;null" />
+    <property name="SearchEverywhereHistoryKey" value="Das&#9;FILE&#9;file:///var/www/html/laravel/medicine-library/routes/Backend/Dashboard.php&#10;messages&#9;FILE&#9;file:///var/www/html/laravel/medicine-library/resources/views/includes/partials/messages.blade.php&#10;app.blade&#9;FILE&#9;file:///var/www/html/laravel/medicine-library/resources/views/backend/layouts/app.blade.php&#10;87b29674b02b045735ebe22b3d54bf7416d9893f.php&#9;FILE&#9;file:///var/www/html/laravel/medicine-library/storage/framework/views/87b29674b02b045735ebe22b3d54bf7416d9893f.php&#10;stri&#9;FILE&#9;file:///var/www/html/laravel/medicine-library/resources/lang/en/strings.php&#10;app.bla&#9;FILE&#9;file:///var/www/html/laravel/medicine-library/resources/views/backend/layouts/app.blade.php&#10;labels&#9;FILE&#9;file:///var/www/html/laravel/medicine-library/resources/lang/en/labels.php&#10;access&#9;FILE&#9;file:///var/www/html/laravel/medicine-library/config/access.php&#10;menus&#9;FILE&#9;file:///var/www/html/laravel/medicine-library/resources/lang/en/menus.php&#10;DashboardController&#9;null&#9;null&#10;ContactController&#9;null&#9;null&#10;validation&#9;FILE&#9;file:///var/www/html/laravel/medicine-library/resources/lang/en/validation.php&#10;logged-in-as&#9;FILE&#9;file:///var/www/html/laravel/medicine-library/resources/views/includes/partials/logged-in-as.blade.php&#10;strings&#9;FILE&#9;file:///var/www/html/laravel/medicine-library/resources/lang/en/strings.php&#10;sidebar&#9;FILE&#9;file:///var/www/html/laravel/medicine-library/resources/views/backend/includes/sidebar.blade.php&#10;footer&#9;FILE&#9;file:///var/www/html/laravel/medicine-library/resources/views/backend/includes/footer.blade.php&#10;header&#9;FILE&#9;file:///var/www/html/laravel/medicine-library/resources/views/backend/includes/header.blade.php&#10;UserController&#9;null&#9;null&#10;UserRepository.php&#9;FILE&#9;file:///var/www/html/laravel/medicine-library/app/Repositories/Backend/Access/User/UserRepository.php&#10;header.blade.php&#9;FILE&#9;file:///var/www/html/laravel/medicine-library/resources/views/backend/includes/header.blade.php&#10;confi&#9;null&#9;null&#10;UserTableController&#9;null&#9;null" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/resources/views/backend/admin/medicines" />
       <recent name="$PROJECT_DIR$/resources/views/backend/admin/medicines/medicine-types" />
       <recent name="$PROJECT_DIR$" />
     </key>
@@ -630,18 +409,17 @@
       <workItem from="1508489188879" duration="11724000" />
       <workItem from="1508517919725" duration="7069000" />
       <workItem from="1508651820088" duration="9521000" />
-      <workItem from="1508741537824" duration="7793000" />
+      <workItem from="1508741537824" duration="11256000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36312000" />
+    <option name="totallyTimeSpent" value="39775000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="45" y="-4" width="1321" height="772" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13803922" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21019608" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972136" sideWeight="0.5027451" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -649,7 +427,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36532506" sideWeight="0.4972549" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3637771" sideWeight="0.4972549" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -678,34 +456,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/views/backend/includes/header.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-73">
-          <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/backend/includes/footer.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="5" column="8" lean-forward="false" selection-start-line="5" selection-start-column="8" selection-end-line="5" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/includes/partials/logged-in-as.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Mail/Frontend/Contact/SendContact.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-22">
-          <caret line="26" column="20" lean-forward="false" selection-start-line="26" selection-start-column="20" selection-end-line="26" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Frontend/ContactController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="196">
@@ -790,14 +540,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
           <caret line="9" column="6" lean-forward="false" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/Admin/GenericName.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="8" column="37" lean-forward="false" selection-start-line="8" selection-start-column="37" selection-end-line="8" selection-end-column="37" />
           <folding />
         </state>
       </provider>
@@ -996,16 +738,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/Admin/MedicineType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="11" column="40" lean-forward="false" selection-start-line="11" selection-start-column="40" selection-end-line="11" selection-end-column="40" />
-          <folding>
-            <element signature="e#36#75#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/storage/framework/views/87b29674b02b045735ebe22b3d54bf7416d9893f.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
@@ -1062,14 +794,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/Backend/Dashboard.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="9" column="139" lean-forward="false" selection-start-line="9" selection-start-column="139" selection-end-line="9" selection-end-column="139" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/backend/admin/medicines/medicine-types/edit.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="143">
@@ -1086,42 +810,110 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Backend/MedicineTypeController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="179">
-          <caret line="146" column="5" lean-forward="false" selection-start-line="146" selection-start-column="5" selection-end-line="146" selection-end-column="5" />
-          <folding>
-            <element signature="e#253#543#0#PHP" expanded="false" />
-            <element signature="e#549#650#0#PHP" expanded="false" />
-            <element signature="e#655#1351#0#PHP" expanded="false" />
-            <element signature="e#1357#1466#0#PHP" expanded="false" />
-            <element signature="e#6381#6515#0#PHP" expanded="false" />
-            <element signature="e#6520#6709#0#PHP" expanded="false" />
-            <element signature="e#6715#6853#0#PHP" expanded="false" />
-            <element signature="e#6858#7554#0#PHP" expanded="false" />
-            <element signature="e#7560#7693#0#PHP" expanded="false" />
-            <element signature="e#7698#7841#0#PHP" expanded="false" />
-            <element signature="e#7847#7981#0#PHP" expanded="false" />
-            <element signature="e#7986#8146#0#PHP" expanded="false" />
-            <element signature="e#8152#8315#0#PHP" expanded="false" />
-            <marker date="1508751319542" expanded="true" signature="52:56" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/backend/layouts/app.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="233">
-          <caret line="63" column="54" lean-forward="true" selection-start-line="63" selection-start-column="54" selection-end-line="63" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/includes/partials/messages.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-779">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/backend/layouts/app.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1134">
+          <caret line="63" column="54" lean-forward="true" selection-start-line="63" selection-start-column="54" selection-end-line="63" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Models/Admin/GenericName.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="9" column="20" lean-forward="true" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
+          <folding>
+            <element signature="e#36#75#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Models/Admin/MedicineType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="9" column="4" lean-forward="true" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="20" />
+          <folding>
+            <element signature="e#36#75#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Requests/Admin/GenericNameRequest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="29" column="5" lean-forward="true" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Requests/Admin/MedicineTypeRequest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="41" column="5" lean-forward="true" selection-start-line="31" selection-start-column="4" selection-end-line="41" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/backend/admin/medicines/generic-names/edit.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/Backend/Dashboard.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="98">
+          <caret line="12" column="29" lean-forward="true" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Backend/MedicineTypeController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="468">
+          <caret line="252" column="5" lean-forward="true" selection-start-line="180" selection-start-column="4" selection-end-line="252" selection-end-column="5" />
+          <folding>
+            <element signature="e#48#96#0#PHP" expanded="true" />
+            <element signature="e#520#621#0#PHP" expanded="false" />
+            <element signature="e#1328#1437#0#PHP" expanded="false" />
+            <element signature="e#6352#6486#0#PHP" expanded="false" />
+            <element signature="e#6686#6824#0#PHP" expanded="false" />
+            <element signature="e#7531#7664#0#PHP" expanded="false" />
+            <element signature="e#7669#7812#0#PHP" expanded="false" />
+            <element signature="e#7818#7952#0#PHP" expanded="false" />
+            <element signature="e#7957#8117#0#PHP" expanded="false" />
+            <element signature="e#8123#8286#0#PHP" expanded="false" />
+            <marker date="1508752143526" expanded="true" signature="52:56" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Backend/GenericNameController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2753">
+          <caret line="208" column="7" lean-forward="true" selection-start-line="208" selection-start-column="7" selection-end-line="208" selection-end-column="7" />
+          <folding>
+            <element signature="e#48#95#0#PHP" expanded="true" />
+            <element signature="e#6879#7017#0#PHP" expanded="false" />
+            <element signature="e#7722#7855#0#PHP" expanded="false" />
+            <element signature="e#7860#8002#0#PHP" expanded="false" />
+            <element signature="e#8008#8142#0#PHP" expanded="false" />
+            <element signature="e#8147#8306#0#PHP" expanded="false" />
+            <element signature="e#8312#8483#0#PHP" expanded="false" />
+            <element signature="e#8489#8672#0#PHP" expanded="false" />
+            <element signature="e#8678#8887#0#PHP" expanded="false" />
+            <element signature="e#8893#9114#0#PHP" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
