@@ -51,3 +51,18 @@ Route::resource('generic-name', 'GenericNameController', ['names' => [
     'update'    => 'generic-name.update',
     'destroy'   => 'generic-name.destroy'
 ]]);
+
+
+Route::get('medicine/trash', 'MedicinesController@trash')->name('medicine.trash');
+Route::patch('medicine/{id}/restore', 'MedicinesController@restore')->name('medicine.restore');
+Route::delete('medicine/{id}/permanently-delete', 'MedicinesController@permanentlyDelete')->name('medicine.permanently-delete');
+
+Route::resource('medicine', 'MedicinesController', ['names' => [
+    'index'     => 'medicine.index',
+    'create'    => 'medicine.create',
+    'store'     => 'medicine.store',
+    'show'      => 'medicine.show',
+    'edit'      => 'medicine.edit',
+    'update'    => 'medicine.update',
+    'destroy'   => 'medicine.destroy'
+]]);

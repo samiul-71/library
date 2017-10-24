@@ -49,6 +49,7 @@ return [
             'system'                => 'System',
             'medicine-type'         => 'Medicine Type',
             'generic-name'          => 'Generic Name',
+            'medicine'              => 'Medicine List',
         ],
     ],
 

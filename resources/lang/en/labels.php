@@ -31,16 +31,20 @@ return [
             'update'    => 'Update',
             'trash'     => 'Trash',
 
-            'medicine-type'  => [
-                'create'    => 'Add/Create New Medicine Type'
+            'medicine-type' => [
+                'create' => 'Add/Create New Medicine Type'
             ],
 
-            'generic-name'  => [
-                'create'    => 'Add/Create New Medicine Generic Name'
+            'generic-name' => [
+                'create' => 'Add/Create New Medicine Generic Name'
             ],
 
-            'indications'  => [
-                'create'    => 'Add/Create New Indication'
+            'indications' => [
+                'create' => 'Add/Create New Indication'
+            ],
+
+            'medicine' => [
+                'create' => 'Add/Create New Medicine'
             ],
         ],
         'hide'              => 'Hide',

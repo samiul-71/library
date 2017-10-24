@@ -27,17 +27,17 @@
                     <h3 class="box-title">{!! ucfirst($module_title) !!} {!! ucfirst($module_action) !!}</h3>
 
                     <div class="box-tools pull-right">
-                        <a href="{!! route('admin.generic-name.create') !!}" class="btn btn-xs btn-success">
-                            <i class="fa fa-plus"></i> {!! trans('labels.general.buttons.generic-name.create') !!}
+                        <a href="{!! route('admin.medicine.create') !!}" class="btn btn-xs btn-success">
+                            <i class="fa fa-plus"></i> {!! trans('labels.general.buttons.medicine.create') !!}
                         </a>
-                        <a href="{!! route("admin.generic-name.trash") !!}" class="btn btn-xs btn-danger">
+                        <a href="{!! route("admin.medicine.trash") !!}" class="btn btn-xs btn-danger">
                             <i class="fa fa-trash"></i> {!! trans('labels.general.buttons.trash') !!}
                         </a>
                     </div>
 
                 </div>
                 <div class="box-body">
-                    @if(count($medicine_generic_names))
+                    @if(count($medicines))
                         <div class="table-responsive">
                         <table class="table table-bordered table-striped table-hover table-condensed generic_name-table" id="generic_name-table">
                             <thead>
@@ -50,32 +50,32 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            @foreach( $medicine_generic_names as $generic_name)
+                            @foreach($medicines as $medicine)
                                 <tr>
                                     <td>
-                                        <a href="{{ route("admin.generic-name.show", $generic_name->id) }}" >
-                                            {!! $generic_name->name !!}
+                                        <a href="{{ route("admin.medicine.show", $medicine->id) }}" >
+                                            {!! $medicine->name !!}
                                         </a>
                                     </td>
                                     <td>
-                                        {!! $generic_name->code !!}
+                                        {!! $medicine->code !!}
                                     </td>
                                     <td>
-                                        {!! $generic_name->description !!}
+                                        {!! $medicine->description !!}
                                     </td>
                                     <td>
-                                        @if($generic_name->status && $generic_name->status == 1)
+                                        @if($medicine->status && $medicine->status == 1)
                                             {!! 'Publish' !!}
                                         @else
                                             {!! 'Not Publish' !!}
                                         @endif
                                     </td>
                                     <td style="width: 120px;">
-                                        <a class="btn btn-xs btn-primary" data-toggle="tooltip" data-placement="top" title="Edit" href="{{ route("admin.generic-name.edit", $generic_name->id) }}">
+                                        <a class="btn btn-xs btn-primary" data-toggle="tooltip" data-placement="top" title="Edit" href="{{ route("admin.medicine.edit", $medicine->id) }}">
                                             <i class="fa fa-pencil"></i>
                                             {!! 'Edit' !!}
                                         </a>
-                                        <a class="btn btn-xs btn-info" data-toggle="tooltip" data-placement="top" title="Show" href="{{ route("admin.generic-name.show", $generic_name->id) }}">
+                                        <a class="btn btn-xs btn-info" data-toggle="tooltip" data-placement="top" title="Show" href="{{ route("admin.medicine.show", $medicine->id) }}">
                                             <i class="fa fa-list"></i>
                                             {!! 'Show' !!}
                                         </a>
@@ -87,8 +87,8 @@
                     </div>
                     @else
                         <div class="col-sm-12 text-center" style="padding: 150px 0;">
-                            <h1 style="opacity: 0.3">You don't have any Medicine Generic Name yet.</h1>
-                            <a href="{!! route('admin.generic-name.create') !!}" type="button" class="btn btn-default">
+                            <h1 style="opacity: 0.3">You don't have any Medicine Item yet.</h1>
+                            <a href="{!! route('admin.medicine.create') !!}" type="button" class="btn btn-default">
                                 You Can Add/Create Here
                             </a>
                         </div>
@@ -103,7 +103,7 @@
 @section('after-scripts')
     <script>
         $(document).ready(function() {
-//            $('#generic-name-table').DataTable();
+//            $('#medicine-table').DataTable();
         });
     </script>
 @stop

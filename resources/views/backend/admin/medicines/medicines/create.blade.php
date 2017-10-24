@@ -16,9 +16,9 @@
         </div><!-- /.box-header -->
         <div class="box-body">
 
-            {!! Form::open(['route' => ["admin.generic-name.store"], 'class' => 'form', 'role' => 'form']) !!}
+            {!! Form::open(['route' => ["admin.medicine.store"], 'class' => 'form', 'role' => 'form']) !!}
 
-            @include("backend.admin.medicines.generic-names.form")
+            @include("backend.admin.medicines.medicines.form")
 
             {!! Form::close() !!}
 

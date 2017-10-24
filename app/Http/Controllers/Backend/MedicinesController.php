@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Requests\Admin\MedicineRequest;
+use App\Models\Admin\GenericName;
+use App\Models\Admin\Indication;
 use App\Models\Admin\Medicine;
+use App\Models\Admin\MedicineType;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -59,7 +62,12 @@ class MedicinesController extends Controller
         $data['page_heading']   = ucfirst($data['module_name']);
         $data['title']          = ucfirst($data['module_name']) . ' ' . ucfirst($data['module_action']);
 
+        $data['medicine_types']     = MedicineType::where('status', true)->orderBy('id')->pluck('name', 'id')->toArray();
+        $data['generic_names']      = GenericName::where('status', true)->orderBy('id')->pluck('name', 'id')->toArray();
+        $data['indications']        = Indication::where('status', true)->orderBy('id')->pluck('key_word', 'id')->toArray();
+//        $data['pharmaceuticals']    = Pharmaceutical::where('status', true)->orderBy('id')->pluck('name', 'id')->toArray();
 
+//        dd($data['generic_names']);
         return view("backend.admin.medicines.medicines.create", $data);
     }
 

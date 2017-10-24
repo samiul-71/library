@@ -28,18 +28,18 @@
 
                     <div class="box-tools pull-right">
                         <a href="{!! route('admin.generic-name.create') !!}" class="btn btn-xs btn-success">
-                            <i class="fa fa-plus"></i> {!! trans('labels.general.buttons.generic-name.create') !!}
+                            <i class="fa fa-plus"></i> {!! trans('labels.general.buttons.medicine.create') !!}
                         </a>
-                        <a href="{!! route('admin.generic-name.index') !!}" class="btn btn-xs btn-info">
+                        <a href="{!! route('admin.medicine.index') !!}" class="btn btn-xs btn-info">
                             <i class="fa fa-list"></i> {!! 'Back to List' !!}
                         </a>
                     </div>
 
                 </div>
                 <div class="box-body">
-                    @if(count($medicine_generic_names))
+                    @if(count($medicines))
                         <div class="table-responsive">
-                            <table class="table table-bordered table-striped table-hover table-condensed generic-name-table" id="generic-name-table">
+                            <table class="table table-bordered table-striped table-hover table-condensed medicine-table" id="medicine-table">
                                 <thead>
                                 <tr>
                                     <th>Type Name</th>
@@ -50,31 +50,31 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach( $medicine_generic_names as $generic_name)
+                                @foreach($medicines as $medicine)
                                     <tr>
                                         <td>
-                                            <a href="{{ route("admin.generic-name.show", $generic_name->id) }}" >
-                                                {!! $generic_name->name !!}
+                                            <a href="{{ route("admin.medicine.show", $medicine->id) }}" >
+                                                {!! $medicine->name !!}
                                             </a>
                                         </td>
                                         <td>
-                                            {!! $generic_name->code !!}
+                                            {!! $medicine->code !!}
                                         </td>
                                         <td>
-                                            {!! $generic_name->description !!}
+                                            {!! $medicine->description !!}
                                         </td>
                                         <td>
-                                            @if($generic_name->status && $generic_name->status == 1)
+                                            @if($medicine->status && $medicine->status == 1)
                                                 {!! 'Publish' !!}
                                             @else
                                                 {!! 'Not Publish' !!}
                                             @endif
                                         </td>
                                         <td style="width: 140px;">
-                                            <a class="btn btn-info btn-xs  record-restore" data-toggle="tooltip" data-placement="top" title="Restore" href="{{ route("admin.generic-name.restore", $generic_name->id) }}">
+                                            <a class="btn btn-info btn-xs  record-restore" data-toggle="tooltip" data-placement="top" title="Restore" href="{{ route("admin.medicine.restore", $medicine->id) }}">
                                                 <i class="fa fa-refresh"></i> Restore
                                             </a>
-                                            <a class="btn btn-danger btn-xs record-delete" data-toggle="tooltip" data-placement="top" title="Delete" href="{{ route("admin.generic-name.permanently-delete", $generic_name->id) }}">
+                                            <a class="btn btn-danger btn-xs record-delete" data-toggle="tooltip" data-placement="top" title="Delete" href="{{ route("admin.medicine.permanently-delete", $medicine->id) }}">
                                                 <i class="fa fa-trash"></i> Delete
                                             </a>
                                         </td>
@@ -85,7 +85,7 @@
                         </div>
                     @else
                         <div class="col-sm-12 text-center" style="padding: 150px 0;">
-                            <h1 style="opacity: 0.3">You don't have any Deleted Medicine Generic Name</h1>
+                            <h1 style="opacity: 0.3">You don't have any Deleted Medicine</h1>
                         </div>
                     @endif
                 </div>
@@ -103,7 +103,7 @@
             // delete a record
             $("body").on("click", ".record-delete", function(e) {
                 e.preventDefault();
-                var redirectURL = "{{ route('admin.generic-name.trash') }}";
+                var redirectURL = "{{ route('admin.medicine.trash') }}";
                 var linkURL = $(this).attr("href");
                 swal({
                     title: "{{ trans('strings.backend.general.are_you_sure') }}",
@@ -133,7 +133,7 @@
             // restore a record
             $("body").on("click", ".record-restore", function(e) {
                 e.preventDefault();
-                var redirectURL = "{{ route('admin.generic-name.trash') }}";
+                var redirectURL = "{{ route('admin.medicine.trash') }}";
                 var linkURL = $(this).attr("href");
 
                 swal({
