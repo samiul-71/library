@@ -50,10 +50,10 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach( $indications as $indication)
+                                @foreach( $indications as $key => $indication)
                                     <tr>
                                         <td>
-                                            {!! $indication->id !!}
+                                            {{ ++$key }}
                                         </td>
                                         <td>
                                             <a href="{{ route("admin.indications.show", $indication->id) }}" >
