@@ -22,8 +22,8 @@ class CreateMedicineTypesTable extends Migration
 
             $table->boolean('status')->default(true);
 
-            $table->tinyInteger('created_by')->nullable();
-            $table->tinyInteger('updated_by')->nullable();
+            $table->integer('created_by')->nullable();
+            $table->integer('updated_by')->nullable();
 
             $table->softDeletes();
             $table->timestamps();

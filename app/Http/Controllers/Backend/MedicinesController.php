@@ -2,20 +2,20 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Requests\Admin\GenericNameRequest;
-use App\Models\Admin\GenericName;
+use App\Http\Requests\Admin\MedicineRequest;
+use App\Models\Admin\Medicine;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class GenericNameController extends Controller
+class MedicinesController extends Controller
 {
     public function __construct()
     {
-        $this->module_name  = 'generic-name';
-        $this->module_title = 'Generic Name';
-        $this->module_path  = 'generic-name';
-        $this->module_icon  = 'fa fa-h-square';
-        $this->module_model = 'App\Models\Admin\GenericName';
+        $this->module_name  = 'medicine';
+        $this->module_title = 'Medicine';
+        $this->module_path  = 'medicines';
+        $this->module_icon  = 'fa fa-medkit';
+        $this->module_model = 'App\Models\Admin\Medicine';
     }
 
     /**
@@ -25,7 +25,7 @@ class GenericNameController extends Controller
      */
     public function index()
     {
-//        dd('List of the Medicine Generic Name');
+//        dd('List of the Medicine Name');
         $data['module_name']    = $this->module_name;
         $data['module_title']   = $this->module_title;
         $data['module_path']    = $this->module_path;
@@ -36,9 +36,9 @@ class GenericNameController extends Controller
         $data['page_heading']   = ucfirst($data['module_name']);
         $data['title']          = ucfirst($data['module_name']) . ' ' . ucfirst($data['module_action']);
 
-        $data['medicine_generic_names'] = GenericName::all();
+        $data['medicines'] = Medicine::all();
 
-        return view("backend.admin.medicines.generic-names.index", $data);
+        return view("backend.admin.medicines.medicines.index", $data);
     }
 
     /**
@@ -59,7 +59,8 @@ class GenericNameController extends Controller
         $data['page_heading']   = ucfirst($data['module_name']);
         $data['title']          = ucfirst($data['module_name']) . ' ' . ucfirst($data['module_action']);
 
-        return view("backend.admin.medicines.generic-names.create", $data);
+
+        return view("backend.admin.medicines.medicines.create", $data);
     }
 
     /**
@@ -68,24 +69,24 @@ class GenericNameController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(GenericNameRequest $request)
+    public function store(MedicineRequest $request)
     {
 //        dd($request->all());
-        $medicineGenericNameExist = $this->checkMedicineGenericName($request->input('name'));
-        $medicineGenericNameCodeExist = $this->checkMedicineGenericNameCode($request->input('code'));
+        $medicineNameExist = $this->checkMedicineName($request->input('name'));
+        $medicineCodeExist = $this->checkMedicineCode($request->input('code'));
 
-        if($medicineGenericNameExist) {
-            return redirect()->back()->with('flash_danger', 'Your Given Medicine Generic Name Already Exists. Please Insert a Different Medicine Generic Name.')->withInput($request->all);
+        if($medicineNameExist) {
+            return redirect()->back()->with('flash_danger', 'Your Given Medicine Already Exists. Please Insert a Different Medicine Name.')->withInput($request->all);
         }
-        if($medicineGenericNameCodeExist) {
-            return redirect()->back()->with('flash_danger', 'Your Given Code of Medicine Generic Name Already Exists. Please Insert a Different Code for Medicine Generic Name.')->withInput($request->all);
+        if($medicineCodeExist) {
+            return redirect()->back()->with('flash_danger', 'Your Given Code of Medicine Already Exists. Please Insert a Different Code for Medicine.')->withInput($request->all);
         }
 
-        $medicineGenericNameData = $request->except('_token');
-        $medicineGenericName = GenericName::create($medicineGenericNameData);
-        $message = 'Your Medicine Generic Name has been Created/Added Successfully';
+        $medicineData = $request->except('_token');
+        $medicine = GenericName::create($medicineData);
+        $message = 'Your Medicine has been Created/Added Successfully';
 
-        return redirect()->route("admin.generic-name.index")->with('flash_success', '<i class="fa fa-check"></i> ' . $message);
+        return redirect()->route("admin.medicine.index")->with('flash_success', '<i class="fa fa-check"></i> ' . $message);
     }
 
     /**
@@ -96,7 +97,7 @@ class GenericNameController extends Controller
      */
     public function show($id)
     {
-//        dd('Details of the Medicine Type');
+//        dd('Details of the Medicine');
         $data['module_name']    = $this->module_name;
         $data['module_title']   = $this->module_title;
         $data['module_path']    = $this->module_path;
@@ -107,9 +108,9 @@ class GenericNameController extends Controller
         $data['page_heading']   = ucfirst($data['module_name']);
         $data['title']          = ucfirst($data['module_name']) . ' ' . ucfirst($data['module_action']);
 
-        $data['generic_name']  = GenericName::findOrFail($id);
+        $data['medicine']  = Medicine::findOrFail($id);
 
-        return view("backend.admin.medicines.generic-names.show", $data);
+        return view("backend.admin.medicines.medicines.show", $data);
     }
 
     /**
@@ -120,7 +121,7 @@ class GenericNameController extends Controller
      */
     public function edit($id)
     {
-//        dd('Call Edit Page of the Medicine Type');
+//        dd('Call Edit Page of the Medicine');
         $data['module_name']    = $this->module_name;
         $data['module_title']   = $this->module_title;
         $data['module_path']    = $this->module_path;
@@ -131,9 +132,9 @@ class GenericNameController extends Controller
         $data['page_heading']   = ucfirst($data['module_name']);
         $data['title']          = ucfirst($data['module_name']) . ' ' . ucfirst($data['module_action']);
 
-        $data['generic_name']  = GenericName::findOrFail($id);
+        $data['medicine']  = Medicine::findOrFail($id);
 
-        return view("backend.admin.medicines.generic-names.edit", $data);
+        return view("backend.admin.medicines.medicines.edit", $data);
     }
 
     /**
@@ -143,25 +144,25 @@ class GenericNameController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(GenericNameRequest $request, $id)
+    public function update(MedicineRequest $request, $id)
     {
-        $medicineGenericNameExist = $this->checkMedicineGenericNameForUpdate($request->input('name'), $id);
-        $medicineGenericNameCodeExist = $this->checkMedicineGenericNameCodeForUpdate($request->input('code'), $id);
+        $medicineNameExist = $this->checkMedicineForUpdate($request->input('name'), $id);
+        $medicineCodeExist = $this->checkMedicineCodeForUpdate($request->input('code'), $id);
 
-        if($medicineGenericNameExist) {
-            return redirect()->back()->with('flash_danger', 'Your Given Medicine Generic Name Already Exists. Please Insert a Different Medicine Generic Name.')->withInput($request->all);
+        if($medicineNameExist) {
+            return redirect()->back()->with('flash_danger', 'Your Given Medicine Name Already Exists. Please Insert a Different Medicine Name.')->withInput($request->all);
         }
-        if($medicineGenericNameCodeExist) {
-            return redirect()->back()->with('flash_danger', 'Your Given Code of Medicine Generic Name Already Exists. Please Insert a Different Code for Medicine Generic Name.')->withInput($request->all);
+        if($medicineCodeExist) {
+            return redirect()->back()->with('flash_danger', 'Your Given Code of Medicine Already Exists. Please Insert a Different Code for Medicine.')->withInput($request->all);
         }
 
-        $medicineGenericName = GenericName::findOrFail($id);
-        $medicineGenericNameData = $request->except('_token');
-        $medicineGenericName->fill($medicineGenericNameData)->save();
+        $medicine = Medicine::findOrFail($id);
+        $medicineData = $request->except('_token');
+        $medicine->fill($medicineData)->save();
 
-        $message = 'Your Selected Medicine Generic Name has been Updated Successfully';
+        $message = 'Your Selected Medicine has been Updated Successfully';
 
-        return redirect()->route("admin.generic-name.index")->with('flash_success', '<i class="fa fa-check"></i> ' . $message);
+        return redirect()->route("admin.medicine.index")->with('flash_success', '<i class="fa fa-check"></i> ' . $message);
     }
 
     /**
@@ -172,8 +173,8 @@ class GenericNameController extends Controller
      */
     public function destroy($id)
     {
-//        dd('Call Destroy Method of the Medicine Type');
-        $record = GenericName::find($id);
+//        dd('Call Destroy Method of the Medicine');
+        $record = Medicine::find($id);
         $record->destroy($id);
 
         return;
@@ -196,9 +197,9 @@ class GenericNameController extends Controller
         $data['page_heading']   = ucfirst($data['module_name']);
         $data['title']          = ucfirst($data['module_name']) . ' ' . ucfirst($data['module_action']);
 
-        $data['medicine_generic_names'] = GenericName::onlyTrashed()->orderBy('id', 'asc')->get();
+        $data['medicines'] = Medicine::onlyTrashed()->orderBy('id', 'asc')->get();
 
-        return view("backend.admin.medicines.generic-names.trash", $data);
+        return view("backend.admin.medicines.medicines.trash", $data);
     }
 
     /**
@@ -209,7 +210,7 @@ class GenericNameController extends Controller
      */
     public function restore($id)
     {
-        $record = GenericName::withTrashed()->find($id);
+        $record = Medicine::withTrashed()->find($id);
         $record->restore();
 
         return;
@@ -223,33 +224,33 @@ class GenericNameController extends Controller
      */
     public function permanentlyDelete($id)
     {
-        $record = GenericName::withTrashed()->find($id);
+        $record = Medicine::withTrashed()->find($id);
         $record->forceDelete($id);
 
         return;
     }
 
-    public function checkMedicineGenericName($medicineGenericName){
+    public function checkMedicineName($medicineName){
 
-        $result = GenericName::where('name', $medicineGenericName)->first();
+        $result = Medicine::where('name', $medicineName)->first();
         return $result;
     }
 
-    public function checkMedicineGenericNameCode($medicineGenericNameCode){
+    public function checkMedicineCode($medicineCode){
 
-        $result = GenericName::where('code', $medicineGenericNameCode)->first();
+        $result = Medicine::where('code', $medicineCode)->first();
         return $result;
     }
 
-    public function checkMedicineGenericNameForUpdate($medicineGenericName, $id){
+    public function checkMedicineForUpdate($medicineName, $id){
 
-        $result = GenericName::where('name', $medicineGenericName)->where('id', '!=', $id)->first();
+        $result = Medicine::where('name', $medicineName)->where('id', '!=', $id)->first();
         return $result;
     }
 
-    public function checkMedicineGenericNameCodeForUpdate($medicineGenericNameCode, $id){
+    public function checkMedicineCodeForUpdate($medicineCode, $id){
 
-        $result = GenericName::where('code', $medicineGenericNameCode)->where('id', '!=', $id)->first();
+        $result = Medicine::where('code', $medicineCode)->where('id', '!=', $id)->first();
         return $result;
     }
 
