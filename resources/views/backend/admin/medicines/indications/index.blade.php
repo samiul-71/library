@@ -27,10 +27,10 @@
                     <h3 class="box-title">{!! ucfirst($module_title) !!} {!! ucfirst($module_action) !!}</h3>
 
                     <div class="box-tools pull-right">
-                        <a href="{!! route('admin.indications.create') !!}" class="btn btn-success">
+                        <a href="{!! route('admin.indications.create') !!}" class="btn btn-xs btn-success">
                             <i class="fa fa-plus"></i> {!! trans('labels.general.buttons.indications.create') !!}
                         </a>
-                        <a href="{!! route("admin.indications.trash") !!}" class="btn btn-danger">
+                        <a href="{!! route("admin.indications.trash") !!}" class="btn btn-xs btn-danger">
                             <i class="fa fa-trash"></i> {!! trans('labels.general.buttons.trash') !!}
                         </a>
                     </div>
@@ -43,26 +43,25 @@
                                 <thead>
                                 <tr>
                                     <th>SL.</th>
-                                    <th>Code</th>
                                     <th>Key Word(s)</th>
+                                    <th>Code</th>
                                     <th>Status</th>
                                     <th class="text-center" style="width: 120px;">Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach( $indications as $indication)
+                                @foreach( $indications as $key => $indication)
                                     <tr>
                                         <td>
-                                            {!! $indication->id !!}
-                                        </td>
-                                        <td>
-                                            {!! $indication->code !!}
+                                            {{ ++$key }}
                                         </td>
                                         <td>
                                             <a href="{{ route("admin.indications.show", $indication->id) }}" >
                                                 {!! $indication->key_word !!}
                                             </a>
-                                            {{--{!! $indication->key_word !!}--}}
+                                        </td>
+                                        <td>
+                                            {!! $indication->code !!}
                                         </td>
                                         <td>
                                             @if($indication->status && $indication->status == 1)

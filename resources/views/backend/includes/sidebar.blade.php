@@ -45,6 +45,13 @@
                 </a>
             </li>
 
+            <li class="{{ active_class(Active::checkUriPattern('admin/indications')) }}">
+                <a href="{{ route('admin.indications.index') }}">
+                    <i class="fa fa-hospital-o"></i>
+                    <span>{{ trans('menus.backend.sidebar.indications') }}</span>
+                </a>
+            </li>
+
             <li class="{{ active_class(Active::checkUriPattern('admin/generic-name')) }}">
                 <a href="{{ route('admin.generic-name.index') }}">
                     <i class="fa fa-h-square"></i>
