@@ -136,7 +136,7 @@ class MedicinesController extends Controller
 
         $medicineData['medicine_type_name']     = $medicineTypeName;
         $medicineData['generic_name']           = $genericName;
-        $medicineData['indications_key_words']  = $indicationKeyWord;
+        $medicineData['indications_keywords']   = $indicationKeyWord;
         $medicineData['pharma_name']            = $pharmaName;
 //        $medicineData['class_name']             = $className;
 
@@ -266,7 +266,7 @@ class MedicinesController extends Controller
 
         $medicineData['medicine_type_name']     = $medicineTypeName;
         $medicineData['generic_name']           = $genericName;
-        $medicineData['indications_key_words']  = $indicationKeyWord;
+        $medicineData['indications_keywords']   = $indicationKeyWord;
         $medicineData['pharma_name']            = $pharmaName;
 //        $medicineData['class_name']             = $className;
 
