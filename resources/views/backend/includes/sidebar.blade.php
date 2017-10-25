@@ -59,6 +59,13 @@
                 </a>
             </li>
 
+            <li class="{{ active_class(Active::checkUriPattern('admin/pharmaceutical-companies')) }}">
+                <a href="{{ route('admin.pharmaceutical-companies.index') }}">
+                    <i class="fa fa-industry"></i>
+                    <span>{{ trans('menus.backend.sidebar.pharmaceutical-companies') }}</span>
+                </a>
+            </li>
+
             {{--<li class="header">{{ trans('menus.backend.sidebar.system') }}</li>--}}
 
             @role(1)

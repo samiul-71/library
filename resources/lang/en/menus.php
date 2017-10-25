@@ -44,12 +44,13 @@ return [
         ],
 
         'sidebar' => [
-            'dashboard'             => 'Dashboard',
-            'general'               => 'General',
-            'system'                => 'System',
-            'medicine-type'         => 'Medicine Type',
-            'indications'           => 'Indications',
-            'generic-name'          => 'Generic Name',
+            'dashboard'                 => 'Dashboard',
+            'general'                   => 'General',
+            'system'                    => 'System',
+            'medicine-type'             => 'Medicine Type',
+            'indications'               => 'Indications',
+            'generic-name'              => 'Generic Name',
+            'pharmaceutical-companies'  => 'Pharmaceutical Companies',
         ],
     ],
 

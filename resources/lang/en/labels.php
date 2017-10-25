@@ -42,6 +42,10 @@ return [
             'indications'  => [
                 'create'    => 'Add/Create New Indications'
             ],
+
+            'pharmaceutical-companies'  => [
+                'create'    => 'Add/Create New Pharmaceutical Company'
+            ],
         ],
         'hide'              => 'Hide',
         'inactive'          => 'Inactive',
