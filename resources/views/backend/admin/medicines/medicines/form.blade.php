@@ -5,6 +5,7 @@
                 {!! Form::label('name', 'Medicine Name') !!}
                 {!! Form::text('name', old('name'), ['id'=>'name', 'class' => 'form-control name', 'placeholder' => 'Medicine Name', 'required' => 'required']) !!}
             </div>
+
             <div class="form-group col-md-3">
                 {!! Form::label('strength', 'Strength') !!}
                 {!! Form::text('strength', old('strength'), ['id'=>'strength', 'class' => 'form-control strength', 'placeholder' => 'Example : 500mg']) !!}
