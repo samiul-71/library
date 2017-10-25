@@ -56,9 +56,9 @@
                                             {{ ++$key }}
                                         </td>
                                         <td>
-                                            <a href="{{ route("admin.indications.show", $indication->id) }}" >
+                                            {{--<a href="{{ route("admin.indications.show", $indication->id) }}" >--}}
                                                 {!! $indication->key_word !!}
-                                            </a>
+                                            {{--</a>--}}
                                         </td>
                                         <td>
                                             {!! $indication->code !!}

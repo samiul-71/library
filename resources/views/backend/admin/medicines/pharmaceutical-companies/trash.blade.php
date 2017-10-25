@@ -59,9 +59,9 @@
                                             {{ ++$key }}
                                         </td>
                                         <td>
-                                            <a href="{{ route("admin.pharmaceutical-companies.show", $pharmaceutical_company->id) }}" >
+                                            {{--<a href="{{ route("admin.pharmaceutical-companies.show", $pharmaceutical_company->id) }}" >--}}
                                                 {!! $pharmaceutical_company->name !!}
-                                            </a>
+                                            {{--</a>--}}
                                         </td>
                                         <td>
                                             {!! $pharmaceutical_company->registration_number !!}
