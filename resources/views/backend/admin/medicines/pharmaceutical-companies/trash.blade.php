@@ -27,54 +27,66 @@
                     <h3 class="box-title">{!! ucfirst($module_title) !!} {!! ucfirst($module_action) !!}</h3>
 
                     <div class="box-tools pull-right">
-                        <a href="{!! route('admin.indications.create') !!}" class="btn btn-xs btn-success">
-                            <i class="fa fa-plus"></i> {!! trans('labels.general.buttons.indications.create') !!}
+                        <a href="{!! route('admin.pharmaceutical-companies.create') !!}" class="btn btn-xs btn-success">
+                            <i class="fa fa-plus"></i> {!! trans('labels.general.buttons.pharmaceutical-companies.create') !!}
                         </a>
-                        <a href="{!! route('admin.indications.index') !!}" class="btn btn-xs btn-info">
+                        <a href="{!! route('admin.pharmaceutical-companies.index') !!}" class="btn btn-xs btn-info">
                             <i class="fa fa-list"></i> {!! 'Back to List' !!}
                         </a>
                     </div>
 
                 </div>
                 <div class="box-body">
-                    @if(count($indications))
+                    @if(count($pharmaceutical_companies))
                         <div class="table-responsive">
                             <table class="table table-bordered table-striped table-hover table-condensed medicine-type-table" id="medicine-type-table">
                                 <thead>
                                 <tr>
                                     <th>SL.</th>
-                                    <th>Key Word(s)</th>
-                                    <th>Code</th>
+                                    <th>Name</th>
+                                    <th>Registration No.</th>
+                                    <th>Phone</th>
+                                    <th>Company Type</th>
+                                    <th>Registration Status</th>
                                     <th>Status</th>
                                     <th class="text-center" style="width: 120px;">Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach( $indications as $key => $indication)
+                                @foreach( $pharmaceutical_companies as $key => $pharmaceutical_company)
                                     <tr>
                                         <td>
                                             {{ ++$key }}
                                         </td>
                                         <td>
-                                            {{--<a href="{{ route("admin.indications.show", $indication->id) }}" >--}}
-                                                {!! $indication->key_word !!}
+                                            {{--<a href="{{ route("admin.pharmaceutical-companies.show", $pharmaceutical_company->id) }}" >--}}
+                                                {!! $pharmaceutical_company->name !!}
                                             {{--</a>--}}
                                         </td>
                                         <td>
-                                            {!! $indication->code !!}
+                                            {!! $pharmaceutical_company->registration_number !!}
                                         </td>
                                         <td>
-                                            @if($indication->status && $indication->status == 1)
-                                                {!! 'Published' !!}
+                                            {!! $pharmaceutical_company->phone !!}
+                                        </td>
+                                        <td>
+                                            {!! $pharmaceutical_company->company_type !!}
+                                        </td>
+                                        <td>
+                                            {!! $pharmaceutical_company->registration_status !!}
+                                        </td>
+                                        <td>
+                                            @if($pharmaceutical_company->status && $pharmaceutical_company->status == 1)
+                                                {!! 'Active' !!}
                                             @else
-                                                {!! 'Not Published' !!}
+                                                {!! 'Not Active' !!}
                                             @endif
                                         </td>
                                         <td style="width: 140px;">
-                                            <a class="btn btn-info btn-xs  record-restore" data-toggle="tooltip" data-placement="top" title="Restore" href="{{ route("admin.indications.restore", $indication->id) }}">
+                                            <a class="btn btn-info btn-xs  record-restore" data-toggle="tooltip" data-placement="top" title="Restore" href="{{ route("admin.pharmaceutical-companies.restore", $pharmaceutical_company->id) }}">
                                                 <i class="fa fa-refresh"></i> Restore
                                             </a>
-                                            <a class="btn btn-danger btn-xs record-delete" data-toggle="tooltip" data-placement="top" title="Delete" href="{{ route("admin.indications.permanently-delete", $indication->id) }}">
+                                            <a class="btn btn-danger btn-xs record-delete" data-toggle="tooltip" data-placement="top" title="Delete" href="{{ route("admin.pharmaceutical-companies.permanently-delete", $pharmaceutical_company->id) }}">
                                                 <i class="fa fa-trash"></i> Delete
                                             </a>
                                         </td>
@@ -85,7 +97,7 @@
                         </div>
                     @else
                         <div class="col-sm-12 text-center" style="padding: 150px 0;">
-                            <h1 style="opacity: 0.3">You don't have any Deleted Indications.</h1>
+                            <h1 style="opacity: 0.3">You don't have any Deleted Pharmaceutical Companies.</h1>
                         </div>
                     @endif
                 </div>
@@ -103,7 +115,7 @@
             // delete a record
             $("body").on("click", ".record-delete", function(e) {
                 e.preventDefault();
-                var redirectURL = "{{ route('admin.indications.trash') }}";
+                var redirectURL = "{{ route('admin.pharmaceutical-companies.trash') }}";
                 var linkURL = $(this).attr("href");
                 swal({
                     title: "{{ trans('strings.backend.general.are_you_sure') }}",
@@ -133,7 +145,7 @@
             // restore a record
             $("body").on("click", ".record-restore", function(e) {
                 e.preventDefault();
-                var redirectURL = "{{ route('admin.indications.trash') }}";
+                var redirectURL = "{{ route('admin.pharmaceutical-companies.trash') }}";
                 var linkURL = $(this).attr("href");
 
                 swal({

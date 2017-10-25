@@ -65,3 +65,20 @@ Route::resource('medicine', 'MedicinesController', ['names' => [
     'update'    => 'medicine.update',
     'destroy'   => 'medicine.destroy'
 ]]);
+
+/**
+ * Routes for accessing/adding pharmaceutical info.
+ */
+Route::get('pharmaceutical-companies/trash', 'PharmaceuticalCompaniesController@trash')->name('pharmaceutical-companies.trash');
+Route::patch('pharmaceutical-companies/{id}/restore', 'PharmaceuticalCompaniesController@restore')->name('pharmaceutical-companies.restore');
+Route::delete('pharmaceutical-companies/{id}/permanently-delete', 'PharmaceuticalCompaniesController@permanentlyDelete')->name('pharmaceutical-companies.permanently-delete');
+
+Route::resource('pharmaceutical-companies', 'PharmaceuticalCompaniesController', ['names' => [
+    'index'     => 'pharmaceutical-companies.index',
+    'create'    => 'pharmaceutical-companies.create',
+    'store'     => 'pharmaceutical-companies.store',
+    'show'      => 'pharmaceutical-companies.show',
+    'edit'      => 'pharmaceutical-companies.edit',
+    'update'    => 'pharmaceutical-companies.update',
+    'destroy'   => 'pharmaceutical-companies.destroy'
+]]);

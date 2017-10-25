@@ -46,6 +46,10 @@ return [
             'medicine' => [
                 'create' => 'Add/Create New Medicine'
             ],
+
+            'pharmaceutical-companies'  => [
+                'create'    => 'Add/Create New Pharmaceutical Company'
+            ],
         ],
         'hide'              => 'Hide',
         'inactive'          => 'Inactive',

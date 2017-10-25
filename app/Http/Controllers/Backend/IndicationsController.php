@@ -32,7 +32,7 @@ class IndicationsController extends Controller
         $data['page_heading']   = ucfirst($data['module_name']);
         $data['title']          = ucfirst($data['module_name']) . ' ' . ucfirst($data['module_action']);
 
-        $data['indications'] = Indication::all();
+        $data['indications']    = Indication::all();
 
         return view("backend.admin.medicines.indications.index", $data);
     }
@@ -65,7 +65,7 @@ class IndicationsController extends Controller
     public function store(IndicationsRequest $request)
     {
         $indicationKeyWordExist = $this->checkIndicationKeyWord($request->input('key_word'));
-        $indicationCodeExist = $this->checkIndicationCode($request->input('code'));
+        $indicationCodeExist    = $this->checkIndicationCode($request->input('code'));
 
         if($indicationKeyWordExist) {
             return redirect()->back()->with('flash_danger', 'Your provided Key word(s) already exists. Please provide separate key word(s).')->withInput($request->all);
@@ -74,9 +74,9 @@ class IndicationsController extends Controller
             return redirect()->back()->with('flash_danger', 'Your provided Indication code already exits. Please provide a different Indication code.')->withInput($request->all);
         }
 
-        $indicationsData = $request->except('_token');
-        $indicationsCreate = Indication::create($indicationsData);
-        $message = 'Your Indication record has been created successfully!';
+        $indicationsData    = $request->except('_token');
+        $indicationsCreate  = Indication::create($indicationsData);
+        $message            = 'Your Indication record has been created successfully!';
 
         return redirect()->route("admin.indications.index")->with('flash_success', '<i class="fa fa-check"></i> ' . $message);
     }
@@ -98,7 +98,7 @@ class IndicationsController extends Controller
         $data['page_heading']   = ucfirst($data['module_name']);
         $data['title']          = ucfirst($data['module_name']) . ' ' . ucfirst($data['module_action']);
 
-        $data['indications']  = Indication::findOrFail($id);
+        $data['indications']    = Indication::findOrFail($id);
 
         return view("backend.admin.medicines.indications.show", $data);
     }
@@ -120,7 +120,7 @@ class IndicationsController extends Controller
         $data['page_heading']   = ucfirst($data['module_name']);
         $data['title']          = ucfirst($data['module_name']) . ' ' . ucfirst($data['module_action']);
 
-        $data['indications']  = Indication::findOrFail($id);
+        $data['indications']    = Indication::findOrFail($id);
 
         return view("backend.admin.medicines.indications.edit", $data);
     }
@@ -135,17 +135,17 @@ class IndicationsController extends Controller
     public function update(IndicationsRequest $request, $id)
     {
         $indicationKeyWordExist = $this->checkIndicationKeyWordForUpdate($request->input('key_word'), $id);
-        $indicationCodeExist = $this->checkIndicationCodeForUpdate($request->input('code'), $id);
+        $indicationCodeExist    = $this->checkIndicationCodeForUpdate($request->input('code'), $id);
 
         if($indicationKeyWordExist) {
-            return redirect()->back()->with('flash_danger', 'The Indication record for the provided key words does not exist. Please choose a valid Indication record.')->withInput($request->all);
+            return redirect()->back()->with('flash_danger', 'Your provided Key word(s) already exists. Please provide separate key word(s).')->withInput($request->all);
         }
         if($indicationCodeExist) {
-            return redirect()->back()->with('flash_danger', 'The Indication record for the provided code does not exist. Please choose a valid Indication record.')->withInput($request->all);
+            return redirect()->back()->with('flash_danger', 'Your provided Indication code already exits. Please provide a different Indication code.')->withInput($request->all);
         }
 
-        $indicationRecord = Indication::findOrFail($id);
-        $indicationsData = $request->except('_token');
+        $indicationRecord   = Indication::findOrFail($id);
+        $indicationsData    = $request->except('_token');
         $indicationRecord->fill($indicationsData)->save();
 
         $message = 'Your selected Indication record has been updated successfully!';
@@ -183,7 +183,7 @@ class IndicationsController extends Controller
         $data['page_heading']   = ucfirst($data['module_name']);
         $data['title']          = ucfirst($data['module_name']) . ' ' . ucfirst($data['module_action']);
 
-        $data['indications'] = Indication::onlyTrashed()->orderBy('id', 'asc')->get();
+        $data['indications']    = Indication::onlyTrashed()->orderBy('id', 'asc')->get();
 
         return view("backend.admin.medicines.indications.trash", $data);
     }

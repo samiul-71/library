@@ -59,10 +59,18 @@
                 </a>
             </li>
 
+
             <li class="{{ active_class(Active::checkUriPattern('admin/medicine')) }}">
                 <a href="{{ route('admin.medicine.index') }}">
                     <i class="fa fa-medkit"></i>
                     <span>{{ trans('menus.backend.sidebar.medicine') }}</span>
+                </a>
+            </li>
+
+            <li class="{{ active_class(Active::checkUriPattern('admin/pharmaceutical-companies')) }}">
+                <a href="{{ route('admin.pharmaceutical-companies.index') }}">
+                    <i class="fa fa-industry"></i>
+                    <span>{{ trans('menus.backend.sidebar.pharmaceutical-companies') }}</span>
                 </a>
             </li>
 
