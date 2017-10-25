@@ -67,7 +67,62 @@ class MedicinesController extends Controller
         $data['indications']        = Indication::where('status', true)->orderBy('id')->pluck('key_word', 'id')->toArray();
 //        $data['pharmaceuticals']    = Pharmaceutical::where('status', true)->orderBy('id')->pluck('name', 'id')->toArray();
 
-//        dd($data['generic_names']);
+        $pharmaceuticals = [
+            'Square Pharmaceuticals Ltd',
+            'Beximco Pharmaceuticals Ltd',
+            'Incepta Pharmaceutical Ltd',
+            'Renata Limited',
+            'ACI Limited',
+            'ACME Laboratories Ltd',
+            'Aristopharma Ltd',
+            'General Pharmaceutical Ltd',
+            'Globe Pharmaceuticals Ltd',
+            'Healthcare Pharmaceuticals Limited',
+            'Bio-Pharma Laboratories Ltd',
+            'Opsonin Pharma Ltd',
+            'Silva Pharmaceuticals Ltd',
+            'Jayson Pharmaceuticals Ltd',
+            'Drug International Limited',
+            'Beacon Pharmaceuticals',
+            'Gaco Pharmaceuticals',
+            'Eskayef Bangladesh Ltd',
+            'GlaxoSmithKline Bangladesh Limited',
+            'Nuvista Pharma Ltd',
+            'Zuellig Pharma Bangladesh Ltd',
+            'Novo Nordisk A/S',
+            'Novartis (Bangladesh) Ltd',
+        ];
+
+        $data['pharmaceuticals']    = $pharmaceuticals;
+
+        $medicine_classes = [
+            'ABCDEFGH001' => 'ABCDEFGH001',
+            'ABCDEFGH002' => 'ABCDEFGH002',
+            'ABCDEFGH003' => 'ABCDEFGH003',
+            'ABCDEFGH004' => 'ABCDEFGH004',
+            'ABCDEFGH005' => 'ABCDEFGH005',
+            'ABCDEFGH006' => 'ABCDEFGH006',
+            'ABCDEFGH007' => 'ABCDEFGH007',
+            'ABCDEFGH008' => 'ABCDEFGH008',
+            'ABCDEFGH009' => 'ABCDEFGH009',
+            'ABCDEFGH010' => 'ABCDEFGH010',
+            'ABCDEFGH011' => 'ABCDEFGH011',
+            'ABCDEFGH012' => 'ABCDEFGH012',
+            'ABCDEFGH013' => 'ABCDEFGH013',
+            'ABCDEFGH014' => 'ABCDEFGH014',
+            'ABCDEFGH015' => 'ABCDEFGH015',
+            'ABCDEFGH016' => 'ABCDEFGH016',
+            'ABCDEFGH017' => 'ABCDEFGH017',
+            'ABCDEFGH018' => 'ABCDEFGH018',
+            'ABCDEFGH019' => 'ABCDEFGH019',
+            'ABCDEFGH020' => 'ABCDEFGH020',
+
+        ];
+
+        $data['medicine_classes'] = $medicine_classes;
+
+//        dd($data);
+
         return view("backend.admin.medicines.medicines.create", $data);
     }
 
@@ -81,17 +136,41 @@ class MedicinesController extends Controller
     {
 //        dd($request->all());
         $medicineNameExist = $this->checkMedicineName($request->input('name'));
-        $medicineCodeExist = $this->checkMedicineCode($request->input('code'));
+//        $medicineCodeExist = $this->checkMedicineCode($request->input('code'));
 
         if($medicineNameExist) {
             return redirect()->back()->with('flash_danger', 'Your Given Medicine Already Exists. Please Insert a Different Medicine Name.')->withInput($request->all);
         }
-        if($medicineCodeExist) {
-            return redirect()->back()->with('flash_danger', 'Your Given Code of Medicine Already Exists. Please Insert a Different Code for Medicine.')->withInput($request->all);
-        }
+//        if($medicineCodeExist) {
+//            return redirect()->back()->with('flash_danger', 'Your Given Code of Medicine Already Exists. Please Insert a Different Code for Medicine.')->withInput($request->all);
+//        }
 
-        $medicineData = $request->except('_token');
-        $medicine = GenericName::create($medicineData);
+        $medicineData = $request->except('_token', 'pharmaceuticals_id', 'medicine_class_id');
+
+        $medicineTypeID = $request->input('medicine_type_id');
+        $medicineTypeName = MedicineType::where('id', $medicineTypeID)->value('name');
+
+        $genericNameID = $request->input('generic_name_id');
+        $genericName = GenericName::where('id', $genericNameID)->value('name');
+
+        $indicationID = $request->input('indications_id');
+        $indicationKeyWord = Indication::where('id', $indicationID)->value('key_word');
+
+//        $pharmaceuticalsID = $request->input('pharmaceuticals_id');
+//        $pharmaName = Pharmaceuticals::where('id', $pharmaceuticalsID)->pluck('name');
+
+//        $classID = $request->input('class_id');
+//        $className = Pharmaceuticals::where('id', $classID)->pluck('name');
+
+        $medicineData['medicine_type_name']     = $medicineTypeName;
+        $medicineData['generic_name']           = $genericName;
+        $medicineData['indications_key_words']  = $indicationKeyWord;
+//        $medicineData['pharma_name']            = $pharmaName;
+//        $medicineData['class_name']             = $className;
+
+        $medicineData['code'] = $this->randomNumber(6);
+
+        $medicine = Medicine::create($medicineData);
         $message = 'Your Medicine has been Created/Added Successfully';
 
         return redirect()->route("admin.medicine.index")->with('flash_success', '<i class="fa fa-check"></i> ' . $message);
@@ -142,6 +221,67 @@ class MedicinesController extends Controller
 
         $data['medicine']  = Medicine::findOrFail($id);
 
+        $data['medicine_types']     = MedicineType::where('status', true)->orderBy('id')->pluck('name', 'id')->toArray();
+        $data['generic_names']      = GenericName::where('status', true)->orderBy('id')->pluck('name', 'id')->toArray();
+        $data['indications']        = Indication::where('status', true)->orderBy('id')->pluck('key_word', 'id')->toArray();
+//        $data['pharmaceuticals']    = Pharmaceutical::where('status', true)->orderBy('id')->pluck('name', 'id')->toArray();
+
+        $pharmaceuticals = [
+            'Square Pharmaceuticals Ltd',
+            'Beximco Pharmaceuticals Ltd',
+            'Incepta Pharmaceutical Ltd',
+            'Renata Limited',
+            'ACI Limited',
+            'ACME Laboratories Ltd',
+            'Aristopharma Ltd',
+            'General Pharmaceutical Ltd',
+            'Globe Pharmaceuticals Ltd',
+            'Healthcare Pharmaceuticals Limited',
+            'Bio-Pharma Laboratories Ltd',
+            'Opsonin Pharma Ltd',
+            'Silva Pharmaceuticals Ltd',
+            'Jayson Pharmaceuticals Ltd',
+            'Drug International Limited',
+            'Beacon Pharmaceuticals',
+            'Gaco Pharmaceuticals',
+            'Eskayef Bangladesh Ltd',
+            'GlaxoSmithKline Bangladesh Limited',
+            'Nuvista Pharma Ltd',
+            'Zuellig Pharma Bangladesh Ltd',
+            'Novo Nordisk A/S',
+            'Novartis (Bangladesh) Ltd',
+        ];
+
+        $data['pharmaceuticals']    = $pharmaceuticals;
+
+        $medicine_classes = [
+            'ABCDEFGH001' => 'ABCDEFGH001',
+            'ABCDEFGH002' => 'ABCDEFGH002',
+            'ABCDEFGH003' => 'ABCDEFGH003',
+            'ABCDEFGH004' => 'ABCDEFGH004',
+            'ABCDEFGH005' => 'ABCDEFGH005',
+            'ABCDEFGH006' => 'ABCDEFGH006',
+            'ABCDEFGH007' => 'ABCDEFGH007',
+            'ABCDEFGH008' => 'ABCDEFGH008',
+            'ABCDEFGH009' => 'ABCDEFGH009',
+            'ABCDEFGH010' => 'ABCDEFGH010',
+            'ABCDEFGH011' => 'ABCDEFGH011',
+            'ABCDEFGH012' => 'ABCDEFGH012',
+            'ABCDEFGH013' => 'ABCDEFGH013',
+            'ABCDEFGH014' => 'ABCDEFGH014',
+            'ABCDEFGH015' => 'ABCDEFGH015',
+            'ABCDEFGH016' => 'ABCDEFGH016',
+            'ABCDEFGH017' => 'ABCDEFGH017',
+            'ABCDEFGH018' => 'ABCDEFGH018',
+            'ABCDEFGH019' => 'ABCDEFGH019',
+            'ABCDEFGH020' => 'ABCDEFGH020',
+
+        ];
+
+        $data['medicine_classes'] = $medicine_classes;
+
+//        dd($data);
+
         return view("backend.admin.medicines.medicines.edit", $data);
     }
 
@@ -155,17 +295,39 @@ class MedicinesController extends Controller
     public function update(MedicineRequest $request, $id)
     {
         $medicineNameExist = $this->checkMedicineForUpdate($request->input('name'), $id);
-        $medicineCodeExist = $this->checkMedicineCodeForUpdate($request->input('code'), $id);
+//        $medicineCodeExist = $this->checkMedicineCodeForUpdate($request->input('code'), $id);
 
         if($medicineNameExist) {
             return redirect()->back()->with('flash_danger', 'Your Given Medicine Name Already Exists. Please Insert a Different Medicine Name.')->withInput($request->all);
         }
-        if($medicineCodeExist) {
-            return redirect()->back()->with('flash_danger', 'Your Given Code of Medicine Already Exists. Please Insert a Different Code for Medicine.')->withInput($request->all);
-        }
+//        if($medicineCodeExist) {
+//            return redirect()->back()->with('flash_danger', 'Your Given Code of Medicine Already Exists. Please Insert a Different Code for Medicine.')->withInput($request->all);
+//        }
+
+        $medicineTypeID = $request->input('medicine_type_id');
+        $medicineTypeName = MedicineType::where('id', $medicineTypeID)->value('name');
+
+        $genericNameID = $request->input('generic_name_id');
+        $genericName = GenericName::where('id', $genericNameID)->value('name');
+
+        $indicationID = $request->input('indications_id');
+        $indicationKeyWord = Indication::where('id', $indicationID)->value('key_word');
+
+//        $pharmaceuticalsID = $request->input('pharmaceuticals_id');
+//        $pharmaName = Pharmaceuticals::where('id', $pharmaceuticalsID)->pluck('name');
+
+//        $classID = $request->input('class_id');
+//        $className = Pharmaceuticals::where('id', $classID)->pluck('name');
+
+        $medicineData['medicine_type_name']     = $medicineTypeName;
+        $medicineData['generic_name']           = $genericName;
+        $medicineData['indications_key_words']  = $indicationKeyWord;
+//        $medicineData['pharma_name']            = $pharmaName;
+//        $medicineData['class_name']             = $className;
+
 
         $medicine = Medicine::findOrFail($id);
-        $medicineData = $request->except('_token');
+        $medicineData = $request->except('_token', 'pharmaceuticals_id', 'medicine_class_id');
         $medicine->fill($medicineData)->save();
 
         $message = 'Your Selected Medicine has been Updated Successfully';
@@ -259,6 +421,15 @@ class MedicinesController extends Controller
     public function checkMedicineCodeForUpdate($medicineCode, $id){
 
         $result = Medicine::where('code', $medicineCode)->where('id', '!=', $id)->first();
+        return $result;
+    }
+
+    public function randomNumber($length) {
+        $result = '';
+        for($i = 0; $i < $length; $i++) {
+            $result .= mt_rand(0, 9);
+        }
+
         return $result;
     }
 

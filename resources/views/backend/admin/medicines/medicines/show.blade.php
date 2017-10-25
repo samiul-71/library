@@ -20,13 +20,13 @@
         <div class="box-header with-border">
             <h3 class="box-title">{!! ucfirst($module_title) !!} {!! ucfirst($module_action) !!}</h3>
             <div class="box-tools pull-right">
-                <a href="{!! route('admin.generic-name.create') !!}" class="btn btn-xs btn-success">
+                <a href="{!! route('admin.medicine.create') !!}" class="btn btn-xs btn-success">
                     <i class="fa fa-plus"></i> {!! 'Create New' !!}
                 </a>
-                <a href="{!! route('admin.generic-name.index') !!}" class="btn btn-xs btn-info">
+                <a href="{!! route('admin.medicine.index') !!}" class="btn btn-xs btn-info">
                     <i class="fa fa-list"></i> {!! 'Back to List' !!}
                 </a>
-                <a href="{!! route("admin.generic-name.trash") !!}" class="btn btn-xs btn-danger">
+                <a href="{!! route("admin.medicine.trash") !!}" class="btn btn-xs btn-danger">
                     <i class="fa fa-trash"></i> {!! 'Trash List' !!}
                 </a>
             </div>
@@ -36,33 +36,42 @@
             <div class="row">
                 <div class="col-sm-8">
                     <div class="table-responsive">
-                        <table class="table ">
+                        <table class="table">
                             <tbody>
                             <tr>
                                 <td class="pull-right">
-                                    <strong>Medicine Generic Name</strong>
+                                    <strong>Medicine Name</strong>
                                 </td>
                                 <td> : </td>
                                 <td>
-                                    {{ ucwords($generic_name->name) }}
+                                    {{ ucwords($medicine->name) }} {!! $medicine->strength !!} ({!! $medicine->medicine_type_name !!})
                                 </td>
                             </tr>
                             <tr>
                                 <td class="pull-right">
-                                    <strong>Generic Name Code</strong>
+                                    <strong>Code</strong>
                                 </td>
                                 <td> : </td>
                                 <td>
-                                    {{ $generic_name->code }}
+                                    {{ $medicine->code }}
                                 </td>
                             </tr>
                             <tr>
                                 <td class="pull-right">
-                                    <strong>Generic Name Description</strong>
+                                    <strong>Generic Name</strong>
                                 </td>
                                 <td> : </td>
                                 <td>
-                                    {{ $generic_name->description }}
+                                    {!! $medicine->generic_name !!}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="pull-right">
+                                    <strong>Description</strong>
+                                </td>
+                                <td> : </td>
+                                <td>
+                                    {{ $medicine->description }}
                                 </td>
                             </tr>
                             <tr>
@@ -71,7 +80,7 @@
                                 </td>
                                 <td> : </td>
                                 <td>
-                                    @if($generic_name->status && $generic_name->status == 1)
+                                    @if($medicine->status && $medicine->status == 1)
                                         <span class="label label-primary">{!! 'Publish' !!}</span>
                                     @else
                                         <span class="label label-warning">{!! 'Not Publish' !!}</span>
@@ -79,18 +88,139 @@
                                 </td>
                             </tr>
 
+                            <tr>
+                                <td class="pull-right">
+                                    <strong>Indications</strong>
+                                </td>
+                                <td> : </td>
+                                <td>
+                                    {{--Multiple Keywords will be with Comma (,) Separator--}}
+                                    Keywords: {{ $medicine->indications_key_words }}<br>
+                                    Details: {{ $medicine->indications_details }}
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="pull-right">
+                                    <strong>Dosages</strong>
+                                </td>
+                                <td> : </td>
+                                <td>
+                                    Adult Dose : {{ $medicine->adult_dose }}<br>
+                                    Child Dose : {{ $medicine->child_dose }}<br>
+                                    Renal Dose: {{ $medicine->renal_dose }}
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="pull-right">
+                                    <strong>Side Effect(s)</strong>
+                                </td>
+                                <td> : </td>
+                                <td>
+                                    {{ $medicine->side_effects }}
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="pull-right">
+                                    <strong>Precautions</strong>
+                                </td>
+                                <td> : </td>
+                                <td>
+                                    {{ $medicine->precautions }}
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="pull-right">
+                                    <strong>Administration</strong>
+                                </td>
+                                <td> : </td>
+                                <td>
+                                   {{ $medicine->administration }}
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <td class="pull-right">
+                                    <strong>Ingredients</strong>
+                                </td>
+                                <td> : </td>
+                                <td>
+                                    {{ $medicine->ingredients }}
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <td class="pull-right">
+                                    <strong>Contraindications</strong>
+                                </td>
+                                <td> : </td>
+                                <td>
+                                    {{ $medicine->contraindications }}
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="pull-right">
+                                    <strong>Pregnancy Category</strong>
+                                </td>
+                                <td> : </td>
+                                <td>
+                                    {{ $medicine->pregnancy_category }}
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="pull-right">
+                                    <strong>therapeutic_class</strong>
+                                </td>
+                                <td> : </td>
+                                <td>
+                                    {{ $medicine->therapeutic_class }}
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="pull-right">
+                                    <strong>mode_of_actions</strong>
+                                </td>
+                                <td> : </td>
+                                <td>
+                                    {{ $medicine->mode_of_actions }}
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="pull-right">
+                                    <strong>Interactions</strong>
+                                </td>
+                                <td> : </td>
+                                <td>
+                                    {{ $medicine->interactions }}
+                                </td>
+                            </tr>
+
                             </tbody>
                         </table>
                     </div>
+                </div>
+
+                <div class="col-sm-4">
+                    <img class="thumbnail" src="{!! 'http://placehold.it/300x300' !!}" alt="Medicine Image">
+{{--                    <img class="thumbnail" src="{!! (isset($medicine) && $medicine->image !=null) ? url('/').medicineImagePath().$medicine->image : 'http://placehold.it/300x300' !!}" alt="Organization Image">--}}
                 </div>
             </div>
 
             <div class="row text-center">
                 <div class="col-sm-12 text-center">
-                    <a href="{!! route('admin.generic-name.edit', $generic_name->id) !!}" class="btn btn-xs btn-primary">
+                    <a href="{!! route('admin.medicine.edit', $medicine->id) !!}" class="btn btn-xs btn-primary">
                         <i class="fa fa-pencil"></i> {!! 'Edit/Update' !!}
                     </a>
-                    <a href="{!! route('admin.generic-name.destroy', $generic_name->id) !!}" class="btn btn-xs btn-danger record-destroy" id="record-destroy" title="Move to Trash" data-toggle="tooltip" data-placement="top">
+                    <a href="{!! route('admin.medicine.destroy', $medicine->id) !!}" class="btn btn-xs btn-danger record-destroy" id="record-destroy" title="Move to Trash" data-toggle="tooltip" data-placement="top">
                         <i class="fa fa-trash"></i> {!! 'Move to Trash' !!}
                     </a>
                 </div>
@@ -107,7 +237,7 @@
             $('.record-destroy').on("click", function(ev){
                 ev.preventDefault();
                 var URL = $(this).attr('href');
-                var redirectURL = "{{ route('admin.generic-name.index') }}";
+                var redirectURL = "{{ route('admin.medicine.index') }}";
                 warnBeforeRedirect(URL, redirectURL);
             });
 

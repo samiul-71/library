@@ -42,9 +42,11 @@
                         <table class="table table-bordered table-striped table-hover table-condensed generic_name-table" id="generic_name-table">
                             <thead>
                                 <tr>
-                                    <th>Generic Name</th>
+                                    <th>Medicine Name</th>
                                     <th>Code</th>
-                                    <th>Description</th>
+                                    <th>Genre</th>
+                                    <th>Manufacturer</th>
+                                    <th>Pack & Price</th>
                                     <th>Status</th>
                                     <th class="text-center" style="width: 120px;">Action</th>
                                 </tr>
@@ -54,14 +56,22 @@
                                 <tr>
                                     <td>
                                         <a href="{{ route("admin.medicine.show", $medicine->id) }}" >
-                                            {!! $medicine->name !!}
+                                            {!! $medicine->name !!} {!! $medicine->strength !!} ({!! $medicine->medicine_type_name !!})
                                         </a>
                                     </td>
                                     <td>
                                         {!! $medicine->code !!}
                                     </td>
                                     <td>
-                                        {!! $medicine->description !!}
+                                        {!! $medicine->generic_name !!}
+                                    </td>
+                                    <td>
+                                        {!! $medicine->pharma_name !!}
+                                    </td>
+                                    <td>
+                                        {!! $medicine->pack_size !!} pcs.
+                                        {!! $medicine->unit_price !!}
+                                        {!! $medicine->currency !!}
                                     </td>
                                     <td>
                                         @if($medicine->status && $medicine->status == 1)

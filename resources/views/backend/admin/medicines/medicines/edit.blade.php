@@ -14,22 +14,22 @@
         <div class="box-header with-border">
             <strong>{{ ucfirst($module_action) }}</strong>
             <div class="box-tools pull-right">
-                <a href="{!! route('admin.generic-name.create') !!}" class="btn btn-xs btn-success">
+                <a href="{!! route('admin.medicine.create') !!}" class="btn btn-xs btn-success">
                     <i class="fa fa-plus"></i> {!! 'Create New' !!}
                 </a>
-                <a href="{!! route('admin.generic-name.index') !!}" class="btn btn-xs btn-info">
+                <a href="{!! route('admin.medicine.index') !!}" class="btn btn-xs btn-info">
                     <i class="fa fa-list"></i> {!! 'Back to List' !!}
                 </a>
-                <a href="{!! route("admin.generic-name.trash") !!}" class="btn btn-xs btn-danger">
+                <a href="{!! route("admin.medicine.trash") !!}" class="btn btn-xs btn-danger">
                     <i class="fa fa-trash"></i> {!! 'Trash List' !!}
                 </a>
             </div>
         </div><!-- /.box-header -->
         <div class="box-body">
 
-            {!! Form::model($generic_name, ['method' => 'PUT', 'route' => ["admin.generic-name.update", $generic_name->id], 'class' => 'form', 'role' => 'form']) !!}
+            {!! Form::model($medicine, ['method' => 'PUT', 'route' => ["admin.medicine.update", $medicine->id], 'class' => 'form', 'role' => 'form']) !!}
 
-            @include("backend.admin.medicines.generic-names.form")
+            @include("backend.admin.medicines.medicines.form")
 
             {!! Form::close() !!}
 
@@ -49,7 +49,7 @@
             $('.record-destroy').on("click", function(ev){
                 ev.preventDefault();
                 var URL = $(this).attr('href');
-                var redirectURL = "{{ route('admin.generic-name.index') }}";
+                var redirectURL = "{{ route('admin.medicine.index') }}";
                 warnBeforeRedirect(URL, redirectURL);
             });
 

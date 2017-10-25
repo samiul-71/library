@@ -27,7 +27,7 @@
                     <h3 class="box-title">{!! ucfirst($module_title) !!} {!! ucfirst($module_action) !!}</h3>
 
                     <div class="box-tools pull-right">
-                        <a href="{!! route('admin.generic-name.create') !!}" class="btn btn-xs btn-success">
+                        <a href="{!! route('admin.medicine.create') !!}" class="btn btn-xs btn-success">
                             <i class="fa fa-plus"></i> {!! trans('labels.general.buttons.medicine.create') !!}
                         </a>
                         <a href="{!! route('admin.medicine.index') !!}" class="btn btn-xs btn-info">
