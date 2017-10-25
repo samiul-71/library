@@ -7,6 +7,7 @@ use App\Models\Admin\GenericName;
 use App\Models\Admin\Indication;
 use App\Models\Admin\Medicine;
 use App\Models\Admin\MedicineType;
+use App\Models\Admin\PharmaceuticalCompany;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -51,7 +52,7 @@ class MedicinesController extends Controller
      */
     public function create()
     {
-//        dd('Call Create of the Generic Name');
+//        dd('Call Create of the Medicine');
         $data['module_name']    = $this->module_name;
         $data['module_title']   = $this->module_title;
         $data['module_path']    = $this->module_path;
@@ -65,35 +66,7 @@ class MedicinesController extends Controller
         $data['medicine_types']     = MedicineType::where('status', true)->orderBy('id')->pluck('name', 'id')->toArray();
         $data['generic_names']      = GenericName::where('status', true)->orderBy('id')->pluck('name', 'id')->toArray();
         $data['indications']        = Indication::where('status', true)->orderBy('id')->pluck('key_word', 'id')->toArray();
-//        $data['pharmaceuticals']    = Pharmaceutical::where('status', true)->orderBy('id')->pluck('name', 'id')->toArray();
-
-        $pharmaceuticals = [
-            'Square Pharmaceuticals Ltd',
-            'Beximco Pharmaceuticals Ltd',
-            'Incepta Pharmaceutical Ltd',
-            'Renata Limited',
-            'ACI Limited',
-            'ACME Laboratories Ltd',
-            'Aristopharma Ltd',
-            'General Pharmaceutical Ltd',
-            'Globe Pharmaceuticals Ltd',
-            'Healthcare Pharmaceuticals Limited',
-            'Bio-Pharma Laboratories Ltd',
-            'Opsonin Pharma Ltd',
-            'Silva Pharmaceuticals Ltd',
-            'Jayson Pharmaceuticals Ltd',
-            'Drug International Limited',
-            'Beacon Pharmaceuticals',
-            'Gaco Pharmaceuticals',
-            'Eskayef Bangladesh Ltd',
-            'GlaxoSmithKline Bangladesh Limited',
-            'Nuvista Pharma Ltd',
-            'Zuellig Pharma Bangladesh Ltd',
-            'Novo Nordisk A/S',
-            'Novartis (Bangladesh) Ltd',
-        ];
-
-        $data['pharmaceuticals']    = $pharmaceuticals;
+        $data['pharmaceuticals']    = PharmaceuticalCompany::where('status', true)->orderBy('id')->pluck('name', 'id')->toArray();
 
         $medicine_classes = [
             'ABCDEFGH001' => 'ABCDEFGH001',
@@ -121,7 +94,6 @@ class MedicinesController extends Controller
 
         $data['medicine_classes'] = $medicine_classes;
 
-//        dd($data);
 
         return view("backend.admin.medicines.medicines.create", $data);
     }
@@ -145,27 +117,27 @@ class MedicinesController extends Controller
 //            return redirect()->back()->with('flash_danger', 'Your Given Code of Medicine Already Exists. Please Insert a Different Code for Medicine.')->withInput($request->all);
 //        }
 
-        $medicineData = $request->except('_token', 'pharmaceuticals_id', 'medicine_class_id');
+        $medicineData = $request->except('_token', 'medicine_class_id');
 
-        $medicineTypeID = $request->input('medicine_type_id');
-        $medicineTypeName = MedicineType::where('id', $medicineTypeID)->value('name');
+        $medicineTypeID     = $request->input('medicine_type_id');
+        $medicineTypeName   = MedicineType::where('id', $medicineTypeID)->value('name');
 
-        $genericNameID = $request->input('generic_name_id');
-        $genericName = GenericName::where('id', $genericNameID)->value('name');
+        $genericNameID      = $request->input('generic_name_id');
+        $genericName        = GenericName::where('id', $genericNameID)->value('name');
 
-        $indicationID = $request->input('indications_id');
-        $indicationKeyWord = Indication::where('id', $indicationID)->value('key_word');
+        $indicationID       = $request->input('indications_id');
+        $indicationKeyWord  = Indication::where('id', $indicationID)->value('key_word');
 
-//        $pharmaceuticalsID = $request->input('pharmaceuticals_id');
-//        $pharmaName = Pharmaceuticals::where('id', $pharmaceuticalsID)->pluck('name');
+        $pharmaceuticalsID  = $request->input('pharma_id');
+        $pharmaName         = PharmaceuticalCompany::where('id', $pharmaceuticalsID)->value('name');
 
 //        $classID = $request->input('class_id');
-//        $className = Pharmaceuticals::where('id', $classID)->pluck('name');
+//        $className = Pharmaceuticals::where('id', $classID)->value('name');
 
         $medicineData['medicine_type_name']     = $medicineTypeName;
         $medicineData['generic_name']           = $genericName;
         $medicineData['indications_key_words']  = $indicationKeyWord;
-//        $medicineData['pharma_name']            = $pharmaName;
+        $medicineData['pharma_name']            = $pharmaName;
 //        $medicineData['class_name']             = $className;
 
         $medicineData['code'] = $this->randomNumber(6);
@@ -224,35 +196,7 @@ class MedicinesController extends Controller
         $data['medicine_types']     = MedicineType::where('status', true)->orderBy('id')->pluck('name', 'id')->toArray();
         $data['generic_names']      = GenericName::where('status', true)->orderBy('id')->pluck('name', 'id')->toArray();
         $data['indications']        = Indication::where('status', true)->orderBy('id')->pluck('key_word', 'id')->toArray();
-//        $data['pharmaceuticals']    = Pharmaceutical::where('status', true)->orderBy('id')->pluck('name', 'id')->toArray();
-
-        $pharmaceuticals = [
-            'Square Pharmaceuticals Ltd',
-            'Beximco Pharmaceuticals Ltd',
-            'Incepta Pharmaceutical Ltd',
-            'Renata Limited',
-            'ACI Limited',
-            'ACME Laboratories Ltd',
-            'Aristopharma Ltd',
-            'General Pharmaceutical Ltd',
-            'Globe Pharmaceuticals Ltd',
-            'Healthcare Pharmaceuticals Limited',
-            'Bio-Pharma Laboratories Ltd',
-            'Opsonin Pharma Ltd',
-            'Silva Pharmaceuticals Ltd',
-            'Jayson Pharmaceuticals Ltd',
-            'Drug International Limited',
-            'Beacon Pharmaceuticals',
-            'Gaco Pharmaceuticals',
-            'Eskayef Bangladesh Ltd',
-            'GlaxoSmithKline Bangladesh Limited',
-            'Nuvista Pharma Ltd',
-            'Zuellig Pharma Bangladesh Ltd',
-            'Novo Nordisk A/S',
-            'Novartis (Bangladesh) Ltd',
-        ];
-
-        $data['pharmaceuticals']    = $pharmaceuticals;
+        $data['pharmaceuticals']    = PharmaceuticalCompany::where('status', true)->orderBy('id')->pluck('name', 'id')->toArray();
 
         $medicine_classes = [
             'ABCDEFGH001' => 'ABCDEFGH001',
@@ -280,7 +224,6 @@ class MedicinesController extends Controller
 
         $data['medicine_classes'] = $medicine_classes;
 
-//        dd($data);
 
         return view("backend.admin.medicines.medicines.edit", $data);
     }
@@ -304,30 +247,30 @@ class MedicinesController extends Controller
 //            return redirect()->back()->with('flash_danger', 'Your Given Code of Medicine Already Exists. Please Insert a Different Code for Medicine.')->withInput($request->all);
 //        }
 
-        $medicineTypeID = $request->input('medicine_type_id');
-        $medicineTypeName = MedicineType::where('id', $medicineTypeID)->value('name');
+        $medicineData       = $request->except('_token', 'medicine_class_id');
 
-        $genericNameID = $request->input('generic_name_id');
-        $genericName = GenericName::where('id', $genericNameID)->value('name');
+        $medicineTypeID     = $request->input('medicine_type_id');
+        $medicineTypeName   = MedicineType::where('id', $medicineTypeID)->value('name');
 
-        $indicationID = $request->input('indications_id');
-        $indicationKeyWord = Indication::where('id', $indicationID)->value('key_word');
+        $genericNameID      = $request->input('generic_name_id');
+        $genericName        = GenericName::where('id', $genericNameID)->value('name');
 
-//        $pharmaceuticalsID = $request->input('pharmaceuticals_id');
-//        $pharmaName = Pharmaceuticals::where('id', $pharmaceuticalsID)->pluck('name');
+        $indicationID       = $request->input('indications_id');
+        $indicationKeyWord  = Indication::where('id', $indicationID)->value('key_word');
+
+        $pharmaceuticalsID  = $request->input('pharma_id');
+        $pharmaName         = PharmaceuticalCompany::where('id', $pharmaceuticalsID)->value('name');
 
 //        $classID = $request->input('class_id');
-//        $className = Pharmaceuticals::where('id', $classID)->pluck('name');
+//        $className = ClassName::where('id', $classID)->value('name');
 
         $medicineData['medicine_type_name']     = $medicineTypeName;
         $medicineData['generic_name']           = $genericName;
         $medicineData['indications_key_words']  = $indicationKeyWord;
-//        $medicineData['pharma_name']            = $pharmaName;
+        $medicineData['pharma_name']            = $pharmaName;
 //        $medicineData['class_name']             = $className;
 
-
         $medicine = Medicine::findOrFail($id);
-        $medicineData = $request->except('_token', 'pharmaceuticals_id', 'medicine_class_id');
         $medicine->fill($medicineData)->save();
 
         $message = 'Your Selected Medicine has been Updated Successfully';

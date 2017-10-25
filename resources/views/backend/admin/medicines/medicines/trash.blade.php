@@ -53,9 +53,7 @@
                                 @foreach($medicines as $medicine)
                                     <tr>
                                         <td>
-                                            <a href="{{ route("admin.medicine.show", $medicine->id) }}" >
-                                                {!! $medicine->name !!}
-                                            </a>
+                                            {!! $medicine->name !!}
                                         </td>
                                         <td>
                                             {!! $medicine->code !!}

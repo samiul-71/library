@@ -27,19 +27,19 @@
         <div class="form-row">
             <div class="form-group col-md-3">
                 {!! Form::label('medicine_type_id', 'Select Medicine Type') !!}
-                {!! Form::select('medicine_type_id', ['' => 'Choose Medicine Type'] + $medicine_types, old('medicine_type'), ['id' => 'medicine_type', 'class' => 'form-control select2 medicine_type', 'required' => 'required'])  !!}
+                {!! Form::select('medicine_type_id', ['' => 'Choose Medicine Type'] + $medicine_types, old('medicine_type_id'), ['id' => 'medicine_type', 'class' => 'form-control select2 medicine_type', 'required' => 'required'])  !!}
             </div>
             <div class="form-group col-md-3">
                 {!! Form::label('generic_name_id', 'Select Generic Name') !!}
-                {!! Form::select('generic_name_id', ['' => 'Choose Generic Name'] + $generic_names, old('generic_name'), ['id'=>'generic_name', 'class' => 'form-control select2 generic_name']) !!}
+                {!! Form::select('generic_name_id', ['' => 'Choose Generic Name'] + $generic_names, old('generic_name_id'), ['id'=>'generic_name', 'class' => 'form-control select2 generic_name']) !!}
             </div>
             <div class="form-group col-md-3">
-                {!! Form::label('pharmaceuticals_id', 'Select Pharmaceuticals') !!}
-                {!! Form::select('pharmaceuticals_id', ['' => 'Choose Pharmaceuticals'] + $pharmaceuticals, old('pharmaceutical'), ['id'=>'pharmaceutical', 'class' => 'form-control select2 pharmaceutical']) !!}
+                {!! Form::label('pharma_id', 'Select Pharmaceuticals') !!}
+                {!! Form::select('pharma_id', ['' => 'Choose Pharmaceuticals'] + $pharmaceuticals, old('pharma_id'), ['id'=>'pharmaceutical', 'class' => 'form-control select2 pharmaceutical']) !!}
             </div>
             <div class="form-group col-md-3">
             {!! Form::label('medicine_class_id', 'Select Medicine Class') !!}
-            {!! Form::select('medicine_class_id', ['' => 'Choose Medicine Class'] + $medicine_classes, old('medicine_class'), ['id'=>'medicine_class', 'class' => 'form-control select2 medicine_class']) !!}
+            {!! Form::select('medicine_class_id', ['' => 'Choose Medicine Class'] + $medicine_classes, old('medicine_class_id'), ['id'=>'medicine_class', 'class' => 'form-control select2 medicine_class']) !!}
             </div>
         </div>
 
