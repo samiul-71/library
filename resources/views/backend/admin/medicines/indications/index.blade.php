@@ -100,7 +100,7 @@
 
 @stop
 
-@section('after-scripts-end')
+@section('after-scripts')
     <script>
         $(document).ready(function() {
             $('#indications-table').DataTable();

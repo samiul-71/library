@@ -10,7 +10,8 @@
 
         <!-- Meta -->
         <meta name="description" content="@yield('meta_description', 'Default Description')">
-        <meta name="author" content="@yield('meta_author', 'Anthony Rappa')">
+        {{--<meta name="author" content="@yield('meta_author', 'Anthony Rappa')">--}}
+        <meta name="author" content="">
         @yield('meta')
 
         <!-- Styles -->
@@ -24,6 +25,8 @@
             {{ Html::style(mix('css/backend.css')) }}
         @endif
 
+        {{ Html::style('plugins/DataTables/datatables.min.css') }}
+
         @yield('after-styles')
 
         <!-- Html5 Shim and Respond.js IE8 support of Html5 elements and media queries -->
@@ -32,6 +35,9 @@
         {{ Html::script('https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js') }}
         {{ Html::script('https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js') }}
         <![endif]-->
+
+        {{ Html::script('https://code.jquery.com/jquery-3.2.1.js') }}
+        {{ Html::script('https://code.jquery.com/jquery-3.2.1.min.js') }}
 
         <!-- Scripts -->
         <script>
@@ -72,6 +78,7 @@
         <!-- JavaScripts -->
         @yield('before-scripts')
         {{ Html::script(mix('js/backend.js')) }}
+        {{ Html::script('plugins/DataTables/datatables.min.js') }}
         @yield('after-scripts')
     </body>
 </html>

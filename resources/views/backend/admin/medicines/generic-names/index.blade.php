@@ -39,7 +39,7 @@
                 <div class="box-body">
                     @if(count($medicine_generic_names))
                         <div class="table-responsive">
-                        <table class="table table-bordered table-striped table-hover table-condensed generic_name-table" id="generic_name-table">
+                        <table class="table table-bordered table-striped table-hover table-condensed generic-name-table" id="generic-name-table">
                             <thead>
                                 <tr>
                                     <th>Generic Name</th>
@@ -103,7 +103,7 @@
 @section('after-scripts')
     <script>
         $(document).ready(function() {
-//            $('#generic-name-table').DataTable();
+            $('#generic-name-table').DataTable();
         });
     </script>
 @stop

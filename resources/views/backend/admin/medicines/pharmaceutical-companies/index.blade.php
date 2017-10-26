@@ -11,7 +11,7 @@
     </h1>
 @endsection
 
-@section('after-styles-end')
+@section('after-styles')
     <style>
 
     </style>
@@ -112,7 +112,7 @@
 
 @stop
 
-@section('after-scripts-end')
+@section('after-scripts')
     <script>
         $(document).ready(function() {
             $('#pharmaceutical-companies-table').DataTable();
