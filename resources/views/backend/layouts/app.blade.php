@@ -81,14 +81,11 @@
         <!-- JavaScripts -->
         @yield('before-scripts')
         {{ Html::script(mix('js/backend.js')) }}
-<<<<<<< HEAD
         {{ Html::script('plugins/DataTables/datatables.min.js') }}
-=======
 
         <!-- Select2 Script added here -->
         {{ Html::script('https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/js/select2.min.js') }}
 
->>>>>>> 9874aed25a5a264c085336749fb07de2504a88fb
         @yield('after-scripts')
     </body>
 </html>
