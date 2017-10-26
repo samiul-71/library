@@ -40,6 +40,8 @@
 @section('after-scripts')
     <script>
 
+        $('.select2').select2();
+
         $(document).ready(function() {
 
 //            $('.form').validator();

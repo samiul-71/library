@@ -9,6 +9,12 @@
     </h1>
 @endsection
 
+@section('after-styles')
+    <style>
+
+    </style>
+@endsection
+
 @section('content')
     <div class="box box-primary">
         <div class="box-header with-border">
@@ -28,6 +34,8 @@
 
 @section('after-scripts')
     <script>
+
+//        $('.select2').select2();
 
         $('.form').validator();
 

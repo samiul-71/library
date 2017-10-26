@@ -29,6 +29,8 @@
 @section('after-scripts')
     <script>
 
+        $('.select2').select2();
+
         $('.form').validator();
 
     </script>
