@@ -24,6 +24,9 @@
             {{ Html::style(mix('css/backend.css')) }}
         @endif
 
+        <!-- Select2 Style added here -->
+        {{ Html::style('https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/css/select2.min.css') }}
+
         @yield('after-styles')
 
         <!-- Html5 Shim and Respond.js IE8 support of Html5 elements and media queries -->
@@ -72,6 +75,10 @@
         <!-- JavaScripts -->
         @yield('before-scripts')
         {{ Html::script(mix('js/backend.js')) }}
+
+        <!-- Select2 Script added here -->
+        {{ Html::script('https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/js/select2.min.js') }}
+
         @yield('after-scripts')
     </body>
 </html>

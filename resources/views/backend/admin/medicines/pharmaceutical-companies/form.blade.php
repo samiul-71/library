@@ -22,7 +22,7 @@
     </div>
     <div class="form-group col-md-6">
         {!! Form::label('company_type', 'Company type') !!}
-        {!! Form::select('company_type', ['local' => 'Local', 'international' => 'International'], old('company_type'), ['class' => 'form-control']) !!}
+        {!! Form::select('company_type', ['local' => 'Local', 'international' => 'International'], old('company_type'), ['id' => 'company_type', 'class' => 'form-control select2 company_type']) !!}
     </div>
 </div>
 <div class="form-row">
@@ -40,7 +40,7 @@
 <div class="form-row">
     <div class="form-group col-md-6">
         {!! Form::label('registration_status', 'Registration Status') !!}
-        {!! Form::select('registration_status', ['applied' => 'Applied', 'approved' => 'Approved', 'pending' => 'Pending'], old('registration_status'), ['class' => 'form-control']) !!}
+        {!! Form::select('registration_status', ['applied' => 'Applied', 'approved' => 'Approved', 'pending' => 'Pending'], old('registration_status'), ['id' => 'registration_status', 'class' => 'form-control select2 registration_status']) !!}
     </div>
     <div class="form-group col-md-6">
         {!! Form::label('status', 'Status', ['class' => 'col-form-label']) !!}<br>

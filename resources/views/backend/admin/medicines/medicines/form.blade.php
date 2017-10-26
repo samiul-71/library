@@ -68,7 +68,7 @@
         <div class="form-row">
             <div class="form-group col-md-12">
                 {!! Form::label('indications_id', 'Choose Indications Keyword(s)') !!}
-                {!! Form::select('indications_id', $indications, old('indications_keyword'), ['id'=>'indications_keyword', 'class' => 'form-control indications_keyword']) !!}
+                {!! Form::select('indications_id', $indications, old('indications_keyword'), ['id'=>'indications_keyword', 'class' => 'form-control indications_keyword select2']) !!}
             </div>
         </div>
 
