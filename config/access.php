@@ -19,6 +19,11 @@ return [
     */
     'medicine_generic_name_table' => 'generic_names',
 
+    /*
+    * Lab Test Categories table is used to store Lab Test types
+    */
+    'lab_test_categories_table' => 'lab_test_categories',
+
 
     /*
      * Role model used by Access to create correct relations. Update the role if it is in a different namespace.

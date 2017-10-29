@@ -20,7 +20,7 @@
             </div>
             <div class="form-group col-md-2">
                 {!! Form::label('currency', 'Currency') !!}
-                {!! Form::select('currency', ['BDT' => 'BTD', 'USD' => 'USD'], old('currency'), ['id'=>'medicine_type', 'class' => 'form-control'])  !!}
+                {!! Form::select('currency', ['BDT' => 'BDT', 'USD' => 'USD'], old('currency'), ['id'=>'medicine_type', 'class' => 'form-control'])  !!}
             </div>
         </div>
 

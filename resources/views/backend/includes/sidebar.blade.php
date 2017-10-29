@@ -74,6 +74,13 @@
                 </a>
             </li>
 
+            <li class="{{ active_class(Active::checkUriPattern('admin/lab-test')) }}">
+                <a href="{{ route('admin.lab-test.index') }}">
+                    <i class="fa fa-heartbeat"></i>
+                    <span>{{ trans('menus.backend.sidebar.lab-test') }}</span>
+                </a>
+            </li>
+
             {{--<li class="header">{{ trans('menus.backend.sidebar.system') }}</li>--}}
 
             @role(1)
