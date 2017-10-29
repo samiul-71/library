@@ -59,14 +59,6 @@
                 </a>
             </li>
 
-
-            <li class="{{ active_class(Active::checkUriPattern('admin/medicine')) }}">
-                <a href="{{ route('admin.medicine.index') }}">
-                    <i class="fa fa-medkit"></i>
-                    <span>{{ trans('menus.backend.sidebar.medicine') }}</span>
-                </a>
-            </li>
-
             <li class="{{ active_class(Active::checkUriPattern('admin/pharmaceutical-companies')) }}">
                 <a href="{{ route('admin.pharmaceutical-companies.index') }}">
                     <i class="fa fa-industry"></i>
@@ -78,6 +70,13 @@
                 <a href="{{ route('admin.lab-test.index') }}">
                     <i class="fa fa-heartbeat"></i>
                     <span>{{ trans('menus.backend.sidebar.lab-test') }}</span>
+                </a>
+            </li>
+
+            <li class="{{ active_class(Active::checkUriPattern('admin/medicine')) }}">
+                <a href="{{ route('admin.medicine.index') }}">
+                    <i class="fa fa-medkit"></i>
+                    <span>{{ trans('menus.backend.sidebar.medicine') }}</span>
                 </a>
             </li>
 
