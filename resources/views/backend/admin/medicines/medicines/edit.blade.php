@@ -9,6 +9,10 @@
     </h1>
 @endsection
 
+@section('after-styles')
+    <link rel="stylesheet" type="text/css" href="/public/plugins/MultiSelect/jquery.dropdown.css">
+@endsection
+
 @section('content')
     <div class="box box-primary">
         <div class="box-header with-border">
@@ -38,9 +42,17 @@
 @endsection
 
 @section('after-scripts')
+    {!! Html::script('plugins/MultiSelect/jquery.dropdown.js') !!}
     <script>
 
         $('.select2').select2();
+
+        $('.indications_keyword').dropdown({
+            multipleMode: 'label',
+            readOnly: false,
+            limitCount: Infinity,
+            searchable: true
+        });
 
         $(document).ready(function() {
 
