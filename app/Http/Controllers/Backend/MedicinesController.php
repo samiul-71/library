@@ -117,7 +117,7 @@ class MedicinesController extends Controller
 //            return redirect()->back()->with('flash_danger', 'Your Given Code of Medicine Already Exists. Please Insert a Different Code for Medicine.')->withInput($request->all);
 //        }
 
-        $medicineData = $request->except('_token', 'medicine_class_id');
+        $medicineData = $request->except('_token', 'medicine_class_id', 'indications_ids');
 
         $medicineTypeID     = $request->input('medicine_type_id');
         $medicineTypeName   = MedicineType::where('id', $medicineTypeID)->value('name');
@@ -125,8 +125,15 @@ class MedicinesController extends Controller
         $genericNameID      = $request->input('generic_name_id');
         $genericName        = GenericName::where('id', $genericNameID)->value('name');
 
-        $indicationID       = $request->input('indications_id');
-        $indicationKeyWord  = Indication::where('id', $indicationID)->value('key_word');
+        $indicationIDs      = $request->input('indications_ids');
+        $indicationKeyWords = [];
+
+        if (count($indicationIDs)){
+            foreach ($indicationIDs as $key => $indicationID) {
+                $keyWord = Indication::where('id', $indicationID)->value('key_word');
+                array_push($indicationKeyWords, $keyWord);
+            }
+        }
 
         $pharmaceuticalsID  = $request->input('pharma_id');
         $pharmaName         = PharmaceuticalCompany::where('id', $pharmaceuticalsID)->value('name');
@@ -136,7 +143,8 @@ class MedicinesController extends Controller
 
         $medicineData['medicine_type_name']     = $medicineTypeName;
         $medicineData['generic_name']           = $genericName;
-        $medicineData['indications_keywords']   = $indicationKeyWord;
+        $medicineData['indications_ids']        = implode(',', $indicationIDs);
+        $medicineData['indications_keywords']   = implode(',', $indicationKeyWords);
         $medicineData['pharma_name']            = $pharmaName;
 //        $medicineData['class_name']             = $className;
 
@@ -169,6 +177,8 @@ class MedicinesController extends Controller
 
         $data['medicine']  = Medicine::findOrFail($id);
 
+        $data['medicine']['indications_keywords'] = explode(',', $data['medicine']['indications_keywords']);
+
         return view("backend.admin.medicines.medicines.show", $data);
     }
 
@@ -192,7 +202,6 @@ class MedicinesController extends Controller
         $data['title']          = ucfirst($data['module_name']) . ' ' . ucfirst($data['module_action']);
 
         $data['medicine']  = Medicine::findOrFail($id);
-
         $data['medicine_types']     = MedicineType::where('status', true)->orderBy('id')->pluck('name', 'id')->toArray();
         $data['generic_names']      = GenericName::where('status', true)->orderBy('id')->pluck('name', 'id')->toArray();
         $data['indications']        = Indication::where('status', true)->orderBy('id')->pluck('key_word', 'id')->toArray();
@@ -221,9 +230,9 @@ class MedicinesController extends Controller
             'ABCDEFGH020' => 'ABCDEFGH020',
 
         ];
-
         $data['medicine_classes'] = $medicine_classes;
 
+        $data['medicine']['indications_ids'] = explode(',', $data['medicine']['indications_ids']);
 
         return view("backend.admin.medicines.medicines.edit", $data);
     }
@@ -247,7 +256,7 @@ class MedicinesController extends Controller
 //            return redirect()->back()->with('flash_danger', 'Your Given Code of Medicine Already Exists. Please Insert a Different Code for Medicine.')->withInput($request->all);
 //        }
 
-        $medicineData       = $request->except('_token', 'medicine_class_id');
+        $medicineData       = $request->except('_token', 'medicine_class_id', 'indications_ids');
 
         $medicineTypeID     = $request->input('medicine_type_id');
         $medicineTypeName   = MedicineType::where('id', $medicineTypeID)->value('name');
@@ -255,18 +264,26 @@ class MedicinesController extends Controller
         $genericNameID      = $request->input('generic_name_id');
         $genericName        = GenericName::where('id', $genericNameID)->value('name');
 
-        $indicationID       = $request->input('indications_id');
-        $indicationKeyWord  = Indication::where('id', $indicationID)->value('key_word');
-
         $pharmaceuticalsID  = $request->input('pharma_id');
         $pharmaName         = PharmaceuticalCompany::where('id', $pharmaceuticalsID)->value('name');
 
 //        $classID = $request->input('class_id');
 //        $className = ClassName::where('id', $classID)->value('name');
 
+        $indicationIDs      = $request->input('indications_ids');
+        $indicationKeyWords = [];
+
+        if (count($indicationIDs)){
+            foreach ($indicationIDs as $key => $indicationID) {
+                $keyWord = Indication::where('id', $indicationID)->value('key_word');
+                array_push($indicationKeyWords, $keyWord);
+            }
+        }
+
         $medicineData['medicine_type_name']     = $medicineTypeName;
         $medicineData['generic_name']           = $genericName;
-        $medicineData['indications_keywords']   = $indicationKeyWord;
+        $medicineData['indications_ids']        = implode(',', $indicationIDs);
+        $medicineData['indications_keywords']   = implode(',', $indicationKeyWords);
         $medicineData['pharma_name']            = $pharmaName;
 //        $medicineData['class_name']             = $className;
 

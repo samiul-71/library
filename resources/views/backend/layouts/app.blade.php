@@ -27,6 +27,15 @@
 
         {{ Html::style('plugins/DataTables/datatables.min.css') }}
 
+        {{--{{ Html::script('https://code.jquery.com/jquery-1.12.4.min.js') }}--}}
+        {{ Html::style('plugins/MultiSelect/jquery.dropdown.css') }}
+        {{ Html::script('plugins/MultiSelect/jquery.dropdown.js') }}
+
+
+        {{--<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>--}}
+
+        {{--<script src="/public/plugins/MultiSelect/jquery.dropdown.js"></script>--}}
+
         <!-- Select2 Style added here -->
         {{ Html::style('https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/css/select2.min.css') }}
 
@@ -41,6 +50,7 @@
 
         {{ Html::script('https://code.jquery.com/jquery-3.2.1.js') }}
         {{ Html::script('https://code.jquery.com/jquery-3.2.1.min.js') }}
+
 
         <!-- Scripts -->
         <script>

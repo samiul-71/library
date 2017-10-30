@@ -94,9 +94,14 @@
                                 </td>
                                 <td> : </td>
                                 <td>
+                                    {{--{!! dd($medicine) !!}--}}
                                     {{--Multiple Keywords will be with Comma (,) Separator--}}
-                                    Keywords: {{ $medicine->indications_key_words }}<br>
-                                    Details: {{ $medicine->indications_details }}
+                                    @foreach($medicine->indications_keywords as $keyword)
+                                        {{--{{ $keyword }},&nbsp;--}}
+                                        <li><ol style="padding: 0; margin-bottom: 5px;">{{ $keyword }}</ol></li>
+                                    @endforeach
+                                    <br>
+                                    <p> {{ $medicine->indications_details }} </p>
                                 </td>
                             </tr>
 
@@ -176,7 +181,7 @@
 
                             <tr>
                                 <td class="pull-right">
-                                    <strong>therapeutic_class</strong>
+                                    <strong>Therapeutic Class</strong>
                                 </td>
                                 <td> : </td>
                                 <td>
@@ -186,7 +191,7 @@
 
                             <tr>
                                 <td class="pull-right">
-                                    <strong>mode_of_actions</strong>
+                                    <strong>Mode of Actions</strong>
                                 </td>
                                 <td> : </td>
                                 <td>
