@@ -32,23 +32,27 @@ return [
             'trash'     => 'Trash',
 
             'medicine-type' => [
-                'create' => 'Add/Create New Medicine Type'
+                'create' => 'Add/Create new Medicine Type'
             ],
 
             'generic-name' => [
-                'create' => 'Add/Create New Medicine Generic Name'
+                'create' => 'Add/Create new Medicine Generic Name'
             ],
 
             'indications' => [
-                'create' => 'Add/Create New Indication'
+                'create' => 'Add/Create new Indication'
             ],
 
             'medicine' => [
-                'create' => 'Add/Create New Medicine'
+                'create' => 'Add/Create new Medicine'
             ],
 
             'pharmaceutical-companies'  => [
-                'create'    => 'Add/Create New Pharmaceutical Company'
+                'create'    => 'Add/Create new Pharmaceutical Company'
+            ],
+
+            'lab-test'  => [
+                'create'    => 'Add/Create new Lab Test'
             ],
         ],
         'hide'              => 'Hide',

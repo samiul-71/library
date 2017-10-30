@@ -82,3 +82,20 @@ Route::resource('pharmaceutical-companies', 'PharmaceuticalCompaniesController',
     'update'    => 'pharmaceutical-companies.update',
     'destroy'   => 'pharmaceutical-companies.destroy'
 ]]);
+
+/**
+ * Routes for accessing/adding Lab Test info.
+ */
+Route::get('lab-test/trash', 'LabTestController@trash')->name('lab-test.trash');
+Route::patch('lab-test/{id}/restore', 'LabTestController@restore')->name('lab-test.restore');
+Route::delete('lab-test/{id}/permanently-delete', 'LabTestController@permanentlyDelete')->name('lab-test.permanently-delete');
+
+Route::resource('lab-test', 'LabTestController', ['names' => [
+    'index'     => 'lab-test.index',
+    'create'    => 'lab-test.create',
+    'store'     => 'lab-test.store',
+    'show'      => 'lab-test.show',
+    'edit'      => 'lab-test.edit',
+    'update'    => 'lab-test.update',
+    'destroy'   => 'lab-test.destroy'
+]]);

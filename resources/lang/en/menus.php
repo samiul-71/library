@@ -52,6 +52,7 @@ return [
             'generic-name'              => 'Generic Name',
             'medicine'                  => 'Medicine List',
             'pharmaceutical-companies'  => 'Pharmaceutical Companies',
+            'lab-test'                  => 'Lab Test',
         ],
     ],
 
