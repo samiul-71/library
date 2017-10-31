@@ -16,7 +16,7 @@
             </div>
             <div class="form-group col-md-2">
                 {!! Form::label('unit_price', 'Unit Price') !!}
-                {!! Form::text('unit_price', old('unit_price'), ['id'=>'unit_price', 'class' => 'form-control unit_price', 'placeholder' => 'Unit Price']) !!}
+                {!! Form::number('unit_price', old('unit_price'), ['id'=>'unit_price', 'class' => 'form-control unit_price', 'placeholder' => 'Unit Price']) !!}
             </div>
             <div class="form-group col-md-2">
                 {!! Form::label('currency', 'Currency') !!}
@@ -37,10 +37,10 @@
                 {!! Form::label('pharma_id', 'Select Pharmaceuticals') !!}
                 {!! Form::select('pharma_id', ['' => 'Choose Pharmaceuticals'] + $pharmaceuticals, old('pharma_id'), ['id'=>'pharmaceutical', 'class' => 'form-control select2 pharmaceutical']) !!}
             </div>
-            <div class="form-group col-md-3">
-            {!! Form::label('medicine_class_id', 'Select Medicine Class') !!}
-            {!! Form::select('medicine_class_id', ['' => 'Choose Medicine Class'] + $medicine_classes, old('medicine_class_id'), ['id'=>'medicine_class', 'class' => 'form-control select2 medicine_class']) !!}
-            </div>
+            {{--<div class="form-group col-md-3">--}}
+                {{--{!! Form::label('medicine_class_id', 'Select Medicine Class') !!}--}}
+                {{--{!! Form::select('medicine_class_id', ['' => 'Choose Medicine Class'] + $medicine_classes, old('medicine_class_id'), ['id'=>'medicine_class', 'class' => 'form-control select2 medicine_class']) !!}--}}
+            {{--</div>--}}
         </div>
 
         <div class="form-row">

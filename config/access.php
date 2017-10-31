@@ -24,6 +24,15 @@ return [
     */
     'lab_test_categories_table' => 'lab_test_categories',
 
+    /*
+     * Medicine Indications Table is used to store Indications Keywords
+     */
+    'medicine_indications_table' => 'indications',
+
+    /*
+     * Pharmaceuticals Table is used to store Pharmaceutical Companies Name and Some Details Information
+     */
+    'pharmaceuticals_table' => 'pharmaceutical_companies',
 
     /*
      * Role model used by Access to create correct relations. Update the role if it is in a different namespace.
