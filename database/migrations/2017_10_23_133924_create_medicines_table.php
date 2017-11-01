@@ -39,6 +39,7 @@ class CreateMedicinesTable extends Migration
             $table->text('interactions')->nullable();
 
             $table->text('pack_size')->nullable();
+            $table->integer('no_per_unit')->nullable();
             $table->integer('unit_price')->nullable();
             $table->text('currency')->nullable();
 
