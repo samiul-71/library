@@ -208,6 +208,34 @@
                                     {{ $medicine->interactions }}
                                 </td>
                             </tr>
+                            <tr>
+                                <td class="pull-right">
+                                    <strong>Pack Size</strong>
+                                </td>
+                                <td> : </td>
+                                <td>
+                                    {{ $medicine->pack_size }} units
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="pull-right">
+                                    <strong>No. Per Unit</strong>
+                                </td>
+                                <td> : </td>
+                                <td>
+                                    {{ $medicine->no_per_unit }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="pull-right">
+                                    <strong>Price</strong>
+                                </td>
+                                <td> : </td>
+                                <td>
+                                    {{ $medicine->currency }}
+                                    {{ $medicine->unit_price }}
+                                </td>
+                            </tr>
 
                             </tbody>
                         </table>
