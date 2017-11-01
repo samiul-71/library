@@ -99,3 +99,20 @@ Route::resource('lab-test', 'LabTestController', ['names' => [
     'update'    => 'lab-test.update',
     'destroy'   => 'lab-test.destroy'
 ]]);
+
+/**
+ * Routes for accessing/adding Allergies info.
+ */
+Route::get('allergies/trash', 'AllergiesController@trash')->name('allergies.trash');
+Route::patch('allergies/{id}/restore', 'AllergiesController@restore')->name('allergies.restore');
+Route::delete('allergies/{id}/permanently-delete', 'AllergiesController@permanentlyDelete')->name('allergies.permanently-delete');
+
+Route::resource('allergies', 'AllergiesController', ['names' => [
+    'index'     => 'allergies.index',
+    'create'    => 'allergies.create',
+    'store'     => 'allergies.store',
+    'show'      => 'allergies.show',
+    'edit'      => 'allergies.edit',
+    'update'    => 'allergies.update',
+    'destroy'   => 'allergies.destroy'
+]]);

@@ -31,52 +31,59 @@
         <ul class="sidebar-menu">
             {{--<li class="header">{{ trans('menus.backend.sidebar.general') }}</li>--}}
 
-            <li class="{{ active_class(Active::checkUriPattern('admin/dashboard')) }}">
+            <li class="{{ active_class(Active::checkUriPattern('admin/dashboard*')) }}">
                 <a href="{{ route('admin.dashboard') }}">
                     <i class="fa fa-dashboard"></i>
                     <span>{{ trans('menus.backend.sidebar.dashboard') }}</span>
                 </a>
             </li>
 
-            <li class="{{ active_class(Active::checkUriPattern('admin/medicine-type')) }}">
+            <li class="{{ active_class(Active::checkUriPattern('admin/medicine-type*')) }}">
                 <a href="{{ route('admin.medicine-type.index') }}">
                     <i class="fa fa-plus-square"></i>
                     <span>{{ trans('menus.backend.sidebar.medicine-type') }}</span>
                 </a>
             </li>
 
-            <li class="{{ active_class(Active::checkUriPattern('admin/indications')) }}">
+            <li class="{{ active_class(Active::checkUriPattern('admin/indications*')) }}">
                 <a href="{{ route('admin.indications.index') }}">
                     <i class="fa fa-hospital-o"></i>
                     <span>{{ trans('menus.backend.sidebar.indications') }}</span>
                 </a>
             </li>
 
-            <li class="{{ active_class(Active::checkUriPattern('admin/generic-name')) }}">
+            <li class="{{ active_class(Active::checkUriPattern('admin/generic-name*')) }}">
                 <a href="{{ route('admin.generic-name.index') }}">
                     <i class="fa fa-h-square"></i>
                     <span>{{ trans('menus.backend.sidebar.generic-name') }}</span>
                 </a>
             </li>
 
-            <li class="{{ active_class(Active::checkUriPattern('admin/pharmaceutical-companies')) }}">
+            <li class="{{ active_class(Active::checkUriPattern('admin/pharmaceutical-companies*')) }}">
                 <a href="{{ route('admin.pharmaceutical-companies.index') }}">
                     <i class="fa fa-industry"></i>
                     <span>{{ trans('menus.backend.sidebar.pharmaceutical-companies') }}</span>
                 </a>
             </li>
 
-            <li class="{{ active_class(Active::checkUriPattern('admin/lab-test')) }}">
+            <li class="{{ active_class(Active::checkUriPattern('admin/lab-test*')) }}">
                 <a href="{{ route('admin.lab-test.index') }}">
                     <i class="fa fa-heartbeat"></i>
                     <span>{{ trans('menus.backend.sidebar.lab-test') }}</span>
                 </a>
             </li>
 
-            <li class="{{ active_class(Active::checkUriPattern('admin/medicine')) }}">
+            <li class="{{ active_class(Active::checkUriPattern('admin/medicine*')) }}">
                 <a href="{{ route('admin.medicine.index') }}">
                     <i class="fa fa-medkit"></i>
                     <span>{{ trans('menus.backend.sidebar.medicine') }}</span>
+                </a>
+            </li>
+
+            <li class="{{ active_class(Active::checkUriPattern('admin/allergies*')) }}">
+                <a href="{{ route('admin.allergies.index') }}">
+                    <i class="fa fa-snowflake-o"></i>
+                    <span>{{ trans('menus.backend.sidebar.allergies') }}</span>
                 </a>
             </li>
 

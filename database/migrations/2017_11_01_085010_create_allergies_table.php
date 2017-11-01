@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMedicineTypesTable extends Migration
+class CreateAllergiesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateMedicineTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('medicine_types', function (Blueprint $table) {
+        Schema::create('allergies', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->string('name', 100);
-            $table->string('code', 100)->nullable();
+            $table->string('allergy_code')->nullable();
+            $table->string('allergy_cause_title');
             $table->text('description')->nullable();
 
             $table->boolean('status')->default(true);
@@ -38,6 +38,6 @@ class CreateMedicineTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('medicine_types');
+        Schema::dropIfExists('allergies');
     }
 }

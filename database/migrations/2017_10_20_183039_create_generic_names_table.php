@@ -18,7 +18,7 @@ class CreateGenericNamesTable extends Migration
 
             $table->string('name', 100);
             $table->string('code', 100)->nullable();
-            $table->string('description', 255)->nullable();
+            $table->text('description')->nullable();
 
             $table->boolean('status')->default(true);
 

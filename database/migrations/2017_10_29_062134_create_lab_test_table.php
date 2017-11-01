@@ -23,8 +23,8 @@ class CreateLabTestTable extends Migration
 
             $table->string('methodology')->nullable();
             $table->string('code')->nullable();
-            $table->string('description')->nullable();
-            $table->string('additional_information')->nullable();
+            $table->text('description')->nullable();
+            $table->text('additional_information')->nullable();
             $table->integer('cost')->nullable();
             $table->text('currency')->nullable();
 

@@ -53,6 +53,7 @@ return [
             'medicine'                  => 'Medicine List',
             'pharmaceutical-companies'  => 'Pharmaceutical Companies',
             'lab-test'                  => 'Lab Test',
+            'allergies'                 => 'Allergies Information',
         ],
     ],
 

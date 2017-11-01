@@ -54,6 +54,10 @@ return [
             'lab-test'  => [
                 'create'    => 'Add/Create new Lab Test'
             ],
+
+            'allergies'  => [
+                'create'    => 'Add/Create new Allergy Info'
+            ],
         ],
         'hide'              => 'Hide',
         'inactive'          => 'Inactive',
