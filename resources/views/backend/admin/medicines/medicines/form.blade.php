@@ -11,7 +11,7 @@
             </div>
             <div class="form-group col-md-3">
                 {!! Form::label('code', 'Medicine Code') !!}
-                {!! Form::text('code', old('code'), ['id'=>'code', 'class' => 'form-control code', 'placeholder' => 'Provide a Medicine Code']) !!}
+                {!! Form::text('code', old('code'), ['id'=>'code', 'class' => 'form-control code', 'placeholder' => 'Provide a Medicine Code', 'required' => 'required']) !!}
             </div>
         </div>
 

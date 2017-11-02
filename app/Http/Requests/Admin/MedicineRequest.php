@@ -24,8 +24,9 @@ class MedicineRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'  => 'required|min:3',
-//            'code'  => 'required|min:2',
+            'name'              => 'required|min:3',
+            'code'              => 'required|min:2',
+            'medicine_type_id'  => 'required'
         ];
     }
 
@@ -37,7 +38,11 @@ class MedicineRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required'   => 'Name Field is Required and Minimum value is 3'
+            'name.required'             => 'Name Field is Required',
+            'name.min'                  => 'Name Field must consist of at least 3 characters',
+            'code.required'             => 'Medicine Code Field is Required',
+            'code.min'                  => 'Medicine Code Field must consist of at least 3 characters',
+            'medicine_type_id.required' => 'Medicine Type Field is required'
         ];
     }
 }
