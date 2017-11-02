@@ -1,51 +1,57 @@
 <div class="row">
     <div class="col-sm-12">
         <div class="form-row">
-            <div class="form-group col-md-4">
+            <div class="form-group col-md-5">
                 {!! Form::label('name', 'Medicine Name') !!}
                 {!! Form::text('name', old('name'), ['id'=>'name', 'class' => 'form-control name', 'placeholder' => 'Medicine Name', 'required' => 'required']) !!}
             </div>
-            <div class="form-group col-md-3">
+            <div class="form-group col-md-4">
                 {!! Form::label('strength', 'Strength') !!}
                 {!! Form::text('strength', old('strength'), ['id'=>'strength', 'class' => 'form-control strength', 'placeholder' => 'Example : 500mg']) !!}
             </div>
             <div class="form-group col-md-3">
-                {!! Form::label('pharma_id', 'Select Pharmaceuticals') !!}
-                {!! Form::select('pharma_id', ['' => 'Choose Pharmaceuticals'] + $pharmaceuticals, old('pharma_id'), ['id'=>'pharmaceutical', 'class' => 'form-control select2 pharmaceutical']) !!}
+                {!! Form::label('code', 'Medicine Code') !!}
+                {!! Form::text('code', old('code'), ['id'=>'code', 'class' => 'form-control code', 'placeholder' => 'Provide a Medicine Code']) !!}
             </div>
-            <div class="form-group col-md-2">
-                {!! Form::label('pack_size', 'Pack Size') !!}
-                {!! Form::text('pack_size', old('pack_size'), ['id'=>'pack_size', 'class' => 'form-control pack_size', 'placeholder' => 'Pack Size']) !!}
-            </div>
-
         </div>
 
         <div class="form-row">
-            <div class="form-group col-md-3">
+            <div class="form-group col-md-4">
                 {!! Form::label('medicine_type_id', 'Select Medicine Type') !!}
                 {!! Form::select('medicine_type_id', ['' => 'Choose Medicine Type'] + $medicine_types, old('medicine_type_id'), ['id' => 'medicine_type', 'class' => 'form-control select2 medicine_type', 'required' => 'required'])  !!}
             </div>
 
-            <div class="form-group col-md-3">
+            <div class="form-group col-md-4">
                 {!! Form::label('generic_name_id', 'Select Generic Name') !!}
                 {!! Form::select('generic_name_id', ['' => 'Choose Generic Name'] + $generic_names, old('generic_name_id'), ['id'=>'generic_name', 'class' => 'form-control select2 generic_name']) !!}
             </div>
-            <div class="form-group col-md-2">
-                {!! Form::label('no_per_unit', 'No. per Unit') !!}
-                {!! Form::number('no_per_unit', old('no_per_unit'), ['id'=>'no_per_unit', 'class' => 'form-control no_per_unit', 'placeholder' => 'No. per unit']) !!}
-            </div>
-            <div class="form-group col-md-2">
-                {!! Form::label('unit_price', 'Unit Price') !!}
-                {!! Form::number('unit_price', old('unit_price'), ['id'=>'unit_price', 'class' => 'form-control unit_price', 'placeholder' => 'Unit Price']) !!}
-            </div>
-            <div class="form-group col-md-2">
-                {!! Form::label('currency', 'Currency') !!}
-                {!! Form::select('currency', ['BDT' => 'BDT', 'USD' => 'USD'], old('currency'), ['id'=>'medicine_type', 'class' => 'form-control'])  !!}
+            <div class="form-group col-md-4">
+                {!! Form::label('pharma_id', 'Select Pharmaceuticals') !!}
+                {!! Form::select('pharma_id', ['' => 'Choose Pharmaceuticals'] + $pharmaceuticals, old('pharma_id'), ['id'=>'pharmaceutical', 'class' => 'form-control select2 pharmaceutical']) !!}
             </div>
             {{--<div class="form-group col-md-3">--}}
                 {{--{!! Form::label('medicine_class_id', 'Select Medicine Class') !!}--}}
                 {{--{!! Form::select('medicine_class_id', ['' => 'Choose Medicine Class'] + $medicine_classes, old('medicine_class_id'), ['id'=>'medicine_class', 'class' => 'form-control select2 medicine_class']) !!}--}}
             {{--</div>--}}
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-3">
+                {!! Form::label('pack_size', 'Pack Size') !!}
+                {!! Form::text('pack_size', old('pack_size'), ['id'=>'pack_size', 'class' => 'form-control pack_size', 'placeholder' => 'Pack Size']) !!}
+            </div>
+            <div class="form-group col-md-3">
+                {!! Form::label('no_per_unit', 'No. per Unit') !!}
+                {!! Form::number('no_per_unit', old('no_per_unit'), ['id'=>'no_per_unit', 'class' => 'form-control no_per_unit', 'placeholder' => 'No. per unit']) !!}
+            </div>
+            <div class="form-group col-md-3">
+                {!! Form::label('unit_price', 'Unit Price') !!}
+                {!! Form::number('unit_price', old('unit_price'), ['id'=>'unit_price', 'class' => 'form-control unit_price', 'placeholder' => 'Unit Price']) !!}
+            </div>
+            <div class="form-group col-md-3">
+                {!! Form::label('currency', 'Currency') !!}
+                {!! Form::select('currency', ['BDT' => 'BDT', 'USD' => 'USD'], old('currency'), ['id'=>'medicine_type', 'class' => 'form-control'])  !!}
+            </div>
         </div>
 
         <div class="form-row">
