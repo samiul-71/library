@@ -8,7 +8,6 @@ use App\Models\Admin\Indication;
 use App\Models\Admin\Medicine;
 use App\Models\Admin\MedicineType;
 use App\Models\Admin\PharmaceuticalCompany;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class MedicinesController extends Controller
@@ -133,6 +132,11 @@ class MedicinesController extends Controller
                 $keyWord = Indication::where('id', $indicationID)->value('key_word');
                 array_push($indicationKeyWords, $keyWord);
             }
+            $medicineData['indications_ids']        = implode(',', $indicationIDs);
+            $medicineData['indications_keywords']   = implode(',', $indicationKeyWords);
+        } else {
+            $medicineData['indications_ids']        = null;
+            $medicineData['indications_keywords']   = null;
         }
 
         $pharmaceuticalsID  = $request->input('pharma_id');
@@ -143,8 +147,6 @@ class MedicinesController extends Controller
 
         $medicineData['medicine_type_name']     = $medicineTypeName;
         $medicineData['generic_name']           = $genericName;
-        $medicineData['indications_ids']        = implode(',', $indicationIDs);
-        $medicineData['indications_keywords']   = implode(',', $indicationKeyWords);
         $medicineData['pharma_name']            = $pharmaName;
 //        $medicineData['class_name']             = $className;
 
@@ -278,12 +280,15 @@ class MedicinesController extends Controller
                 $keyWord = Indication::where('id', $indicationID)->value('key_word');
                 array_push($indicationKeyWords, $keyWord);
             }
+            $medicineData['indications_ids']        = implode(',', $indicationIDs);
+            $medicineData['indications_keywords']   = implode(',', $indicationKeyWords);
+        } else {
+            $medicineData['indications_ids']        = null;
+            $medicineData['indications_keywords']   = null;
         }
 
         $medicineData['medicine_type_name']     = $medicineTypeName;
         $medicineData['generic_name']           = $genericName;
-        $medicineData['indications_ids']        = implode(',', $indicationIDs);
-        $medicineData['indications_keywords']   = implode(',', $indicationKeyWords);
         $medicineData['pharma_name']            = $pharmaName;
 //        $medicineData['class_name']             = $className;
 
