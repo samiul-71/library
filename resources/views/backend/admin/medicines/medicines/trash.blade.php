@@ -53,7 +53,7 @@
                                 @foreach($medicines as $medicine)
                                     <tr>
                                         <td>
-                                            {!! $medicine->name !!}
+                                            {!! $medicine->name !!} {!! $medicine->strength !!} ({!! $medicine->medicine_type_name !!})
                                         </td>
                                         <td>
                                             {!! $medicine->code !!}

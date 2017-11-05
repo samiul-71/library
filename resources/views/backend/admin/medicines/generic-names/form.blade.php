@@ -5,16 +5,16 @@
             <div class="form-group col-sm-12">
                 {!! Form::label('name', 'Generic Name', ['class' => 'col-sm-2 col-form-label']) !!}
                 <div class="col-sm-6">
-                    {!! Form::text('name', old('name'), ['id'=>'name', 'class' => 'form-control name', 'placeholder' => 'Medicine Type Name', 'required' => 'required', 'data-error' => 'Name Must be Alphabetical']) !!}
+                    {!! Form::text('name', old('name'), ['id'=>'name', 'class' => 'form-control name', 'placeholder' => 'Generic Name', 'required' => 'required', 'data-error' => 'Name Must be Alphabetical']) !!}
                 </div>
                 <div class="col-sm-3">
-                    {!! Form::text('code', old('code'), ['id'=>'code', 'class' => 'form-control code', 'placeholder' => 'Medicine Type Code']) !!}
+                    {!! Form::text('code', old('code'), ['id'=>'code', 'class' => 'form-control code', 'placeholder' => 'Generic Name Code', 'required' => 'required']) !!}
                 </div>
             </div>
             <div class="form-group col-sm-12">
                 {!! Form::label('description', 'Description', ['class' => 'col-sm-2 col-form-label']) !!}
                 <div class="col-sm-10">
-                    {!! Form::textarea('description', old('description'), ['id'=>'description', 'class' => 'form-control description', 'placeholder' => 'Medicine Type Description', 'rows' => 2]) !!}
+                    {!! Form::textarea('description', old('description'), ['id'=>'description', 'class' => 'form-control description', 'placeholder' => 'Enter Description', 'rows' => 2]) !!}
                 </div>
             </div>
             <div class="form-group col-sm-12">

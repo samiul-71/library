@@ -280,7 +280,7 @@ class GenericNameController extends Controller
 
     public function checkMedicineGenericName($medicineGenericName){
 
-        $result = GenericName::where('name', $medicineGenericName)->first();
+        $result = GenericName::withTrashed()->where('name', $medicineGenericName)->first();
         return $result;
     }
 
@@ -292,7 +292,7 @@ class GenericNameController extends Controller
 
     public function checkMedicineGenericNameForUpdate($medicineGenericName, $id){
 
-        $result = GenericName::where('name', $medicineGenericName)->where('id', '!=', $id)->first();
+        $result = GenericName::withTrashed()->where('name', $medicineGenericName)->where('id', '!=', $id)->first();
         return $result;
     }
 

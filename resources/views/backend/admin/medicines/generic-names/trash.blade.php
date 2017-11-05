@@ -53,9 +53,8 @@
                                 @foreach( $medicine_generic_names as $generic_name)
                                     <tr>
                                         <td>
-                                            <a href="{{ route("admin.generic-name.show", $generic_name->id) }}" >
-                                                {!! $generic_name->name !!}
-                                            </a>
+                                            {!! $generic_name->name !!}
+
                                         </td>
                                         <td>
                                             {!! $generic_name->code !!}

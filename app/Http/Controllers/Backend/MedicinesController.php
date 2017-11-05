@@ -110,7 +110,7 @@ class MedicinesController extends Controller
         $medicineCodeExist = $this->checkMedicineCode($request->input('code'));
 
         if($medicineNameExist) {
-            return redirect()->back()->with('flash_danger', 'Your Given Medicine Already Exists. Please Insert a Different Medicine Name with different Medicine Type and Strength.')->withInput($request->all);
+            return redirect()->back()->with('flash_danger', 'Your Given Medicine Name with provided Medicine Type and Strength already exists. Please Insert a Different Medicine Name with different Medicine Type and Strength.')->withInput($request->all);
         }
         if($medicineCodeExist) {
             return redirect()->back()->with('flash_danger', 'Your Given Code of Medicine Already Exists. Please Insert a Different Code for Medicine.')->withInput($request->all);
@@ -252,7 +252,7 @@ class MedicinesController extends Controller
         $medicineCodeExist = $this->checkMedicineCodeForUpdate($request->input('code'), $id);
 
         if($medicineNameExist) {
-            return redirect()->back()->with('flash_danger', 'Your Given Medicine Name Already Exists. Please Insert a Different Medicine Name with different Medicine Type and Strength.')->withInput($request->all);
+            return redirect()->back()->with('flash_danger', 'Your Given Medicine Name with provided Medicine Type and Strength already exists. Please Insert a Different Medicine Name with different Medicine Type and Strength.')->withInput($request->all);
         }
         if($medicineCodeExist) {
             return redirect()->back()->with('flash_danger', 'Your Given Code of Medicine Already Exists. Please Insert a Different Code for Medicine.')->withInput($request->all);
@@ -367,7 +367,7 @@ class MedicinesController extends Controller
 
     public function checkMedicineName($medicineName, $medicineStrength, $medicineTypeID){
 
-        $result = Medicine::where('name', $medicineName)->where('strength', $medicineStrength)->where('medicine_type_id', $medicineTypeID)->first();
+        $result = Medicine::withTrashed()->where('name', $medicineName)->where('strength', $medicineStrength)->where('medicine_type_id', $medicineTypeID)->first();
         return $result;
     }
 
@@ -379,7 +379,7 @@ class MedicinesController extends Controller
 
     public function checkMedicineForUpdate($medicineName, $medicineStrength, $medicineTypeID, $id){
 
-        $result = Medicine::where('name', $medicineName)->where('strength', $medicineStrength)->where('medicine_type_id', $medicineTypeID)->where('id', '!=', $id)->first();
+        $result = Medicine::withTrashed()->where('name', $medicineName)->where('strength', $medicineStrength)->where('medicine_type_id', $medicineTypeID)->where('id', '!=', $id)->first();
         return $result;
     }
 
