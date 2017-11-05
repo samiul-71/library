@@ -13,8 +13,14 @@
             </div>
             <div class="form-group col-sm-12">
                 {!! Form::label('description', 'Description', ['class' => 'col-sm-2 col-form-label']) !!}
-                <div class="col-sm-6">
+                <div class="col-sm-10">
                     {!! Form::textarea('description', old('description'), ['id'=>'description', 'class' => 'form-control description', 'placeholder' => 'Medicine Type Description', 'rows' => 2]) !!}
+                </div>
+            </div>
+            <div class="form-group col-sm-12">
+                {!! Form::label('indications_ids', 'Choose Indication Keyword(s)', ['class' => 'col-sm-2 col-form-label']) !!}
+                <div class="col-sm-6 indications_keyword">
+                    {!! Form::select('indications_ids[]', $indications, old('indications_ids[]'), ['id'=>'indications_keyword', 'class' => 'form-control indications_keyword', 'multiple' => 'multiple']) !!}
                 </div>
                 <div class="col-sm-4">
                     {!! Form::label('', '', ['class' => 'col-form-label']) !!}<br>

@@ -39,62 +39,66 @@
                 <div class="box-body">
                     @if(count($medicines))
                         <div class="table-responsive">
-                        <table class="table table-bordered table-striped table-hover table-condensed medicine-table" id="medicine-table">
-                            <thead>
+                            <table class="table table-bordered table-striped table-hover table-condensed medicine-table" id="medicine-table">
+                                <thead>
                                 <tr>
                                     <th>Medicine Name</th>
                                     <th>Code</th>
                                     <th>Genre</th>
                                     <th>Manufacturer</th>
-                                    <th>Pack & Price</th>
+                                    <th>Pack size & Price</th>
                                     <th>Status</th>
                                     <th class="text-center" style="width: 120px;">Action</th>
                                 </tr>
-                            </thead>
-                            <tbody>
-                            @foreach($medicines as $medicine)
-                                <tr>
-                                    <td>
-                                        <a href="{{ route("admin.medicine.show", $medicine->id) }}" >
-                                            {!! $medicine->name !!} {!! $medicine->strength !!} ({!! $medicine->medicine_type_name !!})
-                                        </a>
-                                    </td>
-                                    <td>
-                                        {!! $medicine->code !!}
-                                    </td>
-                                    <td>
-                                        {!! $medicine->generic_name !!}
-                                    </td>
-                                    <td>
-                                        {!! $medicine->pharma_name !!}
-                                    </td>
-                                    <td>
-                                        {!! $medicine->pack_size !!} pcs.
-                                        {!! $medicine->unit_price !!}
-                                        {!! $medicine->currency !!}
-                                    </td>
-                                    <td>
-                                        @if($medicine->status && $medicine->status == 1)
-                                            {!! 'Publish' !!}
-                                        @else
-                                            {!! 'Not Publish' !!}
-                                        @endif
-                                    </td>
-                                    <td style="width: 120px;">
-                                        <a class="btn btn-xs btn-primary" data-toggle="tooltip" data-placement="top" title="Edit" href="{{ route("admin.medicine.edit", $medicine->id) }}">
-                                            <i class="fa fa-pencil"></i>
-                                            {!! 'Edit' !!}
-                                        </a>
-                                        <a class="btn btn-xs btn-info" data-toggle="tooltip" data-placement="top" title="Show" href="{{ route("admin.medicine.show", $medicine->id) }}">
-                                            <i class="fa fa-list"></i>
-                                            {!! 'Show' !!}
-                                        </a>
-                                    </td>
-                                </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
-                    </div>
+                                </thead>
+                                <tbody>
+                                @foreach($medicines as $medicine)
+                                    <tr>
+                                        <td>
+                                            <a href="{{ route("admin.medicine.show", $medicine->id) }}" >
+                                                {!! $medicine->name !!} {!! $medicine->strength !!} ({!! $medicine->medicine_type_name !!})
+                                            </a>
+                                        </td>
+                                        <td>
+                                            {!! $medicine->code !!}
+                                        </td>
+                                        <td>
+                                            {!! $medicine->generic_name !!}
+                                        </td>
+                                        <td>
+                                            {!! $medicine->pharma_name !!}
+                                        </td>
+                                        <td>
+                                            @if($medicine->pack_size)
+                                                {!! $medicine->pack_size !!} pcs.
+                                            @endif
+                                            @if($medicine->unit_price)
+                                                {!! $medicine->currency !!}
+                                                {!! $medicine->unit_price !!}
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @if($medicine->status && $medicine->status == 1)
+                                                {!! 'Publish' !!}
+                                            @else
+                                                {!! 'Not Publish' !!}
+                                            @endif
+                                        </td>
+                                        <td style="width: 120px;">
+                                            <a class="btn btn-xs btn-primary" data-toggle="tooltip" data-placement="top" title="Edit" href="{{ route("admin.medicine.edit", $medicine->id) }}">
+                                                <i class="fa fa-pencil"></i>
+                                                {!! 'Edit' !!}
+                                            </a>
+                                            <a class="btn btn-xs btn-info" data-toggle="tooltip" data-placement="top" title="Show" href="{{ route("admin.medicine.show", $medicine->id) }}">
+                                                <i class="fa fa-list"></i>
+                                                {!! 'Show' !!}
+                                            </a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                     @else
                         <div class="col-sm-12 text-center" style="padding: 150px 0;">
                             <h1 style="opacity: 0.3">You don't have any Medicine Item yet.</h1>

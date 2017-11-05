@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateGenericNamesTable extends Migration
+class CreateGenericNamesIndicationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,11 @@ class CreateGenericNamesTable extends Migration
      */
     public function up()
     {
-        Schema::create('generic_names', function (Blueprint $table) {
-            $table->increments('id');
+        Schema::create('generic_name_indication', function (Blueprint $table) {
+            $table->bigIncrements('id');
 
-            $table->string('name', 100);
-            $table->string('code', 100)->nullable();
-            $table->text('description')->nullable();
-            $table->string('indications_ids', 255)->nullable();
-            $table->string('indications_keywords', 255)->nullable();
-
-            $table->boolean('status')->default(true);
+            $table->integer('generic_name_id');
+            $table->integer('indication_id');
 
             $table->integer('created_by')->nullable();
             $table->integer('updated_by')->nullable();
@@ -30,6 +25,8 @@ class CreateGenericNamesTable extends Migration
 
             $table->softDeletes();
             $table->timestamps();
+
+            $table->unique(['generic_name_id', 'indication_id']);
         });
     }
 
@@ -40,6 +37,6 @@ class CreateGenericNamesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('generic_names');
+        Schema::dropIfExists('generic_name_indication');
     }
 }

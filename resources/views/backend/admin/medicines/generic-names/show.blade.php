@@ -67,6 +67,17 @@
                             </tr>
                             <tr>
                                 <td class="pull-right">
+                                    <strong>Indications</strong>
+                                </td>
+                                <td> : </td>
+                                <td>
+                                    @foreach($generic_name->indications_keywords as $keyword)
+                                        <li><ol style="padding: 0; margin-bottom: 5px;">{{ $keyword }}</ol></li>
+                                    @endforeach
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="pull-right">
                                     <strong>Status</strong>
                                 </td>
                                 <td> : </td>
