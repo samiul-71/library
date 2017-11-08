@@ -17,7 +17,7 @@ class CreateTherapeuticClassGroup extends Migration
             $table->increments('id');
 
             $table->string('name')->nullable();
-            $table->bigInteger('parent_id')->unsigned()->default('0');
+            $table->integer('parent_id')->unsigned()->default('0');
             $table->boolean('status')->default(true);
 
             $table->integer('created_by')->nullable();

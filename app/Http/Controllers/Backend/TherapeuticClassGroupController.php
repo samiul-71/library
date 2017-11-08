@@ -44,7 +44,23 @@ class TherapeuticClassGroupController extends Controller
      */
     public function create()
     {
-        dd('working');
+        $data['module_name']    = $this->module_name;
+        $data['module_title']   = $this->module_title;
+        $data['module_path']    = $this->module_path;
+        $data['module_icon']    = $this->module_icon;
+        $data['module_action']  = "create";
+
+        $data['page_heading']   = ucfirst($data['module_name']);
+        $data['title']          = ucfirst($data['module_name']) . ' ' . ucfirst($data['module_action']);
+
+        $data['therapeutic_class_group_parents']    =   TherapeuticClassGroup::where('parent_id', '0')->orderBy('id')->pluck('name', 'id')->toArray();
+
+        $data['test'] = [
+            1 => "New",
+            2 => "New test"
+        ];
+
+        return view("backend.admin.medicines.therapeutic-class-group.create", $data);
     }
 
     /**
@@ -55,7 +71,7 @@ class TherapeuticClassGroupController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request->all());
     }
 
     /**
