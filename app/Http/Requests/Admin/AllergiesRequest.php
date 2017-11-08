@@ -4,7 +4,7 @@ namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class MedicineRequest extends FormRequest
+class AllergiesRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,9 @@ class MedicineRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'              => 'required|min:3',
-            'code'              => 'required|min:2',
-            'medicine_type_id'  => 'required'
+            'allergy_code'          => 'required|min:2',
+            'allergy_cause_title'   => 'required|min:2'
+            //
         ];
     }
 
@@ -38,11 +38,10 @@ class MedicineRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required'             => 'Name Field is Required',
-            'name.min'                  => 'Name Field must consist of at least 3 characters',
-            'code.required'             => 'Medicine Code Field is Required',
-            'code.min'                  => 'Medicine Code Field must consist of at least 3 characters',
-            'medicine_type_id.required' => 'Medicine Type Field is required'
+            'allergy_code.required'         => 'Allergy Code field is required!',
+            'allergy_code.min'              => 'Allergy code field must consist of at least 2 characters!',
+            'allergy_cause_title.required'  => 'Allergy Cause Title field is required!',
+            'allergy_cause_title.min'       => 'Allergy Cause Title field must consist of at least 2 characters!'
         ];
     }
 }

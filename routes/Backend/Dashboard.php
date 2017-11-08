@@ -99,3 +99,37 @@ Route::resource('lab-test', 'LabTestController', ['names' => [
     'update'    => 'lab-test.update',
     'destroy'   => 'lab-test.destroy'
 ]]);
+
+/**
+ * Routes for accessing/adding Allergies info.
+ */
+Route::get('allergies/trash', 'AllergiesController@trash')->name('allergies.trash');
+Route::patch('allergies/{id}/restore', 'AllergiesController@restore')->name('allergies.restore');
+Route::delete('allergies/{id}/permanently-delete', 'AllergiesController@permanentlyDelete')->name('allergies.permanently-delete');
+
+Route::resource('allergies', 'AllergiesController', ['names' => [
+    'index'     => 'allergies.index',
+    'create'    => 'allergies.create',
+    'store'     => 'allergies.store',
+    'show'      => 'allergies.show',
+    'edit'      => 'allergies.edit',
+    'update'    => 'allergies.update',
+    'destroy'   => 'allergies.destroy'
+]]);
+
+/**
+ *  Routes for accessing/adding Therapeutic Class Group info.
+ */
+Route::get('therapeutic-class-group/trash', 'TherapeuticClassGroupController@trash')->name('therapeutic-class-group.trash');
+Route::patch('therapeutic-class-group/{id}/restore', 'TherapeuticClassGroupController@restore')->name('therapeutic-class-group.restore');
+Route::delete('therapeutic-class-group/{id}/permanently-delete', 'TherapeuticClassGroupController@permanentlyDelete')->name('therapeutic-class-group.permanently-delete');
+
+Route::resource('therapeutic-class-group', 'TherapeuticClassGroupController', ['names' => [
+    'index'     => 'therapeutic-class-group.index',
+    'create'    => 'therapeutic-class-group.create',
+    'store'     => 'therapeutic-class-group.store',
+    'show'      => 'therapeutic-class-group.show',
+    'edit'      => 'therapeutic-class-group.edit',
+    'update'    => 'therapeutic-class-group.update',
+    'destroy'   => 'therapeutic-class-group.destroy'
+]]);

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Requests\Admin\GenericNameRequest;
 use App\Models\Admin\GenericName;
+use App\Models\Admin\Indication;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -59,6 +60,8 @@ class GenericNameController extends Controller
         $data['page_heading']   = ucfirst($data['module_name']);
         $data['title']          = ucfirst($data['module_name']) . ' ' . ucfirst($data['module_action']);
 
+        $data['indications']        = Indication::where('status', true)->orderBy('id')->pluck('key_word', 'id')->toArray();
+
         return view("backend.admin.medicines.generic-names.create", $data);
     }
 
@@ -70,7 +73,6 @@ class GenericNameController extends Controller
      */
     public function store(GenericNameRequest $request)
     {
-//        dd($request->all());
         $medicineGenericNameExist = $this->checkMedicineGenericName($request->input('name'));
         $medicineGenericNameCodeExist = $this->checkMedicineGenericNameCode($request->input('code'));
 
@@ -82,8 +84,30 @@ class GenericNameController extends Controller
         }
 
         $medicineGenericNameData = $request->except('_token');
+
+        $indicationIDs      = $request->input('indications_ids');
+        $indicationKeyWords = [];
+
+        if (count($indicationIDs)){
+            foreach ($indicationIDs as $key => $indicationID) {
+                $keyWord = Indication::where('id', $indicationID)->value('key_word');
+                array_push($indicationKeyWords, $keyWord);
+            }
+            $medicineGenericNameData['indications_ids']        = implode(',', $indicationIDs);
+            $medicineGenericNameData['indications_keywords']   = implode(',', $indicationKeyWords);
+        } else {
+            $medicineGenericNameData['indications_ids']        = null;
+            $medicineGenericNameData['indications_keywords']   = null;
+        }
+
         $medicineGenericName = GenericName::create($medicineGenericNameData);
+
         $message = 'Your Medicine Generic Name has been Created/Added Successfully';
+
+        if (count($indicationIDs)) {
+            $genericName = GenericName::find($medicineGenericName->id);
+            $genericName->indications()->sync($indicationIDs);
+        }
 
         return redirect()->route("admin.generic-name.index")->with('flash_success', '<i class="fa fa-check"></i> ' . $message);
     }
@@ -109,6 +133,8 @@ class GenericNameController extends Controller
 
         $data['generic_name']  = GenericName::findOrFail($id);
 
+        $data['generic_name']['indications_keywords'] = explode(',', $data['generic_name']['indications_keywords']);
+
         return view("backend.admin.medicines.generic-names.show", $data);
     }
 
@@ -131,8 +157,10 @@ class GenericNameController extends Controller
         $data['page_heading']   = ucfirst($data['module_name']);
         $data['title']          = ucfirst($data['module_name']) . ' ' . ucfirst($data['module_action']);
 
-        $data['generic_name']  = GenericName::findOrFail($id);
+        $data['generic_name']   = GenericName::findOrFail($id);
 
+        $data['indications']        = Indication::where('status', true)->orderBy('id')->pluck('key_word', 'id')->toArray();
+        $data['generic_name']['indications_ids'] = explode(',', $data['generic_name']['indications_ids']);
         return view("backend.admin.medicines.generic-names.edit", $data);
     }
 
@@ -157,9 +185,30 @@ class GenericNameController extends Controller
 
         $medicineGenericName = GenericName::findOrFail($id);
         $medicineGenericNameData = $request->except('_token');
+
+        $indicationIDs      = $request->input('indications_ids');
+        $indicationKeyWords = [];
+
+        if (count($indicationIDs)){
+            foreach ($indicationIDs as $key => $indicationID) {
+                $keyWord = Indication::where('id', $indicationID)->value('key_word');
+                array_push($indicationKeyWords, $keyWord);
+            }
+            $medicineGenericNameData['indications_ids']        = implode(',', $indicationIDs);
+            $medicineGenericNameData['indications_keywords']   = implode(',', $indicationKeyWords);
+        } else {
+            $medicineGenericNameData['indications_ids']        = null;
+            $medicineGenericNameData['indications_keywords']   = null;
+        }
+
         $medicineGenericName->fill($medicineGenericNameData)->save();
 
         $message = 'Your Selected Medicine Generic Name has been Updated Successfully';
+
+        if (count($indicationIDs)) {
+            $genericName = GenericName::find($medicineGenericName->id);
+            $genericName->indications()->sync($indicationIDs);
+        }
 
         return redirect()->route("admin.generic-name.index")->with('flash_success', '<i class="fa fa-check"></i> ' . $message);
     }
@@ -231,7 +280,7 @@ class GenericNameController extends Controller
 
     public function checkMedicineGenericName($medicineGenericName){
 
-        $result = GenericName::where('name', $medicineGenericName)->first();
+        $result = GenericName::withTrashed()->where('name', $medicineGenericName)->first();
         return $result;
     }
 
@@ -243,7 +292,7 @@ class GenericNameController extends Controller
 
     public function checkMedicineGenericNameForUpdate($medicineGenericName, $id){
 
-        $result = GenericName::where('name', $medicineGenericName)->where('id', '!=', $id)->first();
+        $result = GenericName::withTrashed()->where('name', $medicineGenericName)->where('id', '!=', $id)->first();
         return $result;
     }
 

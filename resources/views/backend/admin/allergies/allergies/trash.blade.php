@@ -27,52 +27,52 @@
                     <h3 class="box-title">{!! ucfirst($module_title) !!} {!! ucfirst($module_action) !!}</h3>
 
                     <div class="box-tools pull-right">
-                        <a href="{!! route('admin.medicine.create') !!}" class="btn btn-xs btn-success">
-                            <i class="fa fa-plus"></i> {!! trans('labels.general.buttons.medicine.create') !!}
+                        <a href="{!! route('admin.allergies.create') !!}" class="btn btn-xs btn-success">
+                            <i class="fa fa-plus"></i> {!! trans('labels.general.buttons.allergies.create') !!}
                         </a>
-                        <a href="{!! route('admin.medicine.index') !!}" class="btn btn-xs btn-info">
+                        <a href="{!! route('admin.allergies.index') !!}" class="btn btn-xs btn-info">
                             <i class="fa fa-list"></i> {!! 'Back to List' !!}
                         </a>
                     </div>
 
                 </div>
                 <div class="box-body">
-                    @if(count($medicines))
+                    @if(count($allergies))
                         <div class="table-responsive">
-                            <table class="table table-bordered table-striped table-hover table-condensed medicine-table" id="medicine-table">
+                            <table class="table table-bordered table-striped table-hover table-condensed allergies-table" id="allergies-table">
                                 <thead>
                                 <tr>
-                                    <th>Type Name</th>
+                                    <th>SL.</th>
                                     <th>Code</th>
-                                    <th>Description</th>
+                                    <th>Allergy Cause Title</th>
                                     <th>Status</th>
                                     <th class="text-center" style="width: 120px;">Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($medicines as $medicine)
+                                @foreach( $allergies as $key => $allergy)
                                     <tr>
                                         <td>
-                                            {!! $medicine->name !!} {!! $medicine->strength !!} ({!! $medicine->medicine_type_name !!})
+                                            {{ ++$key }}
                                         </td>
                                         <td>
-                                            {!! $medicine->code !!}
+                                            {!! $allergy->allergy_code !!}
                                         </td>
                                         <td>
-                                            {!! $medicine->description !!}
+                                            {!! $allergy->allergy_cause_title !!}
                                         </td>
                                         <td>
-                                            @if($medicine->status && $medicine->status == 1)
-                                                {!! 'Publish' !!}
+                                            @if($allergy->status && $allergy->status == 1)
+                                                {!! 'Active' !!}
                                             @else
-                                                {!! 'Not Publish' !!}
+                                                {!! 'Not Active' !!}
                                             @endif
                                         </td>
                                         <td style="width: 140px;">
-                                            <a class="btn btn-info btn-xs  record-restore" data-toggle="tooltip" data-placement="top" title="Restore" href="{{ route("admin.medicine.restore", $medicine->id) }}">
+                                            <a class="btn btn-info btn-xs  record-restore" data-toggle="tooltip" data-placement="top" title="Restore" href="{{ route("admin.allergies.restore", $allergy->id) }}">
                                                 <i class="fa fa-refresh"></i> Restore
                                             </a>
-                                            <a class="btn btn-danger btn-xs record-delete" data-toggle="tooltip" data-placement="top" title="Delete" href="{{ route("admin.medicine.permanently-delete", $medicine->id) }}">
+                                            <a class="btn btn-danger btn-xs record-delete" data-toggle="tooltip" data-placement="top" title="Delete" href="{{ route("admin.allergies.permanently-delete", $allergy->id) }}">
                                                 <i class="fa fa-trash"></i> Delete
                                             </a>
                                         </td>
@@ -83,7 +83,7 @@
                         </div>
                     @else
                         <div class="col-sm-12 text-center" style="padding: 150px 0;">
-                            <h1 style="opacity: 0.3">You don't have any Deleted Medicine</h1>
+                            <h1 style="opacity: 0.3">You don't have any Deleted Allergy Information.</h1>
                         </div>
                     @endif
                 </div>
@@ -96,12 +96,12 @@
 @section('after-scripts')
     <script>
         $(document).ready(function() {
-//            $('#generic_name-table').DataTable();
+//            $('#medicine-type-table').DataTable();
 
             // delete a record
             $("body").on("click", ".record-delete", function(e) {
                 e.preventDefault();
-                var redirectURL = "{{ route('admin.medicine.trash') }}";
+                var redirectURL = "{{ route('admin.allergies.trash') }}";
                 var linkURL = $(this).attr("href");
                 swal({
                     title: "{{ trans('strings.backend.general.are_you_sure') }}",
@@ -131,7 +131,7 @@
             // restore a record
             $("body").on("click", ".record-restore", function(e) {
                 e.preventDefault();
-                var redirectURL = "{{ route('admin.medicine.trash') }}";
+                var redirectURL = "{{ route('admin.allergies.trash') }}";
                 var linkURL = $(this).attr("href");
 
                 swal({

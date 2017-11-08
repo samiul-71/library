@@ -8,7 +8,6 @@ use App\Models\Admin\Indication;
 use App\Models\Admin\Medicine;
 use App\Models\Admin\MedicineType;
 use App\Models\Admin\PharmaceuticalCompany;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class MedicinesController extends Controller
@@ -107,15 +106,15 @@ class MedicinesController extends Controller
     public function store(MedicineRequest $request)
     {
 //        dd($request->all());
-        $medicineNameExist = $this->checkMedicineName($request->input('name'));
-//        $medicineCodeExist = $this->checkMedicineCode($request->input('code'));
+        $medicineNameExist = $this->checkMedicineName($request->input('name'), $request->input('strength'), $request->input('medicine_type_id'));
+        $medicineCodeExist = $this->checkMedicineCode($request->input('code'));
 
         if($medicineNameExist) {
-            return redirect()->back()->with('flash_danger', 'Your Given Medicine Already Exists. Please Insert a Different Medicine Name.')->withInput($request->all);
+            return redirect()->back()->with('flash_danger', 'Your Given Medicine Name with provided Medicine Type and Strength already exists. Please Insert a Different Medicine Name with different Medicine Type and Strength.')->withInput($request->all);
         }
-//        if($medicineCodeExist) {
-//            return redirect()->back()->with('flash_danger', 'Your Given Code of Medicine Already Exists. Please Insert a Different Code for Medicine.')->withInput($request->all);
-//        }
+        if($medicineCodeExist) {
+            return redirect()->back()->with('flash_danger', 'Your Given Code of Medicine Already Exists. Please Insert a Different Code for Medicine.')->withInput($request->all);
+        }
 
         $medicineData = $request->except('_token', 'medicine_class_id', 'indications_ids');
 
@@ -133,6 +132,11 @@ class MedicinesController extends Controller
                 $keyWord = Indication::where('id', $indicationID)->value('key_word');
                 array_push($indicationKeyWords, $keyWord);
             }
+            $medicineData['indications_ids']        = implode(',', $indicationIDs);
+            $medicineData['indications_keywords']   = implode(',', $indicationKeyWords);
+        } else {
+            $medicineData['indications_ids']        = null;
+            $medicineData['indications_keywords']   = null;
         }
 
         $pharmaceuticalsID  = $request->input('pharma_id');
@@ -143,12 +147,10 @@ class MedicinesController extends Controller
 
         $medicineData['medicine_type_name']     = $medicineTypeName;
         $medicineData['generic_name']           = $genericName;
-        $medicineData['indications_ids']        = implode(',', $indicationIDs);
-        $medicineData['indications_keywords']   = implode(',', $indicationKeyWords);
         $medicineData['pharma_name']            = $pharmaName;
 //        $medicineData['class_name']             = $className;
 
-        $medicineData['code'] = $this->randomNumber(6);
+//        $medicineData['code'] = $this->randomNumber(6);
 
         $medicine = Medicine::create($medicineData);
         $message = 'Your Medicine has been Created/Added Successfully';
@@ -246,15 +248,15 @@ class MedicinesController extends Controller
      */
     public function update(MedicineRequest $request, $id)
     {
-        $medicineNameExist = $this->checkMedicineForUpdate($request->input('name'), $id);
-//        $medicineCodeExist = $this->checkMedicineCodeForUpdate($request->input('code'), $id);
+        $medicineNameExist = $this->checkMedicineForUpdate($request->input('name'), $request->input('strength'), $request->input('medicine_type_id'), $id);
+        $medicineCodeExist = $this->checkMedicineCodeForUpdate($request->input('code'), $id);
 
         if($medicineNameExist) {
-            return redirect()->back()->with('flash_danger', 'Your Given Medicine Name Already Exists. Please Insert a Different Medicine Name.')->withInput($request->all);
+            return redirect()->back()->with('flash_danger', 'Your Given Medicine Name with provided Medicine Type and Strength already exists. Please Insert a Different Medicine Name with different Medicine Type and Strength.')->withInput($request->all);
         }
-//        if($medicineCodeExist) {
-//            return redirect()->back()->with('flash_danger', 'Your Given Code of Medicine Already Exists. Please Insert a Different Code for Medicine.')->withInput($request->all);
-//        }
+        if($medicineCodeExist) {
+            return redirect()->back()->with('flash_danger', 'Your Given Code of Medicine Already Exists. Please Insert a Different Code for Medicine.')->withInput($request->all);
+        }
 
         $medicineData       = $request->except('_token', 'medicine_class_id', 'indications_ids');
 
@@ -278,12 +280,15 @@ class MedicinesController extends Controller
                 $keyWord = Indication::where('id', $indicationID)->value('key_word');
                 array_push($indicationKeyWords, $keyWord);
             }
+            $medicineData['indications_ids']        = implode(',', $indicationIDs);
+            $medicineData['indications_keywords']   = implode(',', $indicationKeyWords);
+        } else {
+            $medicineData['indications_ids']        = null;
+            $medicineData['indications_keywords']   = null;
         }
 
         $medicineData['medicine_type_name']     = $medicineTypeName;
         $medicineData['generic_name']           = $genericName;
-        $medicineData['indications_ids']        = implode(',', $indicationIDs);
-        $medicineData['indications_keywords']   = implode(',', $indicationKeyWords);
         $medicineData['pharma_name']            = $pharmaName;
 //        $medicineData['class_name']             = $className;
 
@@ -360,9 +365,9 @@ class MedicinesController extends Controller
         return;
     }
 
-    public function checkMedicineName($medicineName){
+    public function checkMedicineName($medicineName, $medicineStrength, $medicineTypeID){
 
-        $result = Medicine::where('name', $medicineName)->first();
+        $result = Medicine::withTrashed()->where('name', $medicineName)->where('strength', $medicineStrength)->where('medicine_type_id', $medicineTypeID)->first();
         return $result;
     }
 
@@ -372,9 +377,9 @@ class MedicinesController extends Controller
         return $result;
     }
 
-    public function checkMedicineForUpdate($medicineName, $id){
+    public function checkMedicineForUpdate($medicineName, $medicineStrength, $medicineTypeID, $id){
 
-        $result = Medicine::where('name', $medicineName)->where('id', '!=', $id)->first();
+        $result = Medicine::withTrashed()->where('name', $medicineName)->where('strength', $medicineStrength)->where('medicine_type_id', $medicineTypeID)->where('id', '!=', $id)->first();
         return $result;
     }
 
@@ -384,13 +389,13 @@ class MedicinesController extends Controller
         return $result;
     }
 
-    public function randomNumber($length) {
-        $result = '';
-        for($i = 0; $i < $length; $i++) {
-            $result .= mt_rand(0, 9);
-        }
-
-        return $result;
-    }
+//    public function randomNumber($length) {
+//        $result = '';
+//        for($i = 0; $i < $length; $i++) {
+//            $result .= mt_rand(0, 9);
+//        }
+//
+//        return $result;
+//    }
 
 }

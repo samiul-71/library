@@ -20,13 +20,13 @@
         <div class="box-header with-border">
             <h3 class="box-title">{!! ucfirst($module_title) !!} {!! ucfirst($module_action) !!}</h3>
             <div class="box-tools pull-right">
-                <a href="{!! route('admin.lab-test.create') !!}" class="btn btn-xs btn-success">
+                <a href="{!! route('admin.allergies.create') !!}" class="btn btn-xs btn-success">
                     <i class="fa fa-plus"></i> {!! 'Create New' !!}
                 </a>
-                <a href="{!! route('admin.lab-test.index') !!}" class="btn btn-xs btn-info">
+                <a href="{!! route('admin.allergies.index') !!}" class="btn btn-xs btn-info">
                     <i class="fa fa-list"></i> {!! 'Back to List' !!}
                 </a>
-                <a href="{!! route("admin.lab-test.trash") !!}" class="btn btn-xs btn-danger">
+                <a href="{!! route("admin.allergies.trash") !!}" class="btn btn-xs btn-danger">
                     <i class="fa fa-trash"></i> {!! 'Trash List' !!}
                 </a>
             </div>
@@ -40,29 +40,20 @@
                             <tbody>
                             <tr>
                                 <td>
-                                    <strong>Lab Test Name</strong>
+                                    <strong>Allergy Code</strong>
                                 </td>
                                 <td> : </td>
                                 <td>
-                                    {{ $lab_test->test_name }}
+                                    {{ $allergies->allergy_code }}
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <strong>Code</strong>
+                                    <strong>Allergy Cause Title</strong>
                                 </td>
                                 <td> : </td>
                                 <td>
-                                    {{ $lab_test->code }}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <strong>Test Category</strong>
-                                </td>
-                                <td> : </td>
-                                <td>
-                                    {{ $lab_test->test_category_name }}
+                                    {{ $allergies->allergy_cause_title }}
                                 </td>
                             </tr>
                             <tr>
@@ -71,35 +62,7 @@
                                 </td>
                                 <td> : </td>
                                 <td>
-                                    {{ $lab_test->description }}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <strong>Methodology</strong>
-                                </td>
-                                <td> : </td>
-                                <td>
-                                    {{ $lab_test->methodology }}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <strong>Additional Information</strong>
-                                </td>
-                                <td> : </td>
-                                <td>
-                                    {{ $lab_test->additional_information }}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <strong>Cost</strong>
-                                </td>
-                                <td> : </td>
-                                <td>
-                                    {!! $lab_test->currency !!}
-                                    {!! $lab_test->cost !!}
+                                    {{ $allergies->description }}
                                 </td>
                             </tr>
                             <tr>
@@ -108,7 +71,7 @@
                                 </td>
                                 <td> : </td>
                                 <td>
-                                    @if($lab_test->status && $lab_test->status == 1)
+                                    @if($allergies->status && $allergies->status == 1)
                                         <span class="label label-primary">{!! 'Active' !!}</span>
                                     @else
                                         <span class="label label-warning">{!! 'Not Active' !!}</span>
@@ -124,10 +87,10 @@
 
             <div class="row text-center">
                 <div class="col-sm-12 text-center">
-                    <a href="{!! route('admin.lab-test.edit', $lab_test->id) !!}" class="btn btn-xs btn-primary">
+                    <a href="{!! route('admin.allergies.edit', $allergies->id) !!}" class="btn btn-xs btn-primary">
                         <i class="fa fa-pencil"></i> {!! 'Edit/Update' !!}
                     </a>
-                    <a href="{!! route('admin.lab-test.destroy', $lab_test->id) !!}" class="btn btn-xs btn-danger record-destroy" id="record-destroy" title="Move to Trash" data-toggle="tooltip" data-placement="top">
+                    <a href="{!! route('admin.allergies.destroy', $allergies->id) !!}" class="btn btn-xs btn-danger record-destroy" id="record-destroy" title="Move to Trash" data-toggle="tooltip" data-placement="top">
                         <i class="fa fa-trash"></i> {!! 'Move to Trash' !!}
                     </a>
                 </div>
@@ -144,7 +107,7 @@
             $('.record-destroy').on("click", function(ev){
                 ev.preventDefault();
                 var URL = $(this).attr('href');
-                var redirectURL = "{{ route('admin.lab-test.index') }}";
+                var redirectURL = "{{ route('admin.allergies.index') }}";
                 warnBeforeRedirect(URL, redirectURL);
             });
 

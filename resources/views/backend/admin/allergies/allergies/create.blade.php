@@ -9,10 +9,6 @@
     </h1>
 @endsection
 
-@section('after-styles')
-    <link rel="stylesheet" type="text/css" href="/public/plugins/MultiSelect/jquery.dropdown.css">
-@endsection
-
 @section('content')
     <div class="box box-primary">
         <div class="box-header with-border">
@@ -20,9 +16,9 @@
         </div><!-- /.box-header -->
         <div class="box-body">
 
-            {!! Form::open(['route' => ["admin.generic-name.store"], 'class' => 'form', 'role' => 'form']) !!}
+            {!! Form::open(['route' => ["admin.allergies.store"], 'class' => 'form', 'role' => 'form']) !!}
 
-            @include("backend.admin.medicines.generic-names.form")
+            @include("backend.admin.allergies.allergies.form")
 
             {!! Form::close() !!}
 
@@ -31,16 +27,9 @@
 @endsection
 
 @section('after-scripts')
-    {!! Html::script('plugins/MultiSelect/jquery.dropdown.js') !!}
     <script>
 
-        //        $('.form').validator();
-        $('.indications_keyword').dropdown({
-            multipleMode: 'label',
-            readOnly: false,
-            limitCount: Infinity,
-            searchable: true
-        });
+        $('.form').validator();
 
     </script>
 

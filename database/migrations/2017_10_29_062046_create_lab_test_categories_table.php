@@ -17,7 +17,7 @@ class CreateLabTestCategoriesTable extends Migration
             $table->increments('id');
 
             $table->string('name', 100);
-            $table->string('description', 255)->nullable();
+            $table->text('description')->nullable();
             $table->string('code')->nullable();
 
             $table->boolean('status')->default(true);
