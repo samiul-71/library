@@ -54,6 +54,7 @@ return [
             'pharmaceutical-companies'  => 'Pharmaceutical Companies',
             'lab-test'                  => 'Lab Tests',
             'allergies'                 => 'Allergies Information',
+            'therapeutic-class-group'   => 'Therapeutic Class Group',
         ],
     ],
 
