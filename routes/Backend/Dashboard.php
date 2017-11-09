@@ -121,6 +121,7 @@ Route::resource('allergies', 'AllergiesController', ['names' => [
  *  Routes for accessing/adding Therapeutic Class Group info.
  */
 Route::get('therapeutic-class-group/trash', 'TherapeuticClassGroupController@trash')->name('therapeutic-class-group.trash');
+Route::get('therapeutic-class-group/getChildren/{id}', 'TherapeuticClassGroupController@getChildren')->name('therapeutic-class-group.get-children');
 Route::patch('therapeutic-class-group/{id}/restore', 'TherapeuticClassGroupController@restore')->name('therapeutic-class-group.restore');
 Route::delete('therapeutic-class-group/{id}/permanently-delete', 'TherapeuticClassGroupController@permanentlyDelete')->name('therapeutic-class-group.permanently-delete');
 

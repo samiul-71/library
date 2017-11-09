@@ -36,17 +36,49 @@
 
 @section('after-scripts')
     <script>
-            var count = 1;
-            $('#parent_id').change(function (){
-                var selectedVal = $('#parent_id').find(":selected").val();
-                if (selectedVal !== ""){
-                    count++;
-                    $( ".append_temp" ).clone().appendTo( $(".mashb" )).removeClass('append_temp').attr('id', count);
-                    $('#' + count).css('visibility', 'visible');
-                    // $(".append_temp").css('visibility', 'visible');
+        (function() {
+            $('body').on('change', '.parent_id', function () {
+                var selectedVal = $(this).find(":selected").val();
+                var parent = $(this);
+                if (selectedVal !== "") {
+                    var URL = "{{ url('admin/therapeutic-class-group/getChildren') }}" + "/" + selectedVal;
+                    $.ajax({
+                        type: "GET",
+                        url: URL,
+                        success: function(data){
+                            console.log(data);
+                            if(data.length !== 0) {
+                                parent.removeClass('parent_id').removeAttr('name').attr("disabled", true);
+                                $(".append_temp")
+                                    .clone()
+                                    .appendTo($(".parent_therapeutic_class_group"))
+                                    .removeClass('append_temp')
+                                    .addClass('parent_id')
+                                    .css('visibility', 'visible');
+                                for (var key in data) {
+                                    $(".parent_id").append($('<option>', {
+                                        value: key,
+                                        text : data[key]
+                                    }));
+                                }
+                                $(".parent_id").attr('name', 'parent_id');
+
+                            }
+                        }
+                    });
                 }
             });
+        })();
 
+        function dadaReset() {
+            $("#parent_id")
+                .attr('class', 'form-control parent_id')
+                .attr('name', 'parent_id')
+                .removeAttr('disabled')
+                .siblings()
+                .not(':first')
+                .remove();
+        }
     </script>
 
 @endsection

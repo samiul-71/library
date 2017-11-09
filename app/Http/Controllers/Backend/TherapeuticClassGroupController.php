@@ -55,10 +55,10 @@ class TherapeuticClassGroupController extends Controller
 
         $data['therapeutic_class_group_parents']    =   TherapeuticClassGroup::where('parent_id', '0')->orderBy('id')->pluck('name', 'id')->toArray();
 
-        $data['test'] = [
-            1 => "New",
-            2 => "New test"
-        ];
+//        $data['test'] = [
+//            1 => "New",
+//            2 => "New test"
+//        ];
 
         return view("backend.admin.medicines.therapeutic-class-group.create", $data);
     }
@@ -166,5 +166,18 @@ class TherapeuticClassGroupController extends Controller
         $record->forceDelete($id);
 
         return;
+    }
+
+    /**
+     * Get Children using Therapeutic Class Group ID
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function getChildren($id)
+    {
+        $children = TherapeuticClassGroup::where('parent_id', $id)->orderBy('id')->pluck('name', 'id')->toArray();
+
+        return response()->json($children);
     }
 }
