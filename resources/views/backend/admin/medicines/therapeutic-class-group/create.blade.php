@@ -70,7 +70,7 @@
             });
         })();
 
-        function dadaReset() {
+        function resetFields() {
             $("#parent_id")
                 .attr('class', 'form-control parent_id')
                 .attr('name', 'parent_id')
