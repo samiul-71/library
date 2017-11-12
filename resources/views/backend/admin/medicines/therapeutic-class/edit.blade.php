@@ -35,7 +35,7 @@
         </div><!-- /.box-header -->
         <div class="box-body">
 
-            {!! Form::model($therapeutic_class_groups, ['method' => 'PUT', 'route' => ["admin.$module_path.update", $therapeutic_class_groups->id], 'class' => 'form', 'role' => 'form']) !!}
+            {!! Form::model($therapeutic_classes, ['method' => 'PUT', 'route' => ["admin.$module_path.update", $therapeutic_classes->id], 'class' => 'form', 'role' => 'form']) !!}
 
             @include("backend.admin.medicines.$module_path.form")
 
@@ -48,13 +48,15 @@
 @section('after-scripts')
     <script>
         var parentElement = $('.parent_therapeutic_class_group');
+        var detailsSection = $('.mashbDetails');
         $(document).ready(function() {
             parentElement.detach();
 
             $('.clearParent').click(function () {
                 $('.clearParent').remove();
                 $('.previous_parent_id').remove();
-                $('.mashb').append(parentElement);
+                detailsSection.detach();
+                $('.mashb').append(parentElement).append(detailsSection);
             });
 
             // Delete a Record

@@ -134,3 +134,21 @@ Route::resource('therapeutic-class-group', 'TherapeuticClassGroupController', ['
     'update'    => 'therapeutic-class-group.update',
     'destroy'   => 'therapeutic-class-group.destroy'
 ]]);
+
+/**
+ *  Routes for accessing/adding Therapeutic Class info.
+ */
+Route::get('therapeutic-class/trash', 'TherapeuticClassController@trash')->name('therapeutic-class.trash');
+Route::get('therapeutic-class/getChildren/{id}', 'TherapeuticClassController@getChildren')->name('therapeutic-class.get-children');
+Route::patch('therapeutic-class/{id}/restore', 'TherapeuticClassController@restore')->name('therapeutic-class.restore');
+Route::delete('therapeutic-class/{id}/permanently-delete', 'TherapeuticClassController@permanentlyDelete')->name('therapeutic-class.permanently-delete');
+
+Route::resource('therapeutic-class', 'TherapeuticClassController', ['names' => [
+    'index'     => 'therapeutic-class.index',
+    'create'    => 'therapeutic-class.create',
+    'store'     => 'therapeutic-class.store',
+    'show'      => 'therapeutic-class.show',
+    'edit'      => 'therapeutic-class.edit',
+    'update'    => 'therapeutic-class.update',
+    'destroy'   => 'therapeutic-class.destroy'
+]]);

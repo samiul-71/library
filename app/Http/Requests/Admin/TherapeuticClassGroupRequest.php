@@ -4,7 +4,7 @@ namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class TherapeuticClassRequest extends FormRequest
+class TherapeuticClassGroupRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class TherapeuticClassRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return True;
     }
 
     /**
@@ -36,8 +36,8 @@ class TherapeuticClassRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required'  => 'Therapeutic Class Name is required!',
-            'name.min'       => 'Therapeutic Class Name must consist of at least 2 characters!'
+            'name.required'  => 'Therapeutic Class Group Name is required!',
+            'name.min'       => 'Therapeutic Class Group Name must consist of at least 2 characters!'
         ];
     }
 }

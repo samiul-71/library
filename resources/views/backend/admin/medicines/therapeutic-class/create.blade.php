@@ -41,7 +41,7 @@
                 var selectedVal = $(this).find(":selected").val();
                 var parent = $(this);
                 if (selectedVal !== "no_parent") {
-                    var URL = "{{ url('admin/therapeutic-class-group/getChildren') }}" + "/" + selectedVal;
+                    var URL = "{{ url('admin/therapeutic-class/getChildren') }}" + "/" + selectedVal;
                     $.ajax({
                         type: "GET",
                         url: URL,
@@ -61,8 +61,7 @@
                                         text : data[key]
                                     }));
                                 }
-                                $(".parent_id").attr('name', 'parent_id');
-
+                                $(".parent_id").attr('name', 'parent_id').attr('required', true);
                             }
                         }
                     });
