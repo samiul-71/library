@@ -56,6 +56,13 @@
                 searchable: true
             });
 
+            $('.therapeutic_classes').dropdown({
+                multipleMode: 'label',
+                readOnly: false,
+                limitCount: Infinity,
+                searchable: true
+            });
+
             // Delete a Record
             $('.record-destroy').on("click", function(ev){
                 ev.preventDefault();

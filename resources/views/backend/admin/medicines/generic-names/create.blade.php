@@ -42,6 +42,13 @@
             searchable: true
         });
 
+        $('.therapeutic_classes').dropdown({
+            multipleMode: 'label',
+            readOnly: false,
+            limitCount: Infinity,
+            searchable: true
+        });
+
     </script>
 
 @endsection

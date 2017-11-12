@@ -78,6 +78,17 @@
                             </tr>
                             <tr>
                                 <td class="pull-right">
+                                    <strong>Therapeutic Class Names</strong>
+                                </td>
+                                <td> : </td>
+                                <td>
+                                    @foreach($generic_name->therapeutic_class_names as $therapeutic_class_name)
+                                        <li><ol style="padding: 0; margin-bottom: 5px;">{{ $therapeutic_class_name }}</ol></li>
+                                    @endforeach
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="pull-right">
                                     <strong>Status</strong>
                                 </td>
                                 <td> : </td>
