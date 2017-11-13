@@ -81,9 +81,9 @@
                                 <td> : </td>
                                 <td>
                                     @if($medicine->status && $medicine->status == 1)
-                                        <span class="label label-primary">{!! 'Publish' !!}</span>
+                                        <span class="label label-primary">{!! 'Published' !!}</span>
                                     @else
-                                        <span class="label label-warning">{!! 'Not Publish' !!}</span>
+                                        <span class="label label-warning">{!! 'Not Published' !!}</span>
                                     @endif
                                 </td>
                             </tr>
@@ -143,7 +143,7 @@
                                 </td>
                                 <td> : </td>
                                 <td>
-                                   {{ $medicine->administration }}
+                                    {{ $medicine->administration }}
                                 </td>
                             </tr>
 
@@ -185,7 +185,13 @@
                                 </td>
                                 <td> : </td>
                                 <td>
-                                    {{ $medicine->therapeutic_class }}
+                                    @foreach($medicine->therapeutic_class_names as $key => $therapeutic_class_name)
+                                        <li>
+                                            <ol style="padding: 0; margin-bottom: 5px;">
+                                                {{ $therapeutic_class_name }}
+                                            </ol>
+                                        </li>
+                                    @endforeach
                                 </td>
                             </tr>
 
@@ -244,7 +250,7 @@
 
                 <div class="col-sm-4">
                     <img class="thumbnail" src="{!! 'http://placehold.it/300x300' !!}" alt="Medicine Image">
-{{--                    <img class="thumbnail" src="{!! (isset($medicine) && $medicine->image !=null) ? url('/').medicineImagePath().$medicine->image : 'http://placehold.it/300x300' !!}" alt="Organization Image">--}}
+                    {{--                    <img class="thumbnail" src="{!! (isset($medicine) && $medicine->image !=null) ? url('/').medicineImagePath().$medicine->image : 'http://placehold.it/300x300' !!}" alt="Organization Image">--}}
                 </div>
             </div>
 

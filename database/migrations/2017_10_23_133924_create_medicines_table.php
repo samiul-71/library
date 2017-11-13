@@ -33,7 +33,9 @@ class CreateMedicinesTable extends Migration
             $table->text('side_effects')->nullable();
             $table->text('precautions')->nullable();
             $table->text('pregnancy_category')->nullable();
-            $table->text('therapeutic_class')->nullable();
+
+            $table->string('therapeutic_class_ids', 255)->nullable();
+            $table->string('therapeutic_class_names', 255)->nullable();
 
             $table->text('mode_of_actions')->nullable();
             $table->text('interactions')->nullable();
