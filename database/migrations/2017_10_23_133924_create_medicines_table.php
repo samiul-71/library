@@ -61,9 +61,6 @@ class CreateMedicinesTable extends Migration
             $table->string('indications_ids', 255)->nullable();
             $table->string('indications_keywords', 255)->nullable();
 
-            $table->string('class_is')->nullable();
-            $table->integer('class_name')->nullable();
-
             $table->integer('created_by')->nullable();
             $table->integer('updated_by')->nullable();
             $table->integer('deleted_by')->nullable();
