@@ -7,16 +7,16 @@ use App\Api\Transformers\Transformer;
 class AllergyTransformer extends Transformer
 {
     /**
-     * @property string image_uploaded_path
+     * @property string imageUploadedPath
      */
-    protected $image_uploaded_path;
+    protected $imageUploadedPath;
 
     /**
-     * TopicTransformer constructor.
+     * AllergyTransformer constructor.
      */
     public function __construct()
     {
-//        $this->image_uploaded_path  = $this->getImageRootPath() . topicImagePath();
+//        $this->imageUploadedPath  = $this->getImageRootPath() . topicImagePath();
     }
 
     public function transform($allergy) {
@@ -26,7 +26,7 @@ class AllergyTransformer extends Transformer
             'code'              => $allergy->allergy_code,
             'title'             => trim($allergy->allergy_cause_title),
             'description'       => $this->formatHtml($allergy->description),
-//            'image_path'        => ($allergy->image_path != null) ? $this->image_uploaded_path . $allergy->image_path : null,
+//            'imagePath'        => ($allergy->image_path != null) ? $this->imageUploadedPath . $allergy->image_path : null,
             'sortOrder'        => $allergy->sort_order
         ];
     }

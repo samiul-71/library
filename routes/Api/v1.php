@@ -10,6 +10,13 @@ Route::group(['namespace' => 'V1'], function () {
                 'show'
             ]
         ]);
+
+        Route::resource('medicine-list', 'MedicineApiController', [
+            'only' => [
+                'index',
+                'show'
+            ]
+        ]);
     });
 
     /* 14. Start of Authentication API */
