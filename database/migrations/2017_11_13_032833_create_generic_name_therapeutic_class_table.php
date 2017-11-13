@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTherapeuticClassGroup extends Migration
+class CreateGenericNameTherapeuticClassTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class CreateTherapeuticClassGroup extends Migration
      */
     public function up()
     {
-        Schema::create('therapeutic_class_group', function (Blueprint $table) {
-            $table->increments('id');
+        Schema::create('generic_name_therapeutic_class', function (Blueprint $table) {
+            $table->bigIncrements('id');
 
-            $table->string('name')->nullable();
-            $table->integer('parent_id')->unsigned()->default('0');
-            $table->boolean('status')->default(true);
+            $table->integer('generic_id');
+            $table->integer('therapeutic_id');
 
             $table->integer('created_by')->nullable();
             $table->integer('updated_by')->nullable();
@@ -26,6 +25,8 @@ class CreateTherapeuticClassGroup extends Migration
 
             $table->softDeletes();
             $table->timestamps();
+
+            $table->unique(['generic_id', 'therapeutic_id']);
         });
     }
 
@@ -36,6 +37,6 @@ class CreateTherapeuticClassGroup extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('therapeutic_class_group');
+        Schema::dropIfExists('generic_name_therapeutic_class');
     }
 }

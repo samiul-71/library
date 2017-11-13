@@ -62,6 +62,10 @@ return [
             'therapeutic-class-group'  => [
                 'create'    => 'Add/Create new Therapeutic Class Group'
             ],
+
+            'therapeutic-class'  => [
+                'create'    => 'Add/Create new Therapeutic Class'
+            ],
         ],
         'hide'              => 'Hide',
         'inactive'          => 'Inactive',
