@@ -16,7 +16,7 @@ class Indication extends Model
     protected $guarded = ['created_by', 'updated_by', 'deleted_by', 'deleted_at', 'created_at', 'updated_at'];
 
     /**
-     * The roles that belong to the user.
+     * Many-to-many relation with Generic Names.
      */
     public function genericNames()
     {

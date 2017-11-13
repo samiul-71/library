@@ -117,14 +117,13 @@ class GenericNameController extends Controller
 
         $medicineGenericName = GenericName::create($medicineGenericNameData);
 
+        $genericName = GenericName::find($medicineGenericName->id);
+        $genericName->indications()->sync($indicationIDs);
+
+        $genericName = GenericName::find($medicineGenericName->id);
+        $genericName->therapeuticClasses()->sync($therapeuticClassIDs);
+
         $message = 'Your Medicine Generic Name has been Created/Added Successfully';
-
-        if (count($indicationIDs)) {
-            $genericName = GenericName::find($medicineGenericName->id);
-            $genericName->indications()->sync($indicationIDs);
-        }
-
-        //Create the same relation between Therapeutic Names and Generic Names as above
 
         return redirect()->route("admin.generic-name.index")->with('flash_success', '<i class="fa fa-check"></i> ' . $message);
     }
@@ -177,7 +176,7 @@ class GenericNameController extends Controller
         $data['generic_name']['indications_ids'] = explode(',', $data['generic_name']['indications_ids']);
         $data['generic_name']['therapeutic_class_ids'] = explode(',', $data['generic_name']['therapeutic_class_ids']);
 
-        $data['indications']        = Indication::where('status', true)->orderBy('id')->pluck('key_word', 'id')->toArray();
+        $data['indications']         = Indication::where('status', true)->orderBy('id')->pluck('key_word', 'id')->toArray();
         $data['therapeutic_classes'] = TherapeuticClass::where('status', true)->orderBy('id')->pluck('name', 'id')->toArray();
 
         return view("backend.admin.medicines.generic-names.edit", $data);
@@ -237,14 +236,13 @@ class GenericNameController extends Controller
 
         $medicineGenericName->fill($medicineGenericNameData)->save();
 
+        $genericName = GenericName::find($medicineGenericName->id);
+        $genericName->indications()->sync($indicationIDs);
+
+        $genericName = GenericName::find($medicineGenericName->id);
+        $genericName->therapeuticClasses()->sync($therapeuticClassIDs);
+
         $message = 'Your Selected Medicine Generic Name has been Updated Successfully';
-
-        if (count($indicationIDs)) {
-            $genericName = GenericName::find($medicineGenericName->id);
-            $genericName->indications()->sync($indicationIDs);
-        }
-
-        //Create the same relation between Therapeutic Names and Generic Names as above
 
         return redirect()->route("admin.generic-name.index")->with('flash_success', '<i class="fa fa-check"></i> ' . $message);
     }
