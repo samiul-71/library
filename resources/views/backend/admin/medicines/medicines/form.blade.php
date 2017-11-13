@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-sm-12">
         <div class="form-row">
-            <div class="form-group col-md-5">
+            <div class="form-group col-md-4">
                 {!! Form::label('name', 'Medicine Name') !!}
                 {!! Form::text('name', old('name'), ['id'=>'name', 'class' => 'form-control name', 'placeholder' => 'Medicine Name', 'required' => 'required']) !!}
             </div>
@@ -9,7 +9,7 @@
                 {!! Form::label('strength', 'Strength') !!}
                 {!! Form::text('strength', old('strength'), ['id'=>'strength', 'class' => 'form-control strength', 'placeholder' => 'Example : 500mg']) !!}
             </div>
-            <div class="form-group col-md-3">
+            <div class="form-group col-md-4">
                 {!! Form::label('code', 'Medicine Code') !!}
                 {!! Form::text('code', old('code'), ['id'=>'code', 'class' => 'form-control code', 'placeholder' => 'Provide a Medicine Code', 'required' => 'required']) !!}
             </div>
@@ -29,10 +29,6 @@
                 {!! Form::label('pharma_id', 'Select Pharmaceuticals') !!}
                 {!! Form::select('pharma_id', ['' => 'Choose Pharmaceuticals'] + $pharmaceuticals, old('pharma_id'), ['id'=>'pharmaceutical', 'class' => 'form-control select2 pharmaceutical']) !!}
             </div>
-            {{--<div class="form-group col-md-3">--}}
-                {{--{!! Form::label('medicine_class_id', 'Select Medicine Class') !!}--}}
-                {{--{!! Form::select('medicine_class_id', ['' => 'Choose Medicine Class'] + $medicine_classes, old('medicine_class_id'), ['id'=>'medicine_class', 'class' => 'form-control select2 medicine_class']) !!}--}}
-            {{--</div>--}}
         </div>
 
         <div class="form-row">
@@ -84,66 +80,62 @@
         </div>
 
         <div class="form-row">
-            <div class="form-group col-md-12">
+            <div class="form-group col-md-8">
                 {!! Form::label('indications_details', 'Indications Details') !!}
                 {!! Form::textarea('indications_details', old('indications_details'), ['id'=>'indications_details', 'class' => 'form-control indications_details', 'placeholder' => 'Indication Details', 'rows' => 2]) !!}
             </div>
-        </div>
-
-        <div class="form-row">
             <div class="form-group col-md-4">
                 {!! Form::label('adult_dose', 'Adult Dosages') !!}
                 {!! Form::textarea('adult_dose', old('adult_dose'), ['id'=>'adult_dose', 'class' => 'form-control adult_dose', 'placeholder' => 'Adult Dosages', 'rows' => 2]) !!}
             </div>
-            <div class="form-group col-md-4">
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-3">
                 {!! Form::label('child_dose', 'Child Dosages') !!}
                 {!! Form::textarea('child_dose', old('child_dose'), ['id'=>'child_dose', 'class' => 'form-control child_dose', 'placeholder' => 'Child Dosages', 'rows' => 2]) !!}
             </div>
-            <div class="form-group col-md-4">
+            <div class="form-group col-md-3">
                 {!! Form::label('renal_dose', 'Renal Dosages') !!}
                 {!! Form::textarea('renal_dose', old('renal_dose'), ['id'=>'renal_dose', 'class' => 'form-control renal_dose', 'placeholder' => 'Renal Dosages', 'rows' => 2]) !!}
             </div>
-        </div>
-
-        <div class="form-row">
-            <div class="form-group col-md-4">
-                {!! Form::label('administration', ' Administration') !!}
-                {!! Form::textarea('administration', old('administration'), ['id'=>'administration', 'class' => 'form-control administration', 'placeholder' => 'Administration', 'rows' => 2]) !!}
-            </div>
-            <div class="form-group col-md-4">
-                {!! Form::label('ingredients', 'Ingredients') !!}
-                {!! Form::textarea('ingredients', old('ingredients'), ['id'=>'ingredients', 'class' => 'form-control ingredients', 'placeholder' => 'Medicine Ingredients', 'rows' => 2]) !!}
-            </div>
-            <div class="form-group col-md-4">
-                {!! Form::label('contraindications', 'Medicine Contraindications') !!}
-                {!! Form::textarea('contraindications', old('contraindications'), ['id'=>'contraindications', 'class' => 'form-control contraindications', 'placeholder' => 'Medicine Contraindications', 'rows' => 2]) !!}
-            </div>
-        </div>
-
-        <div class="form-row">
-            <div class="form-group col-md-4">
-                {!! Form::label('therapeutic_class', 'Therapeutic Class') !!}
-                {!! Form::textarea('therapeutic_class', old('therapeutic_class'), ['id'=>'therapeutic_class', 'class' => 'form-control therapeutic_class', 'placeholder' => 'Therapeutic Class', 'rows' => 2]) !!}
-            </div>
-            <div class="form-group col-md-4">
+            <div class="form-group col-md-3">
                 {!! Form::label('mode_of_actions', 'Mode of Actions') !!}
                 {!! Form::textarea('mode_of_actions', old('mode_of_actions'), ['id'=>'mode_of_actions', 'class' => 'form-control mode_of_actions', 'placeholder' => 'Mode of Actions', 'rows' => 2]) !!}
             </div>
-            <div class="form-group col-md-4">
-                {!! Form::label('interactions', 'Medicine Interactions') !!}
-                {!! Form::textarea('interactions', old('interactions'), ['id'=>'interactions', 'class' => 'form-control interactions', 'placeholder' => 'Medicine Interactions', 'rows' => 2]) !!}
+            <div class="form-group col-md-3">
+                {!! Form::label('administration', ' Administration') !!}
+                {!! Form::textarea('administration', old('administration'), ['id'=>'administration', 'class' => 'form-control administration', 'placeholder' => 'Administration', 'rows' => 2]) !!}
             </div>
         </div>
 
-        {{--<div class="col-sm-4">--}}
-            {{--{!! Form::label('', '', ['class' => 'col-form-label']) !!}<br>--}}
-            {{--@if(isset($medicine))--}}
-                {{--{!! Form::radio('status', '1', (old('status') ==  '1'), array('id'=>'status')) !!} Active--}}
-                {{--{!! Form::radio('status', '0', (old('status') ==  '0'), array('id'=>'status')) !!} Not Active--}}
-            {{--@else--}}
-                {{--{{ Form::radio('status', 1, true) }} Active--}}
-                {{--{{ Form::radio('status', 0) }} Not Active--}}
-            {{--@endif--}}
+        <div class="form-row">
+            <div class="form-group col-md-3">
+                {!! Form::label('ingredients', 'Ingredients') !!}
+                {!! Form::textarea('ingredients', old('ingredients'), ['id'=>'ingredients', 'class' => 'form-control ingredients', 'placeholder' => 'Medicine Ingredients', 'rows' => 2]) !!}
+            </div>
+            <div class="form-group col-md-3">
+                {!! Form::label('contraindications', 'Medicine Contraindications') !!}
+                {!! Form::textarea('contraindications', old('contraindications'), ['id'=>'contraindications', 'class' => 'form-control contraindications', 'placeholder' => 'Medicine Contraindications', 'rows' => 2]) !!}
+            </div>
+            <div class="form-group col-md-3">
+                {!! Form::label('interactions', 'Medicine Interactions') !!}
+                {!! Form::textarea('interactions', old('interactions'), ['id'=>'interactions', 'class' => 'form-control interactions', 'placeholder' => 'Medicine Interactions', 'rows' => 2]) !!}
+            </div>
+            <div class="form-group col-md-3">
+                {!! Form::label('status', 'Status', ['class' => 'col-form-label']) !!}<br>
+                @if(isset($lab_tests))
+                    {!! Form::radio('status', '1', (old('status') ==  '1'), array('id'=>'status')) !!} Publish
+                    {!! Form::radio('status', '0', (old('status') ==  '0'), array('id'=>'status')) !!} Do Not Publish
+                @else
+                    {{ Form::radio('status', 1, true) }} Publish
+                    {{ Form::radio('status', 0) }} Do Not Publish
+                @endif
+            </div>
+        </div>
+
+        {{--<div class="form-row">--}}
+
         {{--</div>--}}
 
         <div class="col-sm-12">

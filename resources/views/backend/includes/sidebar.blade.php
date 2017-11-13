@@ -52,6 +52,13 @@
                 </a>
             </li>
 
+            <li class="{{ active_class(Active::checkUriPattern('admin/therapeutic-class')) }}">
+                <a href="{{ route('admin.therapeutic-class.index') }}">
+                    <i class="fa fa-object-ungroup"></i>
+                    <span>{{ trans('menus.backend.sidebar.therapeutic-class') }}</span>
+                </a>
+            </li>
+
             <li class="{{ active_class(Active::checkUriPattern('admin/indications*')) }}">
                 <a href="{{ route('admin.indications.index') }}">
                     <i class="fa fa-hospital-o"></i>

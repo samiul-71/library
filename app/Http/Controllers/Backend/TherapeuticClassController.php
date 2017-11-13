@@ -2,18 +2,19 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Http\Requests\Admin\TherapeuticClassRequest;
+use App\Models\Admin\TherapeuticClass;
 use App\Models\Admin\TherapeuticClassGroup;
-use App\Http\Requests\Admin\TherapeuticClassGroupRequest;
 use App\Http\Controllers\Controller;
 
-class TherapeuticClassGroupController extends Controller
+class TherapeuticClassController extends Controller
 {
     public function __construct()
     {
-        $this->module_name  = 'therapeutic-class-group';
-        $this->module_title = 'Therapeutic Class Group';
-        $this->module_path  = 'therapeutic-class-group';
-        $this->module_icon  = 'fa fa-object-group';
+        $this->module_name  = 'therapeutic-class';
+        $this->module_title = 'Therapeutic Class';
+        $this->module_path  = 'therapeutic-class';
+        $this->module_icon  = 'fa fa-object-ungroup';
     }
 
     /**
@@ -32,9 +33,9 @@ class TherapeuticClassGroupController extends Controller
         $data['page_heading']   = ucfirst($data['module_name']);
         $data['title']          = ucfirst($data['module_name']) . ' ' . ucfirst($data['module_action']);
 
-        $data['therapeutic_class_groups']    = TherapeuticClassGroup::all();
+        $data['therapeutic_classes'] = TherapeuticClass::all();
 
-        return view("backend.admin.medicines.therapeutic-class-group.index", $data);
+        return view("backend.admin.medicines.therapeutic-class.index", $data);
     }
 
     /**
@@ -55,29 +56,34 @@ class TherapeuticClassGroupController extends Controller
 
         $data['therapeutic_class_group_parents']    =   TherapeuticClassGroup::where('parent_id', '0')->orderBy('id')->pluck('name', 'id')->toArray();
 
-        return view("backend.admin.medicines.therapeutic-class-group.create", $data);
+        return view("backend.admin.medicines.therapeutic-class.create", $data);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\TherapeuticClassGroupRequest  $request
+     * @param  \Illuminate\Http\TherapeuticClassRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(TherapeuticClassGroupRequest $request)
+    public function store(TherapeuticClassRequest $request)
     {
-        $therapeuticClassGroupNameExist = $this->checkTherapeuticClassGroup($request->input('name'));
-
-        if($therapeuticClassGroupNameExist) {
-            return redirect()->back()->with('flash_danger', 'Your provided Therapeutic Class Group Name already exists. Please provide separate Therapeutic Class Group Name.')->withInput($request->all);
+        if($request->input('parent_id') == 'no_parent')
+        {
+            return redirect()->back()->with('flash_danger', 'You must select a Therapeutic Class Group. None was selected!')->withInput($request->all);
         }
 
-        $therapeuticClassGroupData              = $request->except('_token', 'parent_id');
-        $therapeuticClassGroupData['parent_id'] = $request->input('parent_id') == 'no_parent' ? '0' : $request->input('parent_id');
-        $therapeuticClassGroupCreate            = TherapeuticClassGroup::create($therapeuticClassGroupData);
-        $message                                = 'Your Therapeutic Class Group Information has been created successfully!';
+        $therapeuticClassNameExist = $this->checkTherapeuticClass($request->input('name'));
 
-        return redirect()->route("admin.therapeutic-class-group.index")->with('flash_success', '<i class="fa fa-check"></i> ' . $message);
+        if($therapeuticClassNameExist) {
+            return redirect()->back()->with('flash_danger', 'Your provided Therapeutic Class Name already exists. Please provide separate Therapeutic Class Name.')->withInput($request->all);
+        }
+
+        $therapeuticClassData                               = $request->except('_token', 'parent_id');
+        $therapeuticClassData['therapeutic_class_group_id'] = $request->input('parent_id');
+        $therapeuticClassCreate                             = TherapeuticClass::create($therapeuticClassData);
+        $message                                            = 'Your Therapeutic Class Information has been created successfully!';
+
+        return redirect()->route("admin.therapeutic-class.index")->with('flash_success', '<i class="fa fa-check"></i> ' . $message);
     }
 
     /**
@@ -97,10 +103,10 @@ class TherapeuticClassGroupController extends Controller
         $data['page_heading']   = ucfirst($data['module_name']);
         $data['title']          = ucfirst($data['module_name']) . ' ' . ucfirst($data['module_action']);
 
-        $data['therapeutic_class_group']        = TherapeuticClassGroup::findOrFail($id);
-        $data['therapeutic_class_group_parent'] = TherapeuticClassGroup::where('id',$data['therapeutic_class_group']->parent_id )->where('status', true)->value('name');
+        $data['therapeutic_class']              = TherapeuticClass::findOrFail($id);
+        $data['therapeutic_class_group']        = TherapeuticClassGroup::where('id', $data['therapeutic_class']->therapeutic_class_group_id)->where('status', true)->value('name');
 
-        return view("backend.admin.medicines.therapeutic-class-group.show", $data);
+        return view("backend.admin.medicines.therapeutic-class.show", $data);
     }
 
     /**
@@ -120,41 +126,45 @@ class TherapeuticClassGroupController extends Controller
         $data['page_heading']   = ucfirst($data['module_name']);
         $data['title']          = ucfirst($data['module_name']) . ' ' . ucfirst($data['module_action']);
 
-        $data['therapeutic_class_groups']        = TherapeuticClassGroup::findOrFail($id);
-        $data['therapeutic_class_group_parent']  = TherapeuticClassGroup::where('id',$data['therapeutic_class_groups']->parent_id )->where('status', true)->value('name');
-        $data['therapeutic_class_group_parent']  = $data['therapeutic_class_group_parent'] == null ? 'None' : $data['therapeutic_class_group_parent'];
+        $data['therapeutic_classes']      = TherapeuticClass::findOrFail($id);
+        $data['therapeutic_class_group']  = TherapeuticClassGroup::where('id', $data['therapeutic_classes']->therapeutic_class_group_id)->where('status', true)->value('name');
+        $data['therapeutic_class_group']  = $data['therapeutic_class_group'] == null ? 'None' : $data['therapeutic_class_group'];
+
         $data['therapeutic_class_group_parents'] = TherapeuticClassGroup::where('parent_id', '0')->orderBy('id')->pluck('name', 'id')->toArray();
 
-        return view("backend.admin.medicines.therapeutic-class-group.edit", $data);
+        return view("backend.admin.medicines.therapeutic-class.edit", $data);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\TherapeuticClassGroupRequest  $request
+     * @param  \Illuminate\Http\TherapeuticClassRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(TherapeuticClassGroupRequest $request, $id)
+    public function update(TherapeuticClassRequest $request, $id)
     {
-        $therapeuticClassGroupNameExist = $this->checkTherapeuticClassGroupForUpdate($request->input('name'), $id);
-
-        if($therapeuticClassGroupNameExist) {
-            return redirect()->back()->with('flash_danger', 'Your provided Therapeutic Class Group Name already exists. Please provide a separate Therapeutic Class Group Name.')->withInput($request->all);
+        if($request->input('parent_id') == 'no_parent')
+        {
+            return redirect()->back()->with('flash_danger', 'You must select a Therapeutic Class Group. None was selected!')->withInput($request->all);
         }
 
-        $therapeuticClassGroupInfo = TherapeuticClassGroup::findOrFail($id);
+        $therapeuticClassNameExist = $this->checkTherapeuticClassForUpdate($request->input('name'), $id);
+
+        if($therapeuticClassNameExist) {
+            return redirect()->back()->with('flash_danger', 'Your provided Therapeutic Class Name already exists. Please provide a separate Therapeutic Class Name.')->withInput($request->all);
+        }
+
+        $therapeuticClassInfo = TherapeuticClass::findOrFail($id);
         $therapeuticClassGroupData = $request->except('_token', 'parent_id');
 
-        if($request->has('parent_id')){
-            $therapeuticClassGroupData['parent_id'] = $request->input('parent_id') == 'no_parent' ? '0' : $request->input('parent_id');
-        }
+        $therapeuticClassGroupData['therapeutic_class_group_id'] = $request->input('parent_id');
 
-        $therapeuticClassGroupInfo->fill($therapeuticClassGroupData)->save();
+        $therapeuticClassInfo->fill($therapeuticClassGroupData)->save();
 
-        $message = "Your selected Therapeutic Class Group's Information has been updated successfully!";
+        $message = "Your selected Therapeutic Class's Information has been updated successfully!";
 
-        return redirect()->route("admin.therapeutic-class-group.index")->with('flash_success', '<i class="fa fa-check"></i> ' . $message);
+        return redirect()->route("admin.therapeutic-class.index")->with('flash_success', '<i class="fa fa-check"></i> ' . $message);
     }
 
     /**
@@ -165,7 +175,7 @@ class TherapeuticClassGroupController extends Controller
      */
     public function destroy($id)
     {
-        $record = TherapeuticClassGroup::find($id);
+        $record = TherapeuticClass::find($id);
         $record->destroy($id);
 
         return;
@@ -187,9 +197,9 @@ class TherapeuticClassGroupController extends Controller
         $data['page_heading']   = ucfirst($data['module_name']);
         $data['title']          = ucfirst($data['module_name']) . ' ' . ucfirst($data['module_action']);
 
-        $data['therapeutic_class_groups']    = TherapeuticClassGroup::onlyTrashed()->orderBy('id', 'asc')->get();
+        $data['therapeutic_classes']    = TherapeuticClass::onlyTrashed()->orderBy('id', 'asc')->get();
 
-        return view("backend.admin.medicines.therapeutic-class-group.trash", $data);
+        return view("backend.admin.medicines.therapeutic-class.trash", $data);
     }
 
     /**
@@ -200,7 +210,7 @@ class TherapeuticClassGroupController extends Controller
      */
     public function restore($id)
     {
-        $record = TherapeuticClassGroup::withTrashed()->find($id);
+        $record = TherapeuticClass::withTrashed()->find($id);
         $record->restore();
 
         return;
@@ -214,7 +224,7 @@ class TherapeuticClassGroupController extends Controller
      */
     public function permanentlyDelete($id)
     {
-        $record = TherapeuticClassGroup::withTrashed()->find($id);
+        $record = TherapeuticClass::withTrashed()->find($id);
         $record->forceDelete($id);
 
         return;
@@ -233,15 +243,15 @@ class TherapeuticClassGroupController extends Controller
         return response()->json($children);
     }
 
-    public function checkTherapeuticClassGroup($name){
+    public function checkTherapeuticClass($name){
 
-        $result = TherapeuticClassGroup::where('name', $name)->first();
+        $result = TherapeuticClass::where('name', $name)->first();
         return $result;
     }
 
-    public function checkTherapeuticClassGroupForUpdate($name, $id){
+    public function checkTherapeuticClassForUpdate($name, $id){
 
-        $result = TherapeuticClassGroup::where('name', $name)->where('id', '!=', $id)->first();
+        $result = TherapeuticClass::where('name', $name)->where('id', '!=', $id)->first();
         return $result;
     }
 }

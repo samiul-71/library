@@ -9,6 +9,7 @@ use App\Models\Admin\Medicine;
 use App\Models\Admin\MedicineType;
 use App\Models\Admin\PharmaceuticalCompany;
 use App\Http\Controllers\Controller;
+use App\Models\Admin\TherapeuticClass;
 
 class MedicinesController extends Controller
 {
@@ -124,6 +125,22 @@ class MedicinesController extends Controller
         $genericNameID      = $request->input('generic_name_id');
         $genericName        = GenericName::where('id', $genericNameID)->value('name');
 
+        $therapeuticClassIds = GenericName::where('id', $genericNameID)->value('therapeutic_class_ids');
+        $therapeuticClassNames = [];
+
+        if ($therapeuticClassIds !== null) {
+            $therapeuticClassIdArray = explode(',', $therapeuticClassIds);
+            foreach ($therapeuticClassIdArray as $key => $therapeuticClassId){
+                $therapeuticClassName = TherapeuticClass::where('id', $therapeuticClassId)->value('name');
+                array_push($therapeuticClassNames, $therapeuticClassName);
+            }
+            $medicineData['therapeutic_class_ids']     = $therapeuticClassIds;
+            $medicineData['therapeutic_class_names']   = implode(',', $therapeuticClassNames);
+        } else {
+            $medicineData['therapeutic_class_ids']     = null;
+            $medicineData['therapeutic_class_names']   = null;
+        }
+
         $indicationIDs      = $request->input('indications_ids');
         $indicationKeyWords = [];
 
@@ -142,15 +159,9 @@ class MedicinesController extends Controller
         $pharmaceuticalsID  = $request->input('pharma_id');
         $pharmaName         = PharmaceuticalCompany::where('id', $pharmaceuticalsID)->value('name');
 
-//        $classID = $request->input('class_id');
-//        $className = Pharmaceuticals::where('id', $classID)->value('name');
-
         $medicineData['medicine_type_name']     = $medicineTypeName;
         $medicineData['generic_name']           = $genericName;
         $medicineData['pharma_name']            = $pharmaName;
-//        $medicineData['class_name']             = $className;
-
-//        $medicineData['code'] = $this->randomNumber(6);
 
         $medicine = Medicine::create($medicineData);
         $message = 'Your Medicine has been Created/Added Successfully';
@@ -180,6 +191,7 @@ class MedicinesController extends Controller
         $data['medicine']  = Medicine::findOrFail($id);
 
         $data['medicine']['indications_keywords'] = explode(',', $data['medicine']['indications_keywords']);
+        $data['medicine']['therapeutic_class_names'] = explode(',', $data['medicine']['therapeutic_class_names']);
 
         return view("backend.admin.medicines.medicines.show", $data);
     }
@@ -266,11 +278,24 @@ class MedicinesController extends Controller
         $genericNameID      = $request->input('generic_name_id');
         $genericName        = GenericName::where('id', $genericNameID)->value('name');
 
+        $therapeuticClassIds = GenericName::where('id', $genericNameID)->value('therapeutic_class_ids');
+        $therapeuticClassNames = [];
+
+        if ($therapeuticClassIds !== null) {
+            $therapeuticClassIdArray = explode(',', $therapeuticClassIds);
+            foreach ($therapeuticClassIdArray as $key => $therapeuticClassId){
+                $therapeuticClassName = TherapeuticClass::where('id', $therapeuticClassId)->value('name');
+                array_push($therapeuticClassNames, $therapeuticClassName);
+            }
+            $medicineData['therapeutic_class_ids']     = $therapeuticClassIds;
+            $medicineData['therapeutic_class_names']   = implode(',', $therapeuticClassNames);
+        } else {
+            $medicineData['therapeutic_class_ids']     = null;
+            $medicineData['therapeutic_class_names']   = null;
+        }
+
         $pharmaceuticalsID  = $request->input('pharma_id');
         $pharmaName         = PharmaceuticalCompany::where('id', $pharmaceuticalsID)->value('name');
-
-//        $classID = $request->input('class_id');
-//        $className = ClassName::where('id', $classID)->value('name');
 
         $indicationIDs      = $request->input('indications_ids');
         $indicationKeyWords = [];
@@ -290,7 +315,6 @@ class MedicinesController extends Controller
         $medicineData['medicine_type_name']     = $medicineTypeName;
         $medicineData['generic_name']           = $genericName;
         $medicineData['pharma_name']            = $pharmaName;
-//        $medicineData['class_name']             = $className;
 
         $medicine = Medicine::findOrFail($id);
         $medicine->fill($medicineData)->save();

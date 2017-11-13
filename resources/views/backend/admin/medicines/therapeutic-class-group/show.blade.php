@@ -20,13 +20,13 @@
         <div class="box-header with-border">
             <h3 class="box-title">{!! ucfirst($module_title) !!} {!! ucfirst($module_action) !!}</h3>
             <div class="box-tools pull-right">
-                <a href="{!! route('admin.generic-name.create') !!}" class="btn btn-xs btn-success">
+                <a href="{!! route("admin.$module_path.create") !!}" class="btn btn-xs btn-success">
                     <i class="fa fa-plus"></i> {!! 'Create New' !!}
                 </a>
-                <a href="{!! route('admin.generic-name.index') !!}" class="btn btn-xs btn-info">
+                <a href="{!! route("admin.$module_path.index") !!}" class="btn btn-xs btn-info">
                     <i class="fa fa-list"></i> {!! 'Back to List' !!}
                 </a>
-                <a href="{!! route("admin.generic-name.trash") !!}" class="btn btn-xs btn-danger">
+                <a href="{!! route("admin.$module_path.trash") !!}" class="btn btn-xs btn-danger">
                     <i class="fa fa-trash"></i> {!! 'Trash List' !!}
                 </a>
             </div>
@@ -39,64 +39,37 @@
                         <table class="table ">
                             <tbody>
                             <tr>
-                                <td class="pull-right">
-                                    <strong>Medicine Generic Name</strong>
+                                <td>
+                                    <strong>Therapeutic Class Group</strong>
                                 </td>
                                 <td> : </td>
                                 <td>
-                                    {{ ucwords($generic_name->name) }}
+                                    {{ $therapeutic_class_group->name }}
                                 </td>
                             </tr>
                             <tr>
-                                <td class="pull-right">
-                                    <strong>Generic Name Code</strong>
+                                <td>
+                                    <strong>Parent Therapeutic Class Group (if any)</strong>
                                 </td>
                                 <td> : </td>
                                 <td>
-                                    {{ $generic_name->code }}
+                                    @if($therapeutic_class_group_parent == null)
+                                        None
+                                    @else
+                                        {{ $therapeutic_class_group_parent }}
+                                    @endif
                                 </td>
                             </tr>
                             <tr>
-                                <td class="pull-right">
-                                    <strong>Generic Name Description</strong>
-                                </td>
-                                <td> : </td>
                                 <td>
-                                    {{ $generic_name->description }}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="pull-right">
-                                    <strong>Indications</strong>
-                                </td>
-                                <td> : </td>
-                                <td>
-                                    @foreach($generic_name->indications_keywords as $keyword)
-                                        <li><ol style="padding: 0; margin-bottom: 5px;">{{ $keyword }}</ol></li>
-                                    @endforeach
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="pull-right">
-                                    <strong>Therapeutic Class Names</strong>
-                                </td>
-                                <td> : </td>
-                                <td>
-                                    @foreach($generic_name->therapeutic_class_names as $therapeutic_class_name)
-                                        <li><ol style="padding: 0; margin-bottom: 5px;">{{ $therapeutic_class_name }}</ol></li>
-                                    @endforeach
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="pull-right">
                                     <strong>Status</strong>
                                 </td>
                                 <td> : </td>
                                 <td>
-                                    @if($generic_name->status && $generic_name->status == 1)
-                                        <span class="label label-primary">{!! 'Publish' !!}</span>
+                                    @if($therapeutic_class_group->status && $therapeutic_class_group->status == 1)
+                                        <span class="label label-primary">{!! 'Active' !!}</span>
                                     @else
-                                        <span class="label label-warning">{!! 'Not Publish' !!}</span>
+                                        <span class="label label-warning">{!! 'Not Active' !!}</span>
                                     @endif
                                 </td>
                             </tr>
@@ -109,10 +82,10 @@
 
             <div class="row text-center">
                 <div class="col-sm-12 text-center">
-                    <a href="{!! route('admin.generic-name.edit', $generic_name->id) !!}" class="btn btn-xs btn-primary">
+                    <a href="{!! route("admin.$module_path.edit", $therapeutic_class_group->id) !!}" class="btn btn-xs btn-primary">
                         <i class="fa fa-pencil"></i> {!! 'Edit/Update' !!}
                     </a>
-                    <a href="{!! route('admin.generic-name.destroy', $generic_name->id) !!}" class="btn btn-xs btn-danger record-destroy" id="record-destroy" title="Move to Trash" data-toggle="tooltip" data-placement="top">
+                    <a href="{!! route("admin.$module_path.destroy", $therapeutic_class_group->id) !!}" class="btn btn-xs btn-danger record-destroy" id="record-destroy" title="Move to Trash" data-toggle="tooltip" data-placement="top">
                         <i class="fa fa-trash"></i> {!! 'Move to Trash' !!}
                     </a>
                 </div>
@@ -129,7 +102,7 @@
             $('.record-destroy').on("click", function(ev){
                 ev.preventDefault();
                 var URL = $(this).attr('href');
-                var redirectURL = "{{ route('admin.generic-name.index') }}";
+                var redirectURL = "{{ route("admin.$module_path.index") }}";
                 warnBeforeRedirect(URL, redirectURL);
             });
 
