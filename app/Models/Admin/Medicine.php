@@ -15,4 +15,8 @@ class Medicine extends Model
 
     protected $guarded = ['created_by', 'updated_by', 'deleted_by', 'deleted_at', 'created_at', 'updated_at'];
 
+    public function pharmaceutical()
+    {
+        return $this->belongsTo(PharmaceuticalCompany::class, 'pharma_id');
+    }
 }
