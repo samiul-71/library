@@ -14,4 +14,9 @@ class LabTest extends Model
     protected $dates = ['deleted_at'];
 
     protected $guarded = ['created_by', 'updated_by', 'deleted_by', 'deleted_at', 'created_at', 'updated_at'];
+
+    public function labTestCategory()
+    {
+        return $this->belongsTo(LabTestCategory::class, 'test_category_id');
+    }
 }
