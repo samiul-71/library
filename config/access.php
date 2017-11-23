@@ -25,6 +25,11 @@ return [
     'lab_test_categories_table' => 'lab_test_categories',
 
     /*
+    * Allergies table is used to store Allergies Data
+    */
+    'allergies_table' => 'allergies',
+
+    /*
      * Medicine Indications Table is used to store Indications Keywords
      */
     'medicine_indications_table' => 'indications',
