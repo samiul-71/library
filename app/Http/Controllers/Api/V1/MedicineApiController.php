@@ -39,6 +39,11 @@ class MedicineApiController extends ApiController
 
             $medicineQuery = $medicineList->orderBy('name', 'asc');
 
+            if ($request->has('name')) {
+                $medicineName   =   trim($request->input('name'));
+                $medicineQuery->where('name', 'LIKE', "%$medicineName%");
+            }
+
             $collection = $this->getCollection($request, $medicineQuery);
 
             $medicineList = $collection->data;

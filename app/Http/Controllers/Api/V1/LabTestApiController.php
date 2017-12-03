@@ -39,6 +39,11 @@ class LabTestApiController extends ApiController
 
             $labTestQuery = $labTestList->orderBy('test_name', 'asc');
 
+            if ($request->has('name')) {
+                $testName   =   trim($request->input('name'));
+                $labTestQuery->where('test_name', 'LIKE', "%$testName%");
+            }
+
             $collection = $this->getCollection($request, $labTestQuery);
 
             $labTestList = $collection->data;
