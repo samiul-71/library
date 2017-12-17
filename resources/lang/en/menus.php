@@ -44,10 +44,18 @@ return [
         ],
 
         'sidebar' => [
-            'dashboard'             => 'Dashboard',
-            'general'               => 'General',
-            'system'                => 'System',
-            'medicine-type'         => 'Medicine Type',
+            'dashboard'                 => 'Dashboard',
+            'general'                   => 'General',
+            'system'                    => 'System',
+            'medicine-type'             => 'Medicine Types',
+            'indications'               => 'Indications',
+            'generic-name'              => 'Generic Names',
+            'medicine'                  => 'Medicine Lists',
+            'pharmaceutical-companies'  => 'Pharmaceutical Companies',
+            'lab-test'                  => 'Lab Tests',
+            'allergies'                 => 'Allergies Information',
+            'therapeutic-class-group'   => 'Therapeutic Class Group',
+            'therapeutic-class'         => 'Therapeutic Class',
         ],
     ],
 

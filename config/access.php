@@ -15,6 +15,31 @@ return [
     'medicine_type_table' => 'medicine_types',
 
     /*
+    * Medicine Type table used to store medicine types
+    */
+    'medicine_generic_name_table' => 'generic_names',
+
+    /*
+    * Lab Test Categories table is used to store Lab Test types
+    */
+    'lab_test_categories_table' => 'lab_test_categories',
+
+    /*
+    * Allergies table is used to store Allergies Data
+    */
+    'allergies_table' => 'allergies',
+
+    /*
+     * Medicine Indications Table is used to store Indications Keywords
+     */
+    'medicine_indications_table' => 'indications',
+
+    /*
+     * Pharmaceuticals Table is used to store Pharmaceutical Companies Name and Some Details Information
+     */
+    'pharmaceuticals_table' => 'pharmaceutical_companies',
+
+    /*
      * Role model used by Access to create correct relations. Update the role if it is in a different namespace.
     */
     'role' => Role::class,

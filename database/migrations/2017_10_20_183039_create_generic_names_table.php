@@ -18,12 +18,19 @@ class CreateGenericNamesTable extends Migration
 
             $table->string('name', 100);
             $table->string('code', 100)->nullable();
-            $table->string('description', 255)->nullable();
+            $table->text('description')->nullable();
+
+            $table->string('indications_ids', 255)->nullable();
+            $table->string('indications_keywords', 255)->nullable();
+
+            $table->string('therapeutic_class_ids', 255)->nullable();
+            $table->string('therapeutic_class_names', 255)->nullable();
 
             $table->boolean('status')->default(true);
 
-            $table->tinyInteger('created_by')->nullable();
-            $table->tinyInteger('updated_by')->nullable();
+            $table->integer('created_by')->nullable();
+            $table->integer('updated_by')->nullable();
+            $table->integer('deleted_by')->nullable();
 
             $table->softDeletes();
             $table->timestamps();

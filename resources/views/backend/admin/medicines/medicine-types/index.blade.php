@@ -11,7 +11,7 @@
     </h1>
 @endsection
 
-@section('after-styles-end')
+@section('after-styles')
     <style>
 
     </style>
@@ -101,9 +101,10 @@
 @stop
 
 @section('after-scripts')
+
     <script>
         $(document).ready(function() {
-//            $('#medicine-type-table').DataTable();
+            $('#medicine-type-table').DataTable();
         });
     </script>
 @stop

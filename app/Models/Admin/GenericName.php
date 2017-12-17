@@ -15,4 +15,19 @@ class GenericName extends Model
 
     protected $guarded = ['created_by', 'updated_by', 'deleted_by', 'deleted_at', 'created_at', 'updated_at'];
 
+    /**
+     * Many-to-many relation with Indications
+     */
+    public function indications()
+    {
+        return $this->belongsToMany(Indication::class, 'generic_name_indication', 'generic_name_id', 'indication_id')->withTimestamps();
+    }
+
+    /**
+     * Many-to-many relation with Therapeutic Classes
+     */
+    public function therapeuticClasses()
+    {
+        return $this->belongsToMany(TherapeuticClass::class, 'generic_name_therapeutic_class', 'generic_id', 'therapeutic_id')->withTimestamps();
+    }
 }

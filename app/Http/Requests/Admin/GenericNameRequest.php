@@ -25,7 +25,7 @@ class GenericNameRequest extends FormRequest
     {
         return [
             'name'  => 'required|min:3',
-//            'code'  => 'required|min:2',
+            'code'  => 'required|min:2',
         ];
     }
 
@@ -37,7 +37,10 @@ class GenericNameRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required'   => 'Name Field is Required and Minimum value is 3'
+            'name.required' => 'Name Field is Required',
+            'name.min'      => 'Name Field requires at least 3 characters',
+            'code.required' => 'Generic Name Code Field is Required',
+            'code.min'      => 'Generic Name Code Field requires at least 2 characters',
         ];
     }
 }

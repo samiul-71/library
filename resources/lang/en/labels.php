@@ -31,12 +31,40 @@ return [
             'update'    => 'Update',
             'trash'     => 'Trash',
 
-            'medicine-type'  => [
-                'create'    => 'Add/Create New Medicine Type'
+            'medicine-type' => [
+                'create' => 'Add/Create new Medicine Type'
             ],
 
-            'indications'  => [
-                'create'    => 'Add/Create New Indication'
+            'generic-name' => [
+                'create' => 'Add/Create new Medicine Generic Name'
+            ],
+
+            'indications' => [
+                'create' => 'Add/Create new Indication'
+            ],
+
+            'medicine' => [
+                'create' => 'Add/Create new Medicine'
+            ],
+
+            'pharmaceutical-companies'  => [
+                'create'    => 'Add/Create new Pharmaceutical Company'
+            ],
+
+            'lab-test'  => [
+                'create'    => 'Add/Create new Lab Test'
+            ],
+
+            'allergies'  => [
+                'create'    => 'Add/Create new Allergy Info'
+            ],
+
+            'therapeutic-class-group'  => [
+                'create'    => 'Add/Create new Therapeutic Class Group'
+            ],
+
+            'therapeutic-class'  => [
+                'create'    => 'Add/Create new Therapeutic Class'
             ],
         ],
         'hide'              => 'Hide',

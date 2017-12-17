@@ -14,7 +14,7 @@ class MedicineTypeController extends Controller
         $this->module_title = 'Medicine Type';
         $this->module_path  = 'medicine-type';
         $this->module_icon  = 'fa fa-plus-square';
-        $this->module_model = 'App\Models\MedicineType';
+        $this->module_model = 'App\Models\Admin\MedicineType';
     }
 
     /**

@@ -9,27 +9,31 @@
     </h1>
 @endsection
 
+@section('after-styles')
+    <link rel="stylesheet" type="text/css" href="/public/plugins/MultiSelect/jquery.dropdown.css">
+@endsection
+
 @section('content')
     <div class="box box-primary">
         <div class="box-header with-border">
             <strong>{{ ucfirst($module_action) }}</strong>
             <div class="box-tools pull-right">
-                <a href="{!! route('admin.medicine-type.create') !!}" class="btn btn-xs btn-success">
+                <a href="{!! route('admin.generic-name.create') !!}" class="btn btn-xs btn-success">
                     <i class="fa fa-plus"></i> {!! 'Create New' !!}
                 </a>
-                <a href="{!! route('admin.medicine-type.index') !!}" class="btn btn-xs btn-info">
+                <a href="{!! route('admin.generic-name.index') !!}" class="btn btn-xs btn-info">
                     <i class="fa fa-list"></i> {!! 'Back to List' !!}
                 </a>
-                <a href="{!! route("admin.medicine-type.trash") !!}" class="btn btn-xs btn-danger">
+                <a href="{!! route("admin.generic-name.trash") !!}" class="btn btn-xs btn-danger">
                     <i class="fa fa-trash"></i> {!! 'Trash List' !!}
                 </a>
             </div>
         </div><!-- /.box-header -->
         <div class="box-body">
 
-            {!! Form::model($medicine_type, ['method' => 'PUT', 'route' => ["admin.medicine-type.update", $medicine_type->id], 'class' => 'form', 'role' => 'form']) !!}
+            {!! Form::model($generic_name, ['method' => 'PUT', 'route' => ["admin.generic-name.update", $generic_name->id], 'class' => 'form', 'role' => 'form']) !!}
 
-            @include("backend.admin.medicines.medicine-types.form")
+            @include("backend.admin.medicines.generic-names.form")
 
             {!! Form::close() !!}
 
@@ -38,18 +42,32 @@
 @endsection
 
 @section('after-scripts')
+    {!! Html::script('plugins/MultiSelect/jquery.dropdown.js') !!}
     <script>
 
         $(document).ready(function() {
 
 //            $('.form').validator();
 
+            $('.indications_keyword').dropdown({
+                multipleMode: 'label',
+                readOnly: false,
+                limitCount: Infinity,
+                searchable: true
+            });
+
+            $('.therapeutic_classes').dropdown({
+                multipleMode: 'label',
+                readOnly: false,
+                limitCount: Infinity,
+                searchable: true
+            });
 
             // Delete a Record
             $('.record-destroy').on("click", function(ev){
                 ev.preventDefault();
                 var URL = $(this).attr('href');
-                var redirectURL = "{{ route('admin.medicine-type.index') }}";
+                var redirectURL = "{{ route('admin.generic-name.index') }}";
                 warnBeforeRedirect(URL, redirectURL);
             });
 

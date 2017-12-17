@@ -26,8 +26,10 @@ class DatabaseSeeder extends Seeder
         $this->call(HistoryTypeTableSeeder::class);
 
         $this->call(MedicineTypesTableSeeder::class);
-//        $this->call(MedicineIndicationTableSeeder::class);
-//        $this->call(MedicineGenericNameTableSeeder::class);
+        $this->call(MedicineIndicationTableSeeder::class);
+        $this->call(MedicineGenericNameTableSeeder::class);
+        $this->call(LabTestCategoriesTableSeeder::class);
+        $this->call(AllergiesTableSeeder::class);
 
         Model::reguard();
     }
