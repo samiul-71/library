@@ -38,8 +38,7 @@ class AllergyApiController extends ApiController
             // if any custom query needed, we can implement the query here
 
             if ($request->has('allergy_name')) {
-                $allergyNameFormatted = str_replace(' ', '', $request->input('allergy_name'));
-                $allergyName = strtolower($allergyNameFormatted);
+                $allergyName = trim($request->input('allergy_name'));
 
                 $allergies = $allergies->where('allergy_cause_title', 'LIKE', "%$allergyName%");
             }
