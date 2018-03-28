@@ -37,6 +37,12 @@ class AllergyApiController extends ApiController
 
             // if any custom query needed, we can implement the query here
 
+            if ($request->has('allergy_name')) {
+                $allergyName = trim($request->input('allergy_name'));
+
+                $allergies = $allergies->where('allergy_cause_title', 'LIKE', "%$allergyName%");
+            }
+
             $allergiesQuery = $allergies->orderBy('allergy_cause_title', 'asc');
 
             $collection = $this->getCollection($request, $allergiesQuery);
