@@ -1,12 +1,11 @@
-
 <div class="form-row">
     <div class="form-group col-md-6">
         {!! Form::label('test_name', 'Lab Test Name') !!}
         {!! Form::text('test_name', old('test_name'), ['id'=>'test_name', 'class' => 'form-control test_name', 'placeholder' => 'Name of the Lab Test', 'required' => 'required']) !!}
     </div>
     <div class="form-group col-md-6">
-        {!! Form::label('code', 'Code') !!}
-        {!! Form::text('code', old('code'), ['id'=>'code', 'class' => 'form-control code', 'placeholder' => 'Lab Test Code']) !!}
+        {!! Form::label('test_category_id', 'Select Test Category') !!}
+        {!! Form::select('test_category_id', ['' => 'Choose Test Category'] + $lab_test_categories, old('test_category_id'), ['id' => 'test_category_id', 'class' => 'form-control select2 test_category_id'])  !!}
     </div>
 </div>
 <div class="form-row">
@@ -16,13 +15,9 @@
     </div>
 </div>
 <div class="form-row">
-    <div class="form-group col-md-6">
+    <div class="form-group col-md-12">
         {!! Form::label('methodology', 'Methodology') !!}
         {!! Form::text('methodology', old('methodology'), ['id'=>'methodology', 'class' => 'form-control methodology', 'placeholder' => 'Methodology']) !!}
-    </div>
-    <div class="form-group col-md-6">
-        {!! Form::label('test_category_id', 'Select Test Category') !!}
-        {!! Form::select('test_category_id', ['' => 'Choose Test Category'] + $lab_test_categories, old('test_category_id'), ['id' => 'test_category_id', 'class' => 'form-control select2 test_category_id'])  !!}
     </div>
 </div>
 <div class="form-row">
