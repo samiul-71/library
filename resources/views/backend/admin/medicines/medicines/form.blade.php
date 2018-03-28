@@ -10,27 +10,20 @@
                 {!! Form::text('strength', old('strength'), ['id'=>'strength', 'class' => 'form-control strength', 'placeholder' => 'Example : 500mg']) !!}
             </div>
             <div class="form-group col-md-4">
-                {!! Form::label('code', 'Medicine Code') !!}
-                {!! Form::text('code', old('code'), ['id'=>'code', 'class' => 'form-control code', 'placeholder' => 'Provide a Medicine Code', 'required' => 'required']) !!}
-            </div>
-        </div>
-
-        <div class="form-row">
-            <div class="form-group col-md-4">
                 {!! Form::label('medicine_type_id', 'Select Medicine Type') !!}
                 {!! Form::select('medicine_type_id', ['' => 'Choose Medicine Type'] + $medicine_types, old('medicine_type_id'), ['id' => 'medicine_type', 'class' => 'form-control select2 medicine_type', 'required' => 'required'])  !!}
             </div>
-
-            <div class="form-group col-md-4">
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
                 {!! Form::label('generic_name_id', 'Select Generic Name') !!}
                 {!! Form::select('generic_name_id', ['' => 'Choose Generic Name'] + $generic_names, old('generic_name_id'), ['id'=>'generic_name', 'class' => 'form-control select2 generic_name']) !!}
             </div>
-            <div class="form-group col-md-4">
+            <div class="form-group col-md-6">
                 {!! Form::label('pharma_id', 'Select Pharmaceuticals') !!}
                 {!! Form::select('pharma_id', ['' => 'Choose Pharmaceuticals'] + $pharmaceuticals, old('pharma_id'), ['id'=>'pharmaceutical', 'class' => 'form-control select2 pharmaceutical']) !!}
             </div>
         </div>
-
         <div class="form-row">
             <div class="form-group col-md-3">
                 {!! Form::label('pack_size', 'Pack Size') !!}
@@ -49,14 +42,12 @@
                 {!! Form::select('currency', ['BDT' => 'BDT', 'USD' => 'USD'], old('currency'), ['id'=>'medicine_type', 'class' => 'form-control'])  !!}
             </div>
         </div>
-
         <div class="form-row">
             <div class="form-group col-md-12">
                 {!! Form::label('description', 'Medicine Description') !!}
                 {!! Form::textarea('description', old('description'), ['id'=>'description', 'class' => 'form-control description', 'placeholder' => 'Medicine Description', 'rows' => 2]) !!}
             </div>
         </div>
-
         <div class="form-row">
             <div class="form-group col-md-4">
                 {!! Form::label('side_effects', 'Side Effects') !!}
@@ -71,14 +62,12 @@
                 {!! Form::textarea('pregnancy_category', old('pregnancy_category'), ['id'=>'pregnancy_category', 'class' => 'form-control pregnancy_category', 'placeholder' => 'Pregnancy Category', 'rows' => 2]) !!}
             </div>
         </div>
-
         <div class="form-row">
             <div class="form-group col-md-12 indications_keyword">
                 {!! Form::label('indications_ids', 'Choose Indications Keyword(s)') !!}
                 {!! Form::select('indications_ids[]', $indications, old('indications_ids[]'), ['id'=>'indications_keyword', 'class' => 'form-control indications_keyword', 'multiple' => 'multiple']) !!}
             </div>
         </div>
-
         <div class="form-row">
             <div class="form-group col-md-8">
                 {!! Form::label('indications_details', 'Indications Details') !!}
@@ -89,7 +78,6 @@
                 {!! Form::textarea('adult_dose', old('adult_dose'), ['id'=>'adult_dose', 'class' => 'form-control adult_dose', 'placeholder' => 'Adult Dosages', 'rows' => 2]) !!}
             </div>
         </div>
-
         <div class="form-row">
             <div class="form-group col-md-3">
                 {!! Form::label('child_dose', 'Child Dosages') !!}
@@ -108,7 +96,6 @@
                 {!! Form::textarea('administration', old('administration'), ['id'=>'administration', 'class' => 'form-control administration', 'placeholder' => 'Administration', 'rows' => 2]) !!}
             </div>
         </div>
-
         <div class="form-row">
             <div class="form-group col-md-3">
                 {!! Form::label('ingredients', 'Ingredients') !!}
@@ -133,11 +120,6 @@
                 @endif
             </div>
         </div>
-
-        {{--<div class="form-row">--}}
-
-        {{--</div>--}}
-
         <div class="col-sm-12">
             <div class="form-group text-center">
                 @if(isset($medicine))

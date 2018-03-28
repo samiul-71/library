@@ -29,7 +29,6 @@ class MedicinesController extends Controller
      */
     public function index()
     {
-//        dd('List of the Medicine Name');
         $data['module_name']    = $this->module_name;
         $data['module_title']   = $this->module_title;
         $data['module_path']    = $this->module_path;
@@ -52,7 +51,6 @@ class MedicinesController extends Controller
      */
     public function create()
     {
-//        dd('Call Create of the Medicine');
         $data['module_name']    = $this->module_name;
         $data['module_title']   = $this->module_title;
         $data['module_path']    = $this->module_path;
@@ -106,16 +104,15 @@ class MedicinesController extends Controller
      */
     public function store(MedicineRequest $request)
     {
-//        dd($request->all());
         $medicineNameExist = $this->checkMedicineName($request->input('name'), $request->input('strength'), $request->input('medicine_type_id'));
-        $medicineCodeExist = $this->checkMedicineCode($request->input('code'));
+//        $medicineCodeExist = $this->checkMedicineCode($request->input('code'));
 
         if($medicineNameExist) {
             return redirect()->back()->with('flash_danger', 'Your Given Medicine Name with provided Medicine Type and Strength already exists. Please Insert a Different Medicine Name with different Medicine Type and Strength.')->withInput($request->all);
         }
-        if($medicineCodeExist) {
-            return redirect()->back()->with('flash_danger', 'Your Given Code of Medicine Already Exists. Please Insert a Different Code for Medicine.')->withInput($request->all);
-        }
+//        if($medicineCodeExist) {
+//            return redirect()->back()->with('flash_danger', 'Your Given Code of Medicine Already Exists. Please Insert a Different Code for Medicine.')->withInput($request->all);
+//        }
 
         $medicineData = $request->except('_token', 'medicine_class_id', 'indications_ids');
 
@@ -163,6 +160,9 @@ class MedicinesController extends Controller
         $medicineData['generic_name']           = $genericName;
         $medicineData['pharma_name']            = $pharmaName;
 
+        $medicineCode   =   $this->generateMedicineCode($medicineData['name']);
+        $medicineData['code']   =   strtoupper($medicineCode);
+
         $medicine = Medicine::create($medicineData);
         $message = 'Your Medicine has been Created/Added Successfully';
 
@@ -177,7 +177,6 @@ class MedicinesController extends Controller
      */
     public function show($id)
     {
-//        dd('Details of the Medicine');
         $data['module_name']    = $this->module_name;
         $data['module_title']   = $this->module_title;
         $data['module_path']    = $this->module_path;
@@ -204,7 +203,6 @@ class MedicinesController extends Controller
      */
     public function edit($id)
     {
-//        dd('Call Edit Page of the Medicine');
         $data['module_name']    = $this->module_name;
         $data['module_title']   = $this->module_title;
         $data['module_path']    = $this->module_path;
@@ -261,13 +259,9 @@ class MedicinesController extends Controller
     public function update(MedicineRequest $request, $id)
     {
         $medicineNameExist = $this->checkMedicineForUpdate($request->input('name'), $request->input('strength'), $request->input('medicine_type_id'), $id);
-        $medicineCodeExist = $this->checkMedicineCodeForUpdate($request->input('code'), $id);
 
         if($medicineNameExist) {
             return redirect()->back()->with('flash_danger', 'Your Given Medicine Name with provided Medicine Type and Strength already exists. Please Insert a Different Medicine Name with different Medicine Type and Strength.')->withInput($request->all);
-        }
-        if($medicineCodeExist) {
-            return redirect()->back()->with('flash_danger', 'Your Given Code of Medicine Already Exists. Please Insert a Different Code for Medicine.')->withInput($request->all);
         }
 
         $medicineData       = $request->except('_token', 'medicine_class_id', 'indications_ids');
@@ -332,7 +326,6 @@ class MedicinesController extends Controller
      */
     public function destroy($id)
     {
-//        dd('Call Destroy Method of the Medicine');
         $record = Medicine::find($id);
         $record->destroy($id);
 
@@ -395,21 +388,41 @@ class MedicinesController extends Controller
         return $result;
     }
 
-    public function checkMedicineCode($medicineCode){
-
-        $result = Medicine::where('code', $medicineCode)->first();
-        return $result;
-    }
-
     public function checkMedicineForUpdate($medicineName, $medicineStrength, $medicineTypeID, $id){
 
         $result = Medicine::withTrashed()->where('name', $medicineName)->where('strength', $medicineStrength)->where('medicine_type_id', $medicineTypeID)->where('id', '!=', $id)->first();
         return $result;
     }
 
-    public function checkMedicineCodeForUpdate($medicineCode, $id){
+    /**
+     * Generate Unique Medicine Code
+     *
+     * @param $medicineName
+     * @return string
+     */
+    private function generateMedicineCode($medicineName){
+        $code = '';
+        $name = str_replace(array('[',']',',','&','(',')','-','_',';','.','\\','/'), '', $medicineName);
+        foreach(explode(' ',$name)as $name){
+            $code .= isset($name[0])?$name[0]:'';
+        }
+        $code = $code.'-'.rand(1000000,9999999);
 
-        $result = Medicine::where('code', $medicineCode)->where('id', '!=', $id)->first();
+        if($this->checkMedicineCode($code) == null){
+            return $code;
+        } else {
+            $this->generateMedicineCode($medicineName);
+        }
+    }
+
+    /**
+     * Queries database to see if the generated Medicine Code exists within database
+     *
+     * @param $medicineCode
+     * @return \Illuminate\Database\Eloquent\Model|null|static
+     */
+    public function checkMedicineCode($medicineCode){
+        $result = Medicine::where('code', $medicineCode)->first();
         return $result;
     }
 }

@@ -73,13 +73,16 @@ class LabTestController extends Controller
             return redirect()->back()->with('flash_danger', 'Your given Lab test name already exists. Please Insert a Different Lab Test Name.')->withInput($request->all);
         }
 
-        $labTestData       = $request->except('_token');
+        $labTestData                        = $request->except('_token');
 
         $labTestCategoryID                  = $request->input('test_category_id');
         $labTestCategoryName                = LabTestCategory::where('id', $labTestCategoryID)->value('name');
         $labTestData['test_category_name']  = $labTestCategoryName;
 
-        $medicine = LabTest::create($labTestData);
+        $labTestCode           =   $this->generateLabTestCode($labTestData['test_name']);
+        $labTestData['code']   =   strtoupper($labTestCode);
+
+        $labTestCreate = LabTest::create($labTestData);
 
         $message = 'Your Lab test record has been created/added successfully!';
 
@@ -234,6 +237,38 @@ class LabTestController extends Controller
     public function checkLabTestNameForUpdate($labTestName, $id){
 
         $result = LabTest::where('test_name', $labTestName)->where('id', '!=', $id)->first();
+        return $result;
+    }
+
+    /**
+     * Generate Unique Lab Test Code
+     *
+     * @param $labTestName
+     * @return string
+     */
+    private function generateLabTestCode($labTestName){
+        $code = '';
+        $name = str_replace(array('[',']',',','&','(',')','-','_',';','.','\\','/'), '', $labTestName);
+        foreach(explode(' ',$name)as $name){
+            $code .= isset($name[0])?$name[0]:'';
+        }
+        $code = $code.'-'.rand(10000,99999);
+
+        if($this->checkLabTestCode($code) == null){
+            return $code;
+        } else {
+            $this->generateLabTestCode($labTestName);
+        }
+    }
+
+    /**
+     * Queries database to see if the generated Lab Test Code exists within database
+     *
+     * @param $labTestCode
+     * @return \Illuminate\Database\Eloquent\Model|null|static
+     */
+    public function checkLabTestCode($labTestCode){
+        $result = LabTest::where('code', $labTestCode)->first();
         return $result;
     }
 }

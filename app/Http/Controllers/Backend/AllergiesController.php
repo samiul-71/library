@@ -72,7 +72,7 @@ class AllergiesController extends Controller
 
         $allergiesInfoData    = $request->except('_token');
 
-        $allergyCode          = $this->generateAllergyCode($allergiesInfoData['allergy_cause_title']);
+        $allergyCode          = $this->generateAllergyCode();
         $allergiesInfoData['allergy_code'] = strtoupper($allergyCode);
 
         $allergiesInfoCreate  = Allergy::create($allergiesInfoData);
@@ -230,18 +230,13 @@ class AllergiesController extends Controller
      * @param $allergyName
      * @return string
      */
-    private function generateAllergyCode($allergyName){
-        $code = '';
-        $name = str_replace(array('[',']',',','&','(',')','-','_',';','.','\\','/'), '', $allergyName);
-        foreach(explode(' ',$name)as $name){
-            $code .= isset($name[0])?$name[0]:'';
-        }
-        $code = 'ALRG'.'-'.$code.'-'.rand(1000,9999);
+    private function generateAllergyCode(){
+        $code = 'ALRG'.'-'.rand(1000,9999);
 
         if($this->checkAllergyCode($code) == null){
             return $code;
         } else {
-            $this->generateAllergyCode($allergyName);
+            $this->generateAllergyCode();
         }
     }
 
