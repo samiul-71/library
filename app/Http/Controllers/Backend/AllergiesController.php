@@ -65,16 +65,16 @@ class AllergiesController extends Controller
     public function store(AllergiesRequest $request)
     {
         $allergyCauseTitleExist = $this->checkAllergyCauseTitle($request->input('allergy_cause_title'));
-        $allergyCodeExist       = $this->checkAllergyCode($request->input('allergy_code'));
 
         if($allergyCauseTitleExist) {
             return redirect()->back()->with('flash_danger', 'Your provided Allergy Cause Title already exists. Please provide separate Allergy Cause Title.')->withInput($request->all);
         }
-        if($allergyCodeExist) {
-            return redirect()->back()->with('flash_danger', 'Your provided Allergy code already exits. Please provide a different Allergy code.')->withInput($request->all);
-        }
 
         $allergiesInfoData    = $request->except('_token');
+
+        $allergyCode          = $this->generateAllergyCode($allergiesInfoData['allergy_cause_title']);
+        $allergiesInfoData['allergy_code'] = strtoupper($allergyCode);
+
         $allergiesInfoCreate  = Allergy::create($allergiesInfoData);
         $message              = 'Your Allergy Information has been created successfully!';
 
@@ -135,13 +135,9 @@ class AllergiesController extends Controller
     public function update(AllergiesRequest $request, $id)
     {
         $allergyCauseTitle = $this->checkAllergyCauseTitleForUpdate($request->input('allergy_cause_title'), $id);
-        $allergyCodeExist  = $this->checkAllergyCodeForUpdate($request->input('allergy_code'), $id);
 
         if($allergyCauseTitle) {
             return redirect()->back()->with('flash_danger', 'Your provided Allergy Cause Title already exists. Please provide a separate Allergy Cause Title.')->withInput($request->all);
-        }
-        if($allergyCodeExist) {
-            return redirect()->back()->with('flash_danger', 'Your provided Allergy code already exits. Please provide a different Allergy code.')->withInput($request->all);
         }
 
         $allergyInfo        = Allergy::findOrFail($id);
@@ -222,21 +218,41 @@ class AllergiesController extends Controller
         return $result;
     }
 
-    public function checkAllergyCode($allergyCode){
-
-        $result = Allergy::where('allergy_code', $allergyCode)->first();
-        return $result;
-    }
-
     public function checkAllergyCauseTitleForUpdate($allergyCauseTitle, $id){
 
         $result = Allergy::where('allergy_cause_title', $allergyCauseTitle)->where('id', '!=', $id)->first();
         return $result;
     }
 
-    public function checkAllergyCodeForUpdate($allergyCauseTitle, $id){
+    /**
+     * Generate Unique Allergy Code
+     *
+     * @param $allergyName
+     * @return string
+     */
+    private function generateAllergyCode($allergyName){
+        $code = '';
+        $name = str_replace(array('[',']',',','&','(',')','-','_',';','.','\\','/'), '', $allergyName);
+        foreach(explode(' ',$name)as $name){
+            $code .= isset($name[0])?$name[0]:'';
+        }
+        $code = 'ALRG'.'-'.$code.'-'.rand(1000,9999);
 
-        $result = Allergy::where('allergy_code', $allergyCauseTitle)->where('id', '!=', $id)->first();
+        if($this->checkAllergyCode($code) == null){
+            return $code;
+        } else {
+            $this->generateAllergyCode($allergyName);
+        }
+    }
+
+    /**
+     * Queries database to see if the generated Allergy Code exists within database
+     *
+     * @param $allergyCode
+     * @return \Illuminate\Database\Eloquent\Model|null|static
+     */
+    private function checkAllergyCode($allergyCode){
+        $result = Allergy::where('allergy_code', $allergyCode)->first();
         return $result;
     }
 }

@@ -412,14 +412,4 @@ class MedicinesController extends Controller
         $result = Medicine::where('code', $medicineCode)->where('id', '!=', $id)->first();
         return $result;
     }
-
-//    public function randomNumber($length) {
-//        $result = '';
-//        for($i = 0; $i < $length; $i++) {
-//            $result .= mt_rand(0, 9);
-//        }
-//
-//        return $result;
-//    }
-
 }

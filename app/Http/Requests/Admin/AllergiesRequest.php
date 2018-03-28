@@ -24,9 +24,7 @@ class AllergiesRequest extends FormRequest
     public function rules()
     {
         return [
-            'allergy_code'          => 'required|min:2',
             'allergy_cause_title'   => 'required|min:2'
-            //
         ];
     }
 
@@ -38,8 +36,6 @@ class AllergiesRequest extends FormRequest
     public function messages()
     {
         return [
-            'allergy_code.required'         => 'Allergy Code field is required!',
-            'allergy_code.min'              => 'Allergy code field must consist of at least 2 characters!',
             'allergy_cause_title.required'  => 'Allergy Cause Title field is required!',
             'allergy_cause_title.min'       => 'Allergy Cause Title field must consist of at least 2 characters!'
         ];
