@@ -6,18 +6,14 @@ use App\Api\Transformers\Transformer;
 
 class MedicineTransformer extends Transformer
 {
-    /**
-     * @property string imageUploadedPath
-     */
-//    protected $imageUploadedPath;
     protected $pharmaceuticalTransformer;
 
     /**
      * MedicineTransformer constructor.
+     * @param PharmaceuticalCompanyTransformer $pharmaceuticalTransformer
      */
     public function __construct(PharmaceuticalCompanyTransformer $pharmaceuticalTransformer)
     {
-//        $this->imageUploadedPath  = $this->getImageRootPath() . topicImagePath();
         $this->pharmaceuticalTransformer = $pharmaceuticalTransformer;
     }
 
@@ -30,7 +26,6 @@ class MedicineTransformer extends Transformer
             'description'              => $this->formatHtml($medicine->description),
             'strength'                 => trim($medicine->strength),
             'indications'              => trim($medicine->indications_details),
-//            'image_path'        => ($medicine->image_path != null) ? $this->imageUploadedPath . $medicine->image_path : null,
             'administration'           => $medicine->administration,
             'ingredients'              => $medicine->ingredients,
             'contraindications'        => $medicine->contraindications,
@@ -46,7 +41,6 @@ class MedicineTransformer extends Transformer
             'packetInfo'               => $this->getPacketInfo($medicine->pack_size, $medicine->no_per_unit, $medicine->unit_price, $medicine->currency),
             'dosageInfo'               => $this->getDoseInfo($medicine->adult_dose, $medicine->child_dose, $medicine->renal_dose),
             'indicationsKeywords'      => $this->getKeyWords($medicine->indications_keywords)
-            //            'sortOrder'        => $pharmaceutical->sort_order
         ];
     }
 
@@ -72,9 +66,9 @@ class MedicineTransformer extends Transformer
 
     public function getDoseInfo($adultDose, $childDose, $renalDose) {
         $doseInfoArray = [
-            'adult_dose'        => $adultDose,
-            'child_dose'        => $childDose,
-            'renal_dose'        => $renalDose
+            'adultDose'        => $adultDose,
+            'childDose'        => $childDose,
+            'renalDose'        => $renalDose
         ];
 
         return $doseInfoArray;
@@ -82,9 +76,9 @@ class MedicineTransformer extends Transformer
 
     public function getPacketInfo($packSize, $noPerUnit, $unitPrice, $currency) {
         $packetInfoArray = [
-            'pack_size'         => $packSize,
-            'no_per_unit'       => $noPerUnit,
-            'unit_price'        => $unitPrice,
+            'packSize'         => $packSize,
+            'noPerUnit'       => $noPerUnit,
+            'unitPrice'        => $unitPrice,
             'currency'          => $currency
         ];
 
