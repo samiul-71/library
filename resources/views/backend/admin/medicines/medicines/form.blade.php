@@ -3,7 +3,7 @@
         <div class="form-row">
             <div class="form-group col-md-4">
                 {!! Form::label('name', 'Medicine Name') !!}
-                {!! Form::text('name', old('name'), ['id'=>'name', 'class' => 'form-control name', 'placeholder' => 'Medicine Name', 'required' => 'required']) !!}
+                {!! Form::text('name', old('name'), ['id'=>'name', 'class' => 'form-control name', 'placeholder' => 'Medicine Name']) !!}
             </div>
             <div class="form-group col-md-4">
                 {!! Form::label('strength', 'Strength') !!}
@@ -11,7 +11,7 @@
             </div>
             <div class="form-group col-md-4">
                 {!! Form::label('medicine_type_id', 'Select Medicine Type') !!}
-                {!! Form::select('medicine_type_id', ['' => 'Choose Medicine Type'] + $medicine_types, old('medicine_type_id'), ['id' => 'medicine_type', 'class' => 'form-control select2 medicine_type', 'required' => 'required'])  !!}
+                {!! Form::select('medicine_type_id', ['' => 'Choose Medicine Type'] + $medicine_types, old('medicine_type_id'), ['id' => 'medicine_type', 'class' => 'form-control select2 medicine_type'])  !!}
             </div>
         </div>
         <div class="form-row">

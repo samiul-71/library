@@ -25,7 +25,7 @@ class MedicineRequest extends FormRequest
     {
         return [
             'name'              => 'required|min:3',
-            'medicine_type_id'  => 'required'
+//            'medicine_type_id'  => 'required'
         ];
     }
 
@@ -39,7 +39,7 @@ class MedicineRequest extends FormRequest
         return [
             'name.required'             => 'Name Field is Required',
             'name.min'                  => 'Name Field must consist of at least 3 characters',
-            'medicine_type_id.required' => 'Medicine Type Field is required'
+//            'medicine_type_id.required' => 'Medicine Type Field is required'
         ];
     }
 }

@@ -39,7 +39,7 @@ class MedicinesController extends Controller
         $data['page_heading']   = ucfirst($data['module_name']);
         $data['title']          = ucfirst($data['module_name']) . ' ' . ucfirst($data['module_action']);
 
-        $data['medicines'] = Medicine::all();
+        $data['medicines'] = Medicine::paginate(15);
 
         return view("backend.admin.medicines.medicines.index", $data);
     }
@@ -264,7 +264,7 @@ class MedicinesController extends Controller
             return redirect()->back()->with('flash_danger', 'Your Given Medicine Name with provided Medicine Type and Strength already exists. Please Insert a Different Medicine Name with different Medicine Type and Strength.')->withInput($request->all);
         }
 
-        $medicineData       = $request->except('_token', 'medicine_class_id', 'indications_ids');
+        $medicineData       = $request->except('_token', '_method', 'medicine_class_id', 'indications_ids');
 
         $medicineTypeID     = $request->input('medicine_type_id');
         $medicineTypeName   = MedicineType::where('id', $medicineTypeID)->value('name');
@@ -310,8 +310,10 @@ class MedicinesController extends Controller
         $medicineData['generic_name']           = $genericName;
         $medicineData['pharma_name']            = $pharmaName;
 
+        $medicineUpdateData = $this->manageInputs($medicineData);
+
         $medicine = Medicine::findOrFail($id);
-        $medicine->fill($medicineData)->save();
+        $medicine->fill($medicineUpdateData)->save();
 
         $message = 'Your Selected Medicine has been Updated Successfully';
 
@@ -424,5 +426,99 @@ class MedicinesController extends Controller
     public function checkMedicineCode($medicineCode){
         $result = Medicine::where('code', $medicineCode)->first();
         return $result;
+    }
+
+    private function manageInputs($medicineData) {
+        $data = [];
+
+        if(isset($medicineData['name']) && $medicineData['name'] != '') {
+            $data['name'] = $medicineData['name'];
+        }
+        if(isset($medicineData['strength']) && $medicineData['strength'] != '') {
+            $data['strength'] = $medicineData['strength'];
+        }
+        if(isset($medicineData['medicine_type_id']) && $medicineData['medicine_type_id'] != '') {
+            $data['medicine_type_id'] = $medicineData['medicine_type_id'];
+        }
+        if(isset($medicineData['generic_name_id']) && $medicineData['generic_name_id'] != '') {
+            $data['generic_name_id'] = $medicineData['generic_name_id'];
+        }
+        if(isset($medicineData['pharma_id']) && $medicineData['pharma_id'] != '') {
+            $data['pharma_id'] = $medicineData['pharma_id'];
+        }
+        if(isset($medicineData['pack_size']) && $medicineData['pack_size'] != '') {
+            $data['pack_size'] = $medicineData['pack_size'];
+        }
+        if(isset($medicineData['no_per_unit']) && $medicineData['no_per_unit'] != '') {
+            $data['no_per_unit'] = $medicineData['no_per_unit'];
+        }
+        if(isset($medicineData['unit_price']) && $medicineData['unit_price'] != '') {
+            $data['unit_price'] = $medicineData['unit_price'];
+        }
+        if(isset($medicineData['currency']) && $medicineData['currency'] != '') {
+            $data['currency'] = $medicineData['currency'];
+        }
+        if(isset($medicineData['description']) && $medicineData['description'] != '') {
+            $data['description'] = $medicineData['description'];
+        }
+        if(isset($medicineData['side_effects']) && $medicineData['side_effects'] != '') {
+            $data['side_effects'] = $medicineData['side_effects'];
+        }
+        if(isset($medicineData['precautions']) && $medicineData['precautions'] != '') {
+            $data['precautions'] = $medicineData['precautions'];
+        }
+        if(isset($medicineData['pregnancy_category']) && $medicineData['pregnancy_category'] != '') {
+            $data['pregnancy_category'] = $medicineData['pregnancy_category'];
+        }
+        if(isset($medicineData['indications_details']) && $medicineData['indications_details'] != '') {
+            $data['indications_details'] = $medicineData['indications_details'];
+        }
+        if(isset($medicineData['adult_dose']) && $medicineData['adult_dose'] != '') {
+            $data['adult_dose'] = $medicineData['adult_dose'];
+        }
+        if(isset($medicineData['child_dose']) && $medicineData['child_dose'] != '') {
+            $data['child_dose'] = $medicineData['child_dose'];
+        }
+        if(isset($medicineData['renal_dose']) && $medicineData['renal_dose'] != '') {
+            $data['renal_dose'] = $medicineData['renal_dose'];
+        }
+        if(isset($medicineData['mode_of_actions']) && $medicineData['mode_of_actions'] != '') {
+            $data['mode_of_actions'] = $medicineData['mode_of_actions'];
+        }
+        if(isset($medicineData['administration']) && $medicineData['administration'] != '') {
+            $data['administration'] = $medicineData['administration'];
+        }
+        if(isset($medicineData['ingredients']) && $medicineData['ingredients'] != '') {
+            $data['ingredients'] = $medicineData['ingredients'];
+        }
+        if(isset($medicineData['contraindications']) && $medicineData['contraindications'] != '') {
+            $data['contraindications'] = $medicineData['contraindications'];
+        }
+        if(isset($medicineData['interactions']) && $medicineData['interactions'] != '') {
+            $data['interactions'] = $medicineData['interactions'];
+        }
+        if(isset($medicineData['therapeutic_class_ids']) && $medicineData['therapeutic_class_ids'] != '') {
+            $data['therapeutic_class_ids'] = $medicineData['therapeutic_class_ids'];
+        }
+        if(isset($medicineData['therapeutic_class_names']) && $medicineData['therapeutic_class_names'] != '') {
+            $data['therapeutic_class_names'] = $medicineData['therapeutic_class_names'];
+        }
+        if(isset($medicineData['indications_ids']) && $medicineData['indications_ids'] != '') {
+            $data['indications_ids'] = $medicineData['indications_ids'];
+        }
+        if(isset($medicineData['indications_keywords']) && $medicineData['indications_keywords'] != '') {
+            $data['indications_keywords'] = $medicineData['indications_keywords'];
+        }
+        if(isset($medicineData['medicine_type_name']) && $medicineData['medicine_type_name'] != '') {
+            $data['medicine_type_name'] = $medicineData['medicine_type_name'];
+        }
+        if(isset($medicineData['generic_name']) && $medicineData['generic_name'] != '') {
+            $data['generic_name'] = $medicineData['generic_name'];
+        }
+        if(isset($medicineData['pharma_name']) && $medicineData['pharma_name'] != '') {
+            $data['pharma_name'] = $medicineData['pharma_name'];
+        }
+
+        return $data;
     }
 }
