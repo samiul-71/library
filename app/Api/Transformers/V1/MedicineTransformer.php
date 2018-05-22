@@ -7,7 +7,7 @@ use App\Api\Transformers\Transformer;
 class MedicineTransformer extends Transformer
 {
     protected $pharmaceuticalTransformer;
-
+    protected $units;
     /**
      * MedicineTransformer constructor.
      * @param PharmaceuticalCompanyTransformer $pharmaceuticalTransformer
@@ -15,6 +15,7 @@ class MedicineTransformer extends Transformer
     public function __construct(PharmaceuticalCompanyTransformer $pharmaceuticalTransformer)
     {
         $this->pharmaceuticalTransformer = $pharmaceuticalTransformer;
+        $this->units    =   [];
     }
 
     public function transform($medicine) {
@@ -24,7 +25,8 @@ class MedicineTransformer extends Transformer
             'code'                     => $medicine->code,
             'name'                     => $medicine->name,
             'description'              => $this->formatHtml($medicine->description),
-            'strength'                 => trim($medicine->strength),
+            'strength'                 => $this->formatStrength(trim($medicine->strength)),
+            'units'                    => $this->units,
             'indications'              => trim($medicine->indications_details),
             'administration'           => $medicine->administration,
             'ingredients'              => $medicine->ingredients,
@@ -99,5 +101,25 @@ class MedicineTransformer extends Transformer
         }
 
         return $keyWords;
+    }
+
+    protected function formatStrength($strengthData) {
+        $medicineData = explode('+',$strengthData);
+
+        $strengthList   =   [];
+        $this->units    =   [];
+        foreach ($medicineData as $medicine) {
+            $strengthDetails = explode(' ', trim($medicine),2);
+            if (!in_array(trim($strengthDetails[0]), $strengthList)) {
+                $strengthList[]=$strengthDetails[0];
+            }
+
+            if (in_array(trim($strengthDetails[1]), $this->units)) {
+                continue;
+            }
+            $this->units[]=trim($strengthDetails[1]);
+        }
+
+        return $strengthList;
     }
 }
