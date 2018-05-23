@@ -37,14 +37,14 @@ class MedicineApiController extends ApiController
 
             // if any custom query needed, we can implement the query here
 
-            $medicineQuery = $medicineList->orderBy('name', 'asc');
+            $medicineQuery = $medicineList->orderBy('id', 'asc');
 
             if ($request->has('name')) {
                 $medicineName   =   trim($request->input('name'));
                 $medicineQuery->where('name', 'LIKE', "%$medicineName%");
             }
 
-            $collection = $this->getCollection($request, $medicineQuery);
+            $collection = $this->getQueryData($request, $medicineQuery);
 
             $medicineList = $collection->data;
 
@@ -110,5 +110,27 @@ class MedicineApiController extends ApiController
         } finally {
             return response()->json($data);
         }
+    }
+
+    public function getQueryData(Request $request, $moduleQuery, $queryString = '', $limit = 50)
+    {
+        $collection = [];
+
+        if($request->has('limit')) {
+            if($request->input('limit') <= 100) {
+                $limit = (int) $request->input('limit');
+            } else {
+                $limit = 10;
+            }
+        }
+
+        $collection['data'] = $moduleQuery->paginate($limit);
+        $platform = '&platform=web';
+
+        $queryString = $queryString . $platform . '&limit=' . $limit;
+
+        $collection['paginator'] = $this->paginatorData($collection['data'], $queryString);
+
+        return (object) $collection;
     }
 }

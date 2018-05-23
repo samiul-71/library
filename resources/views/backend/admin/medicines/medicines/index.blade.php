@@ -44,9 +44,9 @@
                                 <tr>
                                     <th>Medicine Name</th>
                                     <th>Code</th>
-                                    <th>Genre</th>
+                                    <th>Generic Name</th>
                                     <th>Manufacturer</th>
-                                    <th>Pack size & Price</th>
+                                    {{--<th>Pack size & Price</th>--}}
                                     <th>Status</th>
                                     <th class="text-center" style="width: 120px;">Action</th>
                                 </tr>
@@ -56,7 +56,7 @@
                                     <tr>
                                         <td>
                                             <a href="{{ route("admin.medicine.show", $medicine->id) }}" >
-                                                {!! $medicine->name !!} {!! $medicine->strength !!} ({!! $medicine->medicine_type_name !!})
+                                                {!! isset($medicine->name) ? $medicine->name : '' !!} {!! isset($medicine->strength) ? $medicine->strength : '' !!} ({!! isset($medicine->medicine_type_name) ? $medicine->medicine_type_name : '' !!})
                                             </a>
                                         </td>
                                         <td>
@@ -68,20 +68,20 @@
                                         <td>
                                             {!! $medicine->pharma_name !!}
                                         </td>
-                                        <td>
-                                            @if($medicine->pack_size)
-                                                {!! $medicine->pack_size !!} pcs.
-                                            @endif
-                                            @if($medicine->unit_price)
-                                                {!! $medicine->currency !!}
-                                                {!! $medicine->unit_price !!}
-                                            @endif
-                                        </td>
+                                        {{--<td>--}}
+                                            {{--@if($medicine->pack_size)--}}
+                                                {{--{!! $medicine->pack_size !!} pcs.--}}
+                                            {{--@endif--}}
+                                            {{--@if($medicine->unit_price)--}}
+                                                {{--{!! $medicine->currency !!}--}}
+                                                {{--{!! $medicine->unit_price !!}--}}
+                                            {{--@endif--}}
+                                        {{--</td>--}}
                                         <td>
                                             @if($medicine->status && $medicine->status == 1)
-                                                {!! 'Publish' !!}
+                                                {!! 'Published' !!}
                                             @else
-                                                {!! 'Not Publish' !!}
+                                                {!! 'Not Published' !!}
                                             @endif
                                         </td>
                                         <td style="width: 120px;">
@@ -98,6 +98,7 @@
                                 @endforeach
                                 </tbody>
                             </table>
+                            {{ $medicines->links() }}
                         </div>
                     @else
                         <div class="col-sm-12 text-center" style="padding: 150px 0;">
@@ -115,9 +116,9 @@
 @stop
 
 @section('after-scripts')
-    <script>
-        $(document).ready(function() {
-            $('#medicine-table').DataTable();
-        });
-    </script>
+    {{--<script>--}}
+        {{--$(document).ready(function() {--}}
+            {{--$('#medicine-table').DataTable();--}}
+        {{--});--}}
+    {{--</script>--}}
 @stop

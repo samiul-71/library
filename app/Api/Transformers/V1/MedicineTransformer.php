@@ -6,19 +6,16 @@ use App\Api\Transformers\Transformer;
 
 class MedicineTransformer extends Transformer
 {
-    /**
-     * @property string imageUploadedPath
-     */
-//    protected $imageUploadedPath;
     protected $pharmaceuticalTransformer;
-
+    protected $units;
     /**
      * MedicineTransformer constructor.
+     * @param PharmaceuticalCompanyTransformer $pharmaceuticalTransformer
      */
     public function __construct(PharmaceuticalCompanyTransformer $pharmaceuticalTransformer)
     {
-//        $this->imageUploadedPath  = $this->getImageRootPath() . topicImagePath();
         $this->pharmaceuticalTransformer = $pharmaceuticalTransformer;
+        $this->units    =   [];
     }
 
     public function transform($medicine) {
@@ -28,9 +25,9 @@ class MedicineTransformer extends Transformer
             'code'                     => $medicine->code,
             'name'                     => $medicine->name,
             'description'              => $this->formatHtml($medicine->description),
-            'strength'                 => trim($medicine->strength),
+            'strength'                 => $this->formatStrength(trim($medicine->strength)),
+            'units'                    => $this->units,
             'indications'              => trim($medicine->indications_details),
-//            'image_path'        => ($medicine->image_path != null) ? $this->imageUploadedPath . $medicine->image_path : null,
             'administration'           => $medicine->administration,
             'ingredients'              => $medicine->ingredients,
             'contraindications'        => $medicine->contraindications,
@@ -46,7 +43,6 @@ class MedicineTransformer extends Transformer
             'packetInfo'               => $this->getPacketInfo($medicine->pack_size, $medicine->no_per_unit, $medicine->unit_price, $medicine->currency),
             'dosageInfo'               => $this->getDoseInfo($medicine->adult_dose, $medicine->child_dose, $medicine->renal_dose),
             'indicationsKeywords'      => $this->getKeyWords($medicine->indications_keywords)
-            //            'sortOrder'        => $pharmaceutical->sort_order
         ];
     }
 
@@ -72,9 +68,9 @@ class MedicineTransformer extends Transformer
 
     public function getDoseInfo($adultDose, $childDose, $renalDose) {
         $doseInfoArray = [
-            'adult_dose'        => $adultDose,
-            'child_dose'        => $childDose,
-            'renal_dose'        => $renalDose
+            'adultDose'        => $adultDose,
+            'childDose'        => $childDose,
+            'renalDose'        => $renalDose
         ];
 
         return $doseInfoArray;
@@ -82,9 +78,9 @@ class MedicineTransformer extends Transformer
 
     public function getPacketInfo($packSize, $noPerUnit, $unitPrice, $currency) {
         $packetInfoArray = [
-            'pack_size'         => $packSize,
-            'no_per_unit'       => $noPerUnit,
-            'unit_price'        => $unitPrice,
+            'packSize'         => $packSize,
+            'noPerUnit'       => $noPerUnit,
+            'unitPrice'        => $unitPrice,
             'currency'          => $currency
         ];
 
@@ -105,5 +101,25 @@ class MedicineTransformer extends Transformer
         }
 
         return $keyWords;
+    }
+
+    protected function formatStrength($strengthData) {
+        $medicineData = explode('+',$strengthData);
+
+        $strengthList   =   [];
+        $this->units    =   [];
+        foreach ($medicineData as $medicine) {
+            $strengthDetails = explode(' ', trim($medicine),2);
+            if (!in_array(trim($strengthDetails[0]), $strengthList)) {
+                $strengthList[]=$strengthDetails[0];
+            }
+
+            if (in_array(trim($strengthDetails[1]), $this->units)) {
+                continue;
+            }
+            $this->units[]=trim($strengthDetails[1]);
+        }
+
+        return $strengthList;
     }
 }
