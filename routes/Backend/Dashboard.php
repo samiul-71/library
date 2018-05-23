@@ -101,6 +101,23 @@ Route::resource('lab-test', 'LabTestController', ['names' => [
 ]]);
 
 /**
+ * Routes for accessing/adding Lab Test Category info.
+ */
+Route::get('lab-test-category/trash', 'LabTestCategoryController@trash')->name('lab-test-category.trash');
+Route::patch('lab-test-category/{id}/restore', 'LabTestCategoryController@restore')->name('lab-test-category.restore');
+Route::delete('lab-test-category/{id}/permanently-delete', 'LabTestCategoryController@permanentlyDelete')->name('lab-test-category.permanently-delete');
+
+Route::resource('lab-test-category', 'LabTestCategoryController', ['names' => [
+    'index'     => 'lab-test-category.index',
+    'create'    => 'lab-test-category.create',
+    'store'     => 'lab-test-category.store',
+    'show'      => 'lab-test-category.show',
+    'edit'      => 'lab-test-category.edit',
+    'update'    => 'lab-test-category.update',
+    'destroy'   => 'lab-test-category.destroy'
+]]);
+
+/**
  * Routes for accessing/adding Allergies info.
  */
 Route::get('allergies/trash', 'AllergiesController@trash')->name('allergies.trash');
