@@ -86,6 +86,12 @@
                     <span>{{ trans('menus.backend.sidebar.lab-test') }}</span>
                 </a>
             </li>
+            <li class="{{ active_class(Active::checkUriPattern('admin/lab-test-category*')) }}">
+                <a href="{{ route('admin.lab-test-category.index') }}">
+                    <i class="fa fa-anchor"></i>
+                    <span>Lab Test Category</span>
+                </a>
+            </li>
 
             <li class="{{ active_class(Active::checkUriPattern('admin/medicine*')) }}">
                 <a href="{{ route('admin.medicine.index') }}">
