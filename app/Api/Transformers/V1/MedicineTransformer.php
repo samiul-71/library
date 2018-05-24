@@ -25,8 +25,9 @@ class MedicineTransformer extends Transformer
             'code'                     => $medicine->code,
             'name'                     => $medicine->name,
             'description'              => $this->formatHtml($medicine->description),
-            'strength'                 => $this->formatStrength(trim($medicine->strength)),
-            'units'                    => $this->units,
+            'strength'                 => trim($medicine->strength),
+            /*'strength'                 => $this->formatStrength(trim($medicine->strength)),
+            'units'                    => $this->units,*/
             'indications'              => trim($medicine->indications_details),
             'administration'           => $medicine->administration,
             'ingredients'              => $medicine->ingredients,

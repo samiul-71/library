@@ -152,3 +152,11 @@ Route::resource('therapeutic-class', 'TherapeuticClassController', ['names' => [
     'update'    => 'therapeutic-class.update',
     'destroy'   => 'therapeutic-class.destroy'
 ]]);
+
+
+Route::group(['prefix' => 'import'],function() {
+
+    Route::get('lab-test','ImportDataController@index');
+    Route::post('lab-test','ImportDataController@importLabTestData')->name('import.lab-test');
+
+});
