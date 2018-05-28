@@ -44,6 +44,11 @@ class LabTestApiController extends ApiController
                 $labTestQuery->where('test_name', 'LIKE', "%$testName%");
             }
 
+            if($request->has('limit')) {
+                $limit  =   $request->input('limit');
+                $labTestQuery->limit($limit);
+            }
+
             $collection = $this->getCollection($request, $labTestQuery);
 
             $labTestList = $collection->data;
