@@ -30,6 +30,16 @@ Route::group(['namespace' => 'V1'], function () {
             ]
         ]);
         /* End of Medicine API */
+
+
+        /* 04. Start of Disease API */
+        Route::resource('disease', 'DiseasesApiController', [
+            'only' => [
+                'index',
+                'show'
+            ]
+        ]);
+        /* End of Disease API */
     });
 
     /* 14. Start of Authentication API */
