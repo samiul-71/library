@@ -36,7 +36,7 @@ class DiseasesApiController extends ApiController
             if ($request->has('search_param')) {
                 $diseaseCodeOrName = trim($request->input('search_param'));
                 $diseaseQuery->where('code_name', 'LIKE', "%$diseaseCodeOrName%")->Orwhere('code_description', 'LIKE', "%$diseaseCodeOrName%");
-                $diseases = $diseaseQuery->get();
+                $diseases = $diseaseQuery->limit(20)->get();
             } else {
                 $diseases = $diseaseQuery->get()->random(20);
             }
