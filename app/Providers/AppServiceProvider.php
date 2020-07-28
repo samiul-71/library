@@ -51,7 +51,7 @@ class AppServiceProvider extends ServiceProvider
         if(config('misc.force_https') == true)
         {
 
-            \URL::forceSchema('https');
+            \URL::forceScheme('https');
         }
 
         // Set the default string length for Laravel5.4
