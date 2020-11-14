@@ -26,7 +26,6 @@ class MedicineApiController extends ApiController
 
     public function index(Request $request)
     {
-
         try {
 
             $data = [
