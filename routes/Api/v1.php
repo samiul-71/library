@@ -40,6 +40,15 @@ Route::group(['namespace' => 'V1'], function () {
             ]
         ]);
         /* End of Disease API */
+
+        /* 05. Start of chronic disease API */
+        Route::resource('chronic-disease', 'ChronicDiseaseApiController', [
+            'only' => [
+                'index',
+                'show'
+            ]
+        ]);
+        /* End of Disease API */
     });
 
     /* 14. Start of Authentication API */
