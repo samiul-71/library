@@ -37,7 +37,7 @@ class ChronicDiseaseApiController extends ApiController
                 $diseaseQuery->where('disease_name', 'LIKE', "%$diseaseCodeOrName%")->orWhere('disease_description', 'LIKE', "%$diseaseCodeOrName%")->orderBy('disease_name','ASC');
                 $diseases = $diseaseQuery->limit(20)->get();
             } else {
-                $diseases = $diseaseQuery->get()->random(20);
+                $diseases = $diseaseQuery->orderBy('disease_name','ASC')->get()->random(20);
             }
 
             foreach ($diseases as $disease) {

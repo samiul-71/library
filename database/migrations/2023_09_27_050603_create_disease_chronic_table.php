@@ -17,7 +17,7 @@ class CreateDiseaseChronicTable extends Migration
             $table->increments('id');
 
             $table->string('disease_category_id', 10)->nullable();
-            $table->string('disease_name', 10)->nullable();
+            $table->string('disease_name', 100)->nullable();
             $table->text('disease_description')->nullable();
 
             $table->boolean('is_billable')->default(true);
