@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Api\Transformers\V1;
 
 use App\Api\Transformers\Transformer;
